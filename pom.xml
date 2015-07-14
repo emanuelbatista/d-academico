@@ -6,8 +6,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>mavenproject1/core</module>
-    <module>web</module>
+        <module>core</module>
+        <module>web</module>
         <module>desktop</module>
     </modules>
     <properties>
