@@ -5,12 +5,58 @@
     <artifactId>d-academico</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>D-ACadêmico</name>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.2.4.RELEASE</version>
+    </parent>
+    
     <modules>
         <module>mavenproject1/core</module>
-    <module>web</module>
+        <module>web</module>
         <module>desktop</module>
+        <module>entidades</module>
     </modules>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <developers>
+        <developer>
+            <name>Douglas Gabriel</name>
+            <email>douglasxgabriel@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Emanuel Batista</name>
+            <email></email>
+        </developer>
+        <developer>
+            <name>Rafael Tavares</name>
+            <email></email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Utils -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
+        <!-- Java EE Dependencies -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+    </dependencies>
 </project>
