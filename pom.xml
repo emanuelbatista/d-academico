@@ -8,7 +8,7 @@
     <name>D-ACadêmico</name>        
     
     <modules>
-        <module>mavenproject1/core</module>
+        <module>core</module>
         <module>web</module>
         <module>desktop</module>
         <module>entidades</module>
