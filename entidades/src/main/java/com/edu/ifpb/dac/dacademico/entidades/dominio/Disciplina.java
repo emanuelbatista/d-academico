@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Disciplina {
     private long cod;
     private int aulasPorSemana, periodo, cargaHoraria;
     private String descricao, abreviacao;
-    @ManyToMany
+    @ManyToOne
     private Curso curso;
 
     public long getCod() {

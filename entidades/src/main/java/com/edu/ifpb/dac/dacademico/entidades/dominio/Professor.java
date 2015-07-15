@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
  * @version 0.1
  */
 @Entity
-@SequenceGenerator (name = "default_gen", sequenceName = "seq_professor")
 public class Professor extends Pessoa{
     
     private String unidade, vinculo, regime;

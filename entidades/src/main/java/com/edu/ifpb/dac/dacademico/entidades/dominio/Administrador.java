@@ -9,7 +9,6 @@ import javax.persistence.SequenceGenerator;
  * @version 0.1
  */
 @Entity
-@SequenceGenerator (name = "default_gen", sequenceName = "sq_admin")
 public class Administrador extends Pessoa{
 
 }

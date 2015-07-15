@@ -13,7 +13,6 @@ import javax.persistence.SequenceGenerator;
  * @version 0.1
  */
 @Entity
-@SequenceGenerator (name = "default_gen", sequenceName = "seq_aluno")
 public class Aluno extends Pessoa{
 
     @Column(unique = true)

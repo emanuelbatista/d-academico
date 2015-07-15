@@ -15,7 +15,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class Pessoa {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_gen")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
     private String nomeCompleto, senha;
     @Column(unique = true)
