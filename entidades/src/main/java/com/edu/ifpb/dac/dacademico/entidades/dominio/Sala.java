@@ -1,15 +1,12 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Table;
 
 /**
  *
@@ -17,7 +14,6 @@ import javax.persistence.Table;
  * @version 0.1
  */
 @Entity
-@Table(name="sala")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Sala implements Serializable {
 

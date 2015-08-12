@@ -12,6 +12,7 @@
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Turma</class>
+    <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Sala</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dacademico"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

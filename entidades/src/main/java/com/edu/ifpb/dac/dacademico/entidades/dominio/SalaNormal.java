@@ -1,7 +1,9 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -9,6 +11,15 @@ import javax.persistence.Entity;
  * @version 0.1
  */
 @Entity
+@Access(AccessType.PROPERTY)
 public class SalaNormal extends Sala{
 
+    @Id
+    @Override
+    public long getCod() {
+        return super.getCod();
+    }
+
+    
+    
 }

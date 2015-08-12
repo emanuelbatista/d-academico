@@ -1,6 +1,5 @@
 package com.edu.ifpb.dac.dacademico.desktop;
 
-import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import java.io.IOException;
 
