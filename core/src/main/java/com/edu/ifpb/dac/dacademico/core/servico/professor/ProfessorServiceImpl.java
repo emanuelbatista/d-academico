@@ -47,12 +47,13 @@ public class ProfessorServiceImpl implements ProfessorService{
     public void urlParaBanco (String host) throws MalformedURLException, IOException{
         URL url = new URL(host);
         JsonReader jsonReader = Json.createReader(url.openStream());
-        JsonArray array = jsonReader.readArray();
+        JsonObject object = jsonReader.readObject();
         jsonReader.close();
+        JsonArray array = object.getJsonArray("data");
         for (int i = 0; i < array.size();i++){
             Professor professor = new Professor();
             JsonObject obj = array.getJsonObject(i);
-            professor.setCod(obj.getInt("codigo"));
+            professor.setCod(Integer.parseInt(obj.getString("codigo")));
             professor.setEmail(obj.getString("email"));
             professor.setLogin(obj.getString("email"));
             professor.setNomeCompleto(obj.getString("nome"));
