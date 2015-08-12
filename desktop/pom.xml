@@ -8,6 +8,7 @@
     </parent>
     <artifactId>desktop</artifactId>
     <packaging>jar</packaging>
+    <name>D-Academico - Desktop</name>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
