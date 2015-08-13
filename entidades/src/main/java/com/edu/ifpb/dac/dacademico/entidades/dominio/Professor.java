@@ -3,7 +3,6 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 
 /**
  *
