@@ -1,6 +1,9 @@
 package com.edu.ifpb.dac.dacademico.core.servico.sala;
 
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
@@ -19,14 +22,28 @@ import javax.json.JsonReader;
 public class SalaServiceImpl implements SalaService{
     
     private Dao<Sala, Long> repositorio;
+    private Dao<Laboratorio, Long> repositorioLaboratorio;
+    private Dao<SalaNormal, Long> repositorioSalaNormal;
 
     public SalaServiceImpl(String unidadePersistencia) {
         this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
+        this.repositorioLaboratorio = new GenericoDaoJPA<>(unidadePersistencia);
+        this.repositorioSalaNormal = new GenericoDaoJPA<>(unidadePersistencia);
     }        
 
     @Override
     public void salvar(Sala sala) {
         repositorio.salvar(sala);
+    }
+    
+    public void salvarLaboratorio(Sala sala){
+        Laboratorio lab = (Laboratorio) sala;
+        repositorioLaboratorio.salvar(lab);
+    }
+    
+    public void salvarSalaNormal (Sala sala){
+        SalaNormal salaNormal = (SalaNormal) sala;
+        repositorioSalaNormal.salvar(salaNormal);
     }
 
     @Override
@@ -45,7 +62,7 @@ public class SalaServiceImpl implements SalaService{
     }
 
     @Override
-    public void urlParaBanco(String host) throws MalformedURLException, IOException {
+    public void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException {
         URL url = new URL(host);
         JsonReader jsonReader = Json.createReader(url.openStream());
         JsonObject object = jsonReader.readObject();
@@ -53,12 +70,19 @@ public class SalaServiceImpl implements SalaService{
         JsonArray array = object.getJsonArray("data");
         for (int i = 0; i < array.size(); i++){
             Sala sala = new Sala();
+            switch(tipo){
+                case LABORATORIO: sala = new Laboratorio();break;
+                case NORMAL:sala = new SalaNormal();break;
+            }
             JsonObject obj = array.getJsonObject(i);
             sala.setCod(Integer.parseInt(obj.getString("codigo")));
             sala.setAbreviacao(obj.getString("abreviacao"));
             sala.setDescricao(obj.getString("descricao"));
             try{
-                repositorio.salvar(sala);
+                switch(tipo){
+                    case LABORATORIO: salvarLaboratorio(sala);break;
+                    case NORMAL: salvarSalaNormal(sala);break;
+                }                
             }catch (Exception e){
                 e.printStackTrace();
             }
