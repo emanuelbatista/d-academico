@@ -2,7 +2,6 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,13 +12,12 @@ import javax.persistence.Id;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-@DiscriminatorValue("Laboratorio")
 public class Laboratorio extends Sala{
 
     @Id
     @Override
     public long getCod() {
-        return super.getCod(); //To change body of generated methods, choose Tools | Templates.
+        return super.getCod();
     }
 
     
