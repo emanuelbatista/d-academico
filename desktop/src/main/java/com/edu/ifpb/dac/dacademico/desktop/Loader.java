@@ -18,5 +18,7 @@ public class Loader {
         
         SalaService salaService = new SalaServiceImpl("com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU");
         salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.NORMAL);
+        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.LABORATORIO);
+        
     }
 }

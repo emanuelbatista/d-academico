@@ -1,13 +1,18 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 
 /**
  *
@@ -21,13 +26,15 @@ import javax.persistence.MappedSuperclass;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@IdClass(SalaPK.class)
 public class Sala implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
+    private SalaTipo salaTipo;
     private String abreviacao, descricao;
 
+    @Id
+    @Column(name = "cod")
     public long getCod() {
         return cod;
     }
@@ -51,5 +58,56 @@ public class Sala implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Id
+    @Column(name = "sala_tipo")
+    @Enumerated(EnumType.STRING)
+    public SalaTipo getSalaTipo() {
+        return salaTipo;
+    }
+
+    public void setSalaTipo(SalaTipo salaTipo) {
+        this.salaTipo = salaTipo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + (int) (this.cod ^ (this.cod >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.salaTipo);
+        hash = 59 * hash + Objects.hashCode(this.abreviacao);
+        hash = 59 * hash + Objects.hashCode(this.descricao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sala other = (Sala) obj;
+        if (this.cod != other.cod) {
+            return false;
+        }
+        if (this.salaTipo != other.salaTipo) {
+            return false;
+        }
+        if (!Objects.equals(this.abreviacao, other.abreviacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
+    
+
+ 
     
 }

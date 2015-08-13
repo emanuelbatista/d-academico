@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 
 /**
  *
@@ -11,14 +12,13 @@ import javax.persistence.Id;
  * @version 0.1
  */
 @Entity
-@Access(AccessType.PROPERTY)
 public class SalaNormal extends Sala{
 
-    @Id
     @Override
-    public long getCod() {
-        return super.getCod();
+    public SalaTipo getSalaTipo() {
+        return SalaTipo.NORMAL; 
     }
+    
 
     
     
