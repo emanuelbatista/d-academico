@@ -3,14 +3,8 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
@@ -25,9 +19,8 @@ import javax.persistence.InheritanceType;
  * da API.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@IdClass(SalaPK.class)
-public class Sala implements Serializable {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Sala implements Serializable {
 
     private long cod;
     private SalaTipo salaTipo;
@@ -59,9 +52,6 @@ public class Sala implements Serializable {
         this.descricao = descricao;
     }
 
-    @Id
-    @Column(name = "sala_tipo")
-    @Enumerated(EnumType.STRING)
     public SalaTipo getSalaTipo() {
         return salaTipo;
     }

@@ -1,10 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 
 /**
  *
@@ -13,13 +9,6 @@ import javax.persistence.IdClass;
  */
 @Entity
 public class Laboratorio extends Sala{
-
-    @Override
-    public SalaTipo getSalaTipo() {
-        return SalaTipo.LABORATORIO; 
-    }
     
-    
-
     
 }

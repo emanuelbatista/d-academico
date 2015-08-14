@@ -6,8 +6,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 /**
@@ -26,10 +24,6 @@ public class Aula {
     @ManyToOne
     private Horario horario;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumns({
-        @JoinColumn(name = "sala_cod",referencedColumnName = "cod"),
-        @JoinColumn(name = "sala_tipo",referencedColumnName = "sala_tipo")
-    })
     private Sala sala;
     
     public long getCod() {

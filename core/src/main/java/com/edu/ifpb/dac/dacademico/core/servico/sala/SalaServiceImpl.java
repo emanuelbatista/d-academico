@@ -69,7 +69,7 @@ public class SalaServiceImpl implements SalaService{
         jsonReader.close();
         JsonArray array = object.getJsonArray("data");
         for (int i = 0; i < array.size(); i++){
-            Sala sala = new Sala();
+            Sala sala = null;
             switch(tipo){
                 case LABORATORIO: sala = new Laboratorio();break;
                 case NORMAL:sala = new SalaNormal();break;

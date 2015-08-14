@@ -1,6 +1,5 @@
 package com.edu.ifpb.dac.dacademico.desktop;
 
-import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
