@@ -2,6 +2,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -11,4 +12,9 @@ import javax.persistence.Entity;
 @Entity
 public class Laboratorio extends Sala{
 
+    @Id
+    public long getCod(){
+        return super.getCod();
+    }
+    
 }
