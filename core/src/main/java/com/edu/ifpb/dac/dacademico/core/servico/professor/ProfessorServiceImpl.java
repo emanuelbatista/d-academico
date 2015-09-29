@@ -44,6 +44,7 @@ public class ProfessorServiceImpl implements ProfessorService{
         repositorio.atualizar(professor);
     }
     
+    @Override
     public void urlParaBanco (String host) throws MalformedURLException, IOException{
         URL url = new URL(host);
         JsonReader jsonReader = Json.createReader(url.openStream());

@@ -1,6 +1,8 @@
 package com.edu.ifpb.dac.dacademico.core.servico.professor;
 
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  *
@@ -12,5 +14,6 @@ public interface ProfessorService {
     void remover (Professor professor);
     Professor buscar (long id);
     void atualizar (Professor professor);
+    void urlParaBanco (String host) throws MalformedURLException, IOException;
     
 }
