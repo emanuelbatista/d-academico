@@ -14,6 +14,6 @@ public interface ProfessorService {
     void remover (Professor professor);
     Professor buscar (long id);
     void atualizar (Professor professor);
-    void urlParaBanco (String host) throws MalformedURLException, IOException;
+    void urlParaBanco(String host) throws MalformedURLException, IOException;
     
 }

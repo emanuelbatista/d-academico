@@ -1,6 +1,8 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,9 +23,9 @@ public class Aula {
     private Turma turma;
     @ManyToOne
     private Horario horario;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Sala sala;
-
+    
     public long getCod() {
         return cod;
     }

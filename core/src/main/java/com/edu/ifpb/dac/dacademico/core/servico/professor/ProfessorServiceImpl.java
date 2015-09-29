@@ -16,11 +16,11 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class ProfessorServiceImpl implements ProfessorService{
-    
+public class ProfessorServiceImpl implements ProfessorService {
+
     private Dao<Professor, Long> repositorio;
-    
-    public ProfessorServiceImpl (String unidadePersistencia){
+
+    public ProfessorServiceImpl(String unidadePersistencia) {
         repositorio = new GenericoDaoJPA<>(unidadePersistencia);
     }
 
@@ -43,24 +43,29 @@ public class ProfessorServiceImpl implements ProfessorService{
     public void atualizar(Professor professor) {
         repositorio.atualizar(professor);
     }
-    
+
     @Override
-    public void urlParaBanco (String host) throws MalformedURLException, IOException{
+    public void urlParaBanco(String host) throws MalformedURLException, IOException {
         URL url = new URL(host);
         JsonReader jsonReader = Json.createReader(url.openStream());
-        JsonArray array = jsonReader.readArray();
+        JsonObject object = jsonReader.readObject();
         jsonReader.close();
-        for (int i = 0; i < array.size();i++){
+        JsonArray array = object.getJsonArray("data");
+        for (int i = 0; i < array.size(); i++) {
             Professor professor = new Professor();
             JsonObject obj = array.getJsonObject(i);
-            professor.setCod(obj.getInt("codigo"));
+            professor.setCod(Integer.parseInt(obj.getString("codigo")));
             professor.setEmail(obj.getString("email"));
             professor.setLogin(obj.getString("email"));
             professor.setNomeCompleto(obj.getString("nome"));
             professor.setRegime(obj.getString("regime"));
             professor.setSenha(obj.getString("codigo"));
             professor.setUnidade(obj.getString("unidade"));
-            repositorio.salvar(professor);
+            try {
+                repositorio.salvar(professor);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

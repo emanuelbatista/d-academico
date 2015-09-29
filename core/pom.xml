@@ -9,6 +9,7 @@
     <groupId>com.edu.ifpb.dac.dacademico</groupId>
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
+    <name>D-Academico - Core</name>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
