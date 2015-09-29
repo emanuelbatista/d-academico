@@ -2,6 +2,8 @@ package com.edu.ifpb.dac.dacademico.desktop;
 
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
+import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
+import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
@@ -19,14 +21,18 @@ import java.io.IOException;
  */
 public class Loader {
     public static void main(String[] args) throws IOException {
-        /*ProfessorServiceImpl service = new ProfessorServiceImpl("com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU");
-        service.urlParaBanco("http://200.129.71.228/horarios/data/professores.json");*/
+        String unidadePersistencia = "com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU";
+        /*ProfessorServiceImpl service = new ProfessorServiceImpl(unidadePersistencia);
+        service.urlParaBanco("http://200.129.71.228/horarios/data/professores.json");
         
-        /*SalaService salaService = new SalaServiceImpl("com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU");
+        SalaService salaService = new SalaServiceImpl(unidadePersistencia);
         salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.NORMAL);
-        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.LABORATORIO);*/
+        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.LABORATORIO);
         
-        CursoService cursoService = new CursoServiceImpl("com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU");
-        cursoService.urlParaBanco("http://200.129.71.228/horarios/data/cursos.json");
+        CursoService cursoService = new CursoServiceImpl(unidadePersistencia);
+        cursoService.urlParaBanco("http://200.129.71.228/horarios/data/cursos.json");*/
+        
+        DisciplinaService disciplinaService = new DisciplinaServiceImpl(unidadePersistencia);
+        disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/disciplinas.json");
     }
 }

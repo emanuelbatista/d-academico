@@ -64,6 +64,7 @@ public class ProfessorServiceImpl implements ProfessorService {
             try {
                 repositorio.salvar(professor);
             } catch (Exception e) {
+                System.out.println(obj.getString("email"));
                 e.printStackTrace();
             }
         }

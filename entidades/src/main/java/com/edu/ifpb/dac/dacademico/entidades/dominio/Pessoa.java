@@ -1,6 +1,5 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ public abstract class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
     private String nomeCompleto, senha;
-    @Column(unique = true)
+    // É possível que a pessoa não possua e-mail, por isso não pode ser um valor único
     private String email, login;
 
     public long getCod() {
