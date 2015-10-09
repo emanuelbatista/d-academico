@@ -56,6 +56,14 @@ public class SalaServiceImpl implements SalaService{
     public Sala buscar(long id) {
         return repositorio.buscar(Sala.class, id);
     }
+    
+    public SalaNormal buscarSalaNormal (long id){
+        return repositorioSalaNormal.buscar(SalaNormal.class, id);
+    }
+    
+    public Laboratorio buscarLaboratorio (long id){
+        return repositorioLaboratorio.buscar(Laboratorio.class, id);
+    }
 
     @Override
     public void atualizar(Sala sala) {

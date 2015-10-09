@@ -1,6 +1,7 @@
 package com.edu.ifpb.dac.dacademico.entidades.persistencia;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -13,5 +14,8 @@ public interface Dao<T,K> {
     void salvar (T entidade);
     void remover (T entidade);
     public T buscar(Class<T> classe, Object chave) ;
+    public List<T> buscarPorAtributos (Class<T> classe, Map<String, Object> propriedades);
+    public List<T> buscarPorAtributo (Class<T> classe, String nomeAtributo, Object valorAtributo);
     void atualizar (T entidade);
+    String getUnidadePersistencia ();
 }

@@ -1,6 +1,8 @@
 package com.edu.ifpb.dac.dacademico.core.servico.sala;
 
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -18,5 +20,6 @@ public interface SalaService {
     Sala buscar (long id);
     void atualizar (Sala sala);
     void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException;
-    
+    public SalaNormal buscarSalaNormal (long id);
+    public Laboratorio buscarLaboratorio (long id);
 }
