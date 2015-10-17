@@ -1,5 +1,7 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ public abstract class Pessoa {
     private long cod;
     private String nomeCompleto, senha;
     // É possível que a pessoa não possua e-mail, por isso não pode ser um valor único
+    @Column(unique = true, nullable = false)
     private String email, login;
 
     public long getCod() {

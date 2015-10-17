@@ -21,9 +21,13 @@ import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -76,6 +80,7 @@ public class AulaServicoImpl implements AulaServico{
         TurmaService turmaService = new TurmaServiceImpl(aulaRepositorio.getUnidadePersistencia());
         ProfessorService professorService = new ProfessorServiceImpl(aulaRepositorio.getUnidadePersistencia());        
         SalaService salaService = new SalaServiceImpl(aulaRepositorio.getUnidadePersistencia());        
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < array.size(); i++) {
             Aula aula = new Aula();
             JsonObject obj = array.getJsonObject(i);
@@ -85,8 +90,13 @@ public class AulaServicoImpl implements AulaServico{
                 horario.setCod(Long.parseLong(obj.getString("hor_cod")));
                 horario.setDescricao(obj.getString("hor_desc"));
                 horario.setDia(DayOfWeek.values()[Integer.parseInt(obj.getString("dia_abrev"))]);
-                horario.setInicio(LocalDateTime.parse(obj.getString("hor_inicio").substring(0, 5), DateTimeFormatter.ISO_LOCAL_TIME));
-                horario.setFim(LocalDateTime.parse(obj.getString("hor_fim").substring(0, 5), DateTimeFormatter.ISO_LOCAL_TIME));
+                try {
+                    horario.setInicio(new java.sql.Timestamp(format.parse(obj.getString("hor_inicio")).getTime()).toLocalDateTime());
+                    horario.setFim(new java.sql.Timestamp(format.parse(obj.getString("hor_fim")).getTime()).toLocalDateTime());
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                    break;
+                }
                 horarioRepositorio.salvar(horario);
             }
             aula.setHorario(horario);

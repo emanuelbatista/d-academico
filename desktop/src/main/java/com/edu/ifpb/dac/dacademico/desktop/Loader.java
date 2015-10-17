@@ -15,6 +15,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
+import com.edu.ifpb.dac.dacademico.desktop.visao.Inicio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import java.io.IOException;
 
@@ -42,7 +43,9 @@ public class Loader {
         /*TurmaService disciplinaService = new TurmaServiceImpl(unidadePersistencia);
         disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");*/
         
-        AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
-        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");
+        /*AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
+        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");*/
+        
+        new Inicio();
     }
 }
