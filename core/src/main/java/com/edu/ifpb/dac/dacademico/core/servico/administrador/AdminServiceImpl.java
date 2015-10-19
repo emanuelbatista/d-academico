@@ -5,6 +5,7 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import java.util.List;
 
 /**
  *
@@ -27,9 +28,10 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public Administrador login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException{
-        Administrador admin = repositorio.buscarPorAtributo(Administrador.class, "login", login).get(0);
-        if (admin == null)
+        List<Administrador> resultado = repositorio.buscarPorAtributo(Administrador.class, "login", login);
+        if (resultado == null || resultado.isEmpty())
             throw new LoginInexistenteException();
+        Administrador admin = resultado.get(0);
         if (!admin.getSenha().equals(senha))
             throw new SenhaErradaException();
         return admin;
