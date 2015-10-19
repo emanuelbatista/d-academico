@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.desktop;
 
+import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
@@ -16,6 +17,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.visao.Inicio;
+import com.edu.ifpb.dac.dacademico.desktop.visao.Login;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import java.io.IOException;
 
@@ -46,6 +49,12 @@ public class Loader {
         /*AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
         aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");*/
         
-        new Inicio();
+        /*Administrador admin = new Administrador();
+        admin.setEmail("admin@admin.com");
+        admin.setLogin("admin");
+        admin.setSenha("admin");
+        new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT).salvar(admin);*/
+        
+        new Login();
     }
 }
