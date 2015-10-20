@@ -95,6 +95,7 @@ public class Login extends javax.swing.JFrame {
         if (!login.trim().isEmpty() && !senha.trim().isEmpty()) {
             try {
                 new Principal (controller.login(login, senha));
+                this.dispose();
             } catch (LoginInexistenteException e) {
                 JOptionPane.showMessageDialog(null, "Erro no login", "O login informado não existe", JOptionPane.ERROR_MESSAGE);
             } catch (SenhaErradaException e) {

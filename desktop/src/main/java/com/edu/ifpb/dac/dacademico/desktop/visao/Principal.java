@@ -23,23 +23,18 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        adminCoverjLabel = new javax.swing.JLabel();
         removerAdminJLabel = new javax.swing.JLabel();
         atualizarAdminJLabel = new javax.swing.JLabel();
         listarAdminJLabel = new javax.swing.JLabel();
         cadastrarAdminJLabel = new javax.swing.JLabel();
-        logoJLabel = new javax.swing.JLabel();
-        professorCoverjLabel = new javax.swing.JLabel();
         cadastrarProfessorJLabel = new javax.swing.JLabel();
         listarProfessorJLabel = new javax.swing.JLabel();
         atualizarProfessorJLabel = new javax.swing.JLabel();
         removerProfessorJLabel = new javax.swing.JLabel();
-        alunoCoverjLabel = new javax.swing.JLabel();
         cadastrarAlunoJLabel = new javax.swing.JLabel();
         listarAlunoJLabel = new javax.swing.JLabel();
         atualizarAlunoJLabel = new javax.swing.JLabel();
         removerAlunoJLabel = new javax.swing.JLabel();
-        cursoCoverjLabel = new javax.swing.JLabel();
         cadastrarCursoJLabel = new javax.swing.JLabel();
         listarCursoJLabel = new javax.swing.JLabel();
         atualizarCursoJLabel = new javax.swing.JLabel();
@@ -52,12 +47,10 @@ public class Principal extends javax.swing.JFrame {
         listarTurmaJLabel = new javax.swing.JLabel();
         atualizarTurmaJLabel = new javax.swing.JLabel();
         removerTurmaJLabel = new javax.swing.JLabel();
-        salaCoverjLabel = new javax.swing.JLabel();
         removerSalaJLabel = new javax.swing.JLabel();
         atualizarSalaJLabel = new javax.swing.JLabel();
         listarSalaJLabel = new javax.swing.JLabel();
         cadastrarSalaJLabel = new javax.swing.JLabel();
-        laboratorioCoverjLabel = new javax.swing.JLabel();
         removerLaboratorioJLabel = new javax.swing.JLabel();
         atualizarLaboratorioJLabel = new javax.swing.JLabel();
         listarLaboratorioJLabel = new javax.swing.JLabel();
@@ -68,176 +61,155 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        adminCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/admin_cover.png"))); // NOI18N
-        getContentPane().add(adminCoverjLabel);
-        adminCoverjLabel.setBounds(80, 90, 190, 152);
-
-        removerAdminJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerAdminJLabel);
-        removerAdminJLabel.setBounds(80, 360, 180, 40);
+        removerAdminJLabel.setBounds(30, 380, 180, 0);
 
-        atualizarAdminJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_label.png"))); // NOI18N
+        atualizarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarAdminJLabel);
-        atualizarAdminJLabel.setBounds(80, 320, 180, 40);
+        atualizarAdminJLabel.setBounds(30, 350, 180, 30);
 
-        listarAdminJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarAdminJLabel);
-        listarAdminJLabel.setBounds(80, 280, 180, 40);
+        listarAdminJLabel.setBounds(30, 310, 180, 40);
 
-        cadastrarAdminJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/novo_label.png"))); // NOI18N
+        cadastrarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarAdminJLabel);
-        cadastrarAdminJLabel.setBounds(80, 240, 180, 40);
+        cadastrarAdminJLabel.setBounds(30, 280, 180, 30);
 
-        logoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
-        getContentPane().add(logoJLabel);
-        logoJLabel.setBounds(20, 10, 190, 70);
-
-        professorCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professor_cover.png"))); // NOI18N
-        getContentPane().add(professorCoverjLabel);
-        professorCoverjLabel.setBounds(280, 90, 190, 152);
-
-        cadastrarProfessorJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/novo_label.png"))); // NOI18N
+        cadastrarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarProfessorJLabel);
-        cadastrarProfessorJLabel.setBounds(280, 240, 180, 40);
+        cadastrarProfessorJLabel.setBounds(220, 270, 0, 0);
 
-        listarProfessorJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarProfessorJLabel);
-        listarProfessorJLabel.setBounds(280, 280, 180, 40);
+        listarProfessorJLabel.setBounds(220, 310, 190, 0);
 
-        atualizarProfessorJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_label.png"))); // NOI18N
+        atualizarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarProfessorJLabel);
-        atualizarProfessorJLabel.setBounds(280, 320, 180, 40);
+        atualizarProfessorJLabel.setBounds(220, 350, 190, 30);
 
-        removerProfessorJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerProfessorJLabel);
-        removerProfessorJLabel.setBounds(280, 360, 180, 40);
+        removerProfessorJLabel.setBounds(220, 380, 190, 0);
 
-        alunoCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alunos_cover.png"))); // NOI18N
-        getContentPane().add(alunoCoverjLabel);
-        alunoCoverjLabel.setBounds(480, 90, 190, 152);
-
-        cadastrarAlunoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/novo_label.png"))); // NOI18N
+        cadastrarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarAlunoJLabel);
-        cadastrarAlunoJLabel.setBounds(480, 240, 180, 40);
+        cadastrarAlunoJLabel.setBounds(420, 280, 180, 30);
 
-        listarAlunoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarAlunoJLabel);
-        listarAlunoJLabel.setBounds(480, 280, 180, 40);
+        listarAlunoJLabel.setBounds(420, 310, 180, 0);
 
-        atualizarAlunoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_label.png"))); // NOI18N
+        atualizarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarAlunoJLabel);
-        atualizarAlunoJLabel.setBounds(480, 320, 180, 40);
+        atualizarAlunoJLabel.setBounds(420, 350, 180, 30);
 
-        removerAlunoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerAlunoJLabel);
-        removerAlunoJLabel.setBounds(480, 360, 180, 40);
+        removerAlunoJLabel.setBounds(420, 380, 180, 0);
 
-        cursoCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cursos_cover.png"))); // NOI18N
-        getContentPane().add(cursoCoverjLabel);
-        cursoCoverjLabel.setBounds(680, 90, 550, 123);
-
-        cadastrarCursoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/novo_label.png"))); // NOI18N
+        cadastrarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarCursoJLabel);
-        cadastrarCursoJLabel.setBounds(680, 240, 180, 40);
+        cadastrarCursoJLabel.setBounds(610, 280, 180, 30);
 
-        listarCursoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarCursoJLabel);
-        listarCursoJLabel.setBounds(680, 280, 180, 40);
+        listarCursoJLabel.setBounds(610, 310, 0, 0);
 
-        atualizarCursoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_info_label.png"))); // NOI18N
+        atualizarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarCursoJLabel);
-        atualizarCursoJLabel.setBounds(680, 320, 180, 35);
+        atualizarCursoJLabel.setBounds(610, 350, 180, 0);
 
-        removerCursoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerCursoJLabel);
-        removerCursoJLabel.setBounds(680, 360, 180, 40);
+        removerCursoJLabel.setBounds(610, 380, 190, 0);
 
-        cadastrarDisciplinaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nova_label.png"))); // NOI18N
+        cadastrarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarDisciplinaJLabel);
-        cadastrarDisciplinaJLabel.setBounds(870, 240, 180, 34);
+        cadastrarDisciplinaJLabel.setBounds(800, 280, 180, 30);
 
-        listarDisciplinaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarDisciplinaJLabel);
-        listarDisciplinaJLabel.setBounds(870, 280, 180, 40);
+        listarDisciplinaJLabel.setBounds(800, 310, 180, 0);
 
-        atualizarDisciplinaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_info_label.png"))); // NOI18N
+        atualizarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarDisciplinaJLabel);
-        atualizarDisciplinaJLabel.setBounds(870, 320, 180, 35);
+        atualizarDisciplinaJLabel.setBounds(800, 350, 180, 30);
 
-        removerDisciplinaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerDisciplinaJLabel);
-        removerDisciplinaJLabel.setBounds(870, 360, 180, 40);
+        removerDisciplinaJLabel.setBounds(800, 380, 180, 0);
 
-        cadastrarTurmaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nova_label.png"))); // NOI18N
+        cadastrarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarTurmaJLabel);
-        cadastrarTurmaJLabel.setBounds(1050, 240, 180, 34);
+        cadastrarTurmaJLabel.setBounds(980, 280, 180, 30);
 
-        listarTurmaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarTurmaJLabel);
-        listarTurmaJLabel.setBounds(1050, 280, 180, 40);
+        listarTurmaJLabel.setBounds(980, 310, 180, 30);
 
-        atualizarTurmaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_info_label.png"))); // NOI18N
+        atualizarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarTurmaJLabel);
-        atualizarTurmaJLabel.setBounds(1050, 320, 180, 35);
+        atualizarTurmaJLabel.setBounds(980, 350, 180, 30);
 
-        removerTurmaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerTurmaJLabel);
-        removerTurmaJLabel.setBounds(1050, 360, 180, 40);
+        removerTurmaJLabel.setBounds(980, 380, 180, 0);
 
-        salaCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sala_cover.png"))); // NOI18N
-        getContentPane().add(salaCoverjLabel);
-        salaCoverjLabel.setBounds(70, 420, 190, 152);
-
-        removerSalaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerSalaJLabel);
-        removerSalaJLabel.setBounds(80, 700, 180, 40);
+        removerSalaJLabel.setBounds(30, 700, 180, 0);
 
-        atualizarSalaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_info_label.png"))); // NOI18N
+        atualizarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarSalaJLabel);
-        atualizarSalaJLabel.setBounds(80, 660, 180, 35);
+        atualizarSalaJLabel.setBounds(30, 670, 180, 30);
 
-        listarSalaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarSalaJLabel);
-        listarSalaJLabel.setBounds(80, 620, 180, 40);
+        listarSalaJLabel.setBounds(30, 630, 180, 30);
 
-        cadastrarSalaJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nova_label.png"))); // NOI18N
+        cadastrarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarSalaJLabel);
-        cadastrarSalaJLabel.setBounds(80, 580, 180, 34);
+        cadastrarSalaJLabel.setBounds(30, 600, 180, 30);
 
-        laboratorioCoverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lab_cover.png"))); // NOI18N
-        getContentPane().add(laboratorioCoverjLabel);
-        laboratorioCoverjLabel.setBounds(270, 420, 190, 152);
-
-        removerLaboratorioJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove_label.png"))); // NOI18N
+        removerLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerLaboratorioJLabel);
-        removerLaboratorioJLabel.setBounds(280, 700, 180, 40);
+        removerLaboratorioJLabel.setBounds(220, 700, 190, 0);
 
-        atualizarLaboratorioJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/up_info_label.png"))); // NOI18N
+        atualizarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarLaboratorioJLabel);
-        atualizarLaboratorioJLabel.setBounds(280, 660, 180, 35);
+        atualizarLaboratorioJLabel.setBounds(220, 660, 190, 40);
 
-        listarLaboratorioJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lista_label.png"))); // NOI18N
+        listarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarLaboratorioJLabel);
-        listarLaboratorioJLabel.setBounds(280, 620, 180, 40);
+        listarLaboratorioJLabel.setBounds(220, 630, 190, 30);
 
-        cadastrarLaboratorioJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nova_label.png"))); // NOI18N
+        cadastrarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarLaboratorioJLabel);
-        cadastrarLaboratorioJLabel.setBounds(280, 580, 180, 34);
+        cadastrarLaboratorioJLabel.setBounds(220, 596, 190, 0);
 
-        logoutJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout_icon.png"))); // NOI18N
+        logoutJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoutJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(logoutJLabel);
-        logoutJLabel.setBounds(1120, 20, 104, 50);
+        logoutJLabel.setBounds(1194, 20, 120, 60);
 
-        backgroundjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/inicio_background.png"))); // NOI18N
+        backgroundjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/modelo.png"))); // NOI18N
         getContentPane().add(backgroundjLabel);
         backgroundjLabel.setBounds(-13, -10, 1690, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJLabelMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_logoutJLabelMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel adminCoverjLabel;
-    private javax.swing.JLabel alunoCoverjLabel;
     private javax.swing.JLabel atualizarAdminJLabel;
     private javax.swing.JLabel atualizarAlunoJLabel;
     private javax.swing.JLabel atualizarCursoJLabel;
@@ -255,8 +227,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel cadastrarProfessorJLabel;
     private javax.swing.JLabel cadastrarSalaJLabel;
     private javax.swing.JLabel cadastrarTurmaJLabel;
-    private javax.swing.JLabel cursoCoverjLabel;
-    private javax.swing.JLabel laboratorioCoverjLabel;
     private javax.swing.JLabel listarAdminJLabel;
     private javax.swing.JLabel listarAlunoJLabel;
     private javax.swing.JLabel listarCursoJLabel;
@@ -265,9 +235,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel listarProfessorJLabel;
     private javax.swing.JLabel listarSalaJLabel;
     private javax.swing.JLabel listarTurmaJLabel;
-    private javax.swing.JLabel logoJLabel;
     private javax.swing.JLabel logoutJLabel;
-    private javax.swing.JLabel professorCoverjLabel;
     private javax.swing.JLabel removerAdminJLabel;
     private javax.swing.JLabel removerAlunoJLabel;
     private javax.swing.JLabel removerCursoJLabel;
@@ -276,6 +244,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel removerProfessorJLabel;
     private javax.swing.JLabel removerSalaJLabel;
     private javax.swing.JLabel removerTurmaJLabel;
-    private javax.swing.JLabel salaCoverjLabel;
     // End of variables declaration//GEN-END:variables
 }
