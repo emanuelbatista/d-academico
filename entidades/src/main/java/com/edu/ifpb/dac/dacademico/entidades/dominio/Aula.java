@@ -1,12 +1,10 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,12 +21,10 @@ public class Aula {
     private Turma turma;
     @ManyToOne
     private Horario horario;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private SalaNormal sala;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Laboratorio laboratorio;
     @ManyToOne
-    private Curso curso;
+    private SalaNormal sala;
+    @ManyToOne
+    private Laboratorio laboratorio;
     @ManyToOne
     private Disciplina disciplina;
     @ManyToOne
@@ -50,14 +46,6 @@ public class Aula {
         this.disciplina = disciplina;
     }
 
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-    
     public long getCod() {
         return cod;
     }

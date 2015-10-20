@@ -100,7 +100,6 @@ public class AulaServicoImpl implements AulaServico{
                 horarioRepositorio.salvar(horario);
             }
             aula.setHorario(horario);
-            aula.setCurso(cursoService.buscar(Long.parseLong(obj.getString("cur_cod"))));
             aula.setDisciplina(disciplinaService.buscar(Long.parseLong(obj.getString("disc_cod"))));
             aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
             aula.setProfessor(professorService.buscar(Long.parseLong(obj.getString("prof_cod"))));
