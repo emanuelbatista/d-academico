@@ -47,14 +47,6 @@ public class Principal extends javax.swing.JFrame {
         listarTurmaJLabel = new javax.swing.JLabel();
         atualizarTurmaJLabel = new javax.swing.JLabel();
         removerTurmaJLabel = new javax.swing.JLabel();
-        removerSalaJLabel = new javax.swing.JLabel();
-        atualizarSalaJLabel = new javax.swing.JLabel();
-        listarSalaJLabel = new javax.swing.JLabel();
-        cadastrarSalaJLabel = new javax.swing.JLabel();
-        removerLaboratorioJLabel = new javax.swing.JLabel();
-        atualizarLaboratorioJLabel = new javax.swing.JLabel();
-        listarLaboratorioJLabel = new javax.swing.JLabel();
-        cadastrarLaboratorioJLabel = new javax.swing.JLabel();
         logoutJLabel = new javax.swing.JLabel();
         backgroundjLabel = new javax.swing.JLabel();
 
@@ -63,7 +55,7 @@ public class Principal extends javax.swing.JFrame {
 
         removerAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerAdminJLabel);
-        removerAdminJLabel.setBounds(30, 380, 180, 0);
+        removerAdminJLabel.setBounds(30, 380, 180, 40);
 
         atualizarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarAdminJLabel);
@@ -74,16 +66,21 @@ public class Principal extends javax.swing.JFrame {
         listarAdminJLabel.setBounds(30, 310, 180, 40);
 
         cadastrarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarAdminJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(cadastrarAdminJLabel);
         cadastrarAdminJLabel.setBounds(30, 280, 180, 30);
 
         cadastrarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarProfessorJLabel);
-        cadastrarProfessorJLabel.setBounds(220, 270, 0, 0);
+        cadastrarProfessorJLabel.setBounds(220, 280, 190, 30);
 
         listarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarProfessorJLabel);
-        listarProfessorJLabel.setBounds(220, 310, 190, 0);
+        listarProfessorJLabel.setBounds(220, 310, 190, 40);
 
         atualizarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarProfessorJLabel);
@@ -91,7 +88,7 @@ public class Principal extends javax.swing.JFrame {
 
         removerProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerProfessorJLabel);
-        removerProfessorJLabel.setBounds(220, 380, 190, 0);
+        removerProfessorJLabel.setBounds(220, 380, 190, 40);
 
         cadastrarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarAlunoJLabel);
@@ -99,7 +96,7 @@ public class Principal extends javax.swing.JFrame {
 
         listarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarAlunoJLabel);
-        listarAlunoJLabel.setBounds(420, 310, 180, 0);
+        listarAlunoJLabel.setBounds(420, 310, 180, 40);
 
         atualizarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarAlunoJLabel);
@@ -107,7 +104,7 @@ public class Principal extends javax.swing.JFrame {
 
         removerAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerAlunoJLabel);
-        removerAlunoJLabel.setBounds(420, 380, 180, 0);
+        removerAlunoJLabel.setBounds(420, 380, 180, 40);
 
         cadastrarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarCursoJLabel);
@@ -115,15 +112,15 @@ public class Principal extends javax.swing.JFrame {
 
         listarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarCursoJLabel);
-        listarCursoJLabel.setBounds(610, 310, 0, 0);
+        listarCursoJLabel.setBounds(610, 310, 190, 40);
 
         atualizarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarCursoJLabel);
-        atualizarCursoJLabel.setBounds(610, 350, 180, 0);
+        atualizarCursoJLabel.setBounds(610, 350, 180, 30);
 
         removerCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerCursoJLabel);
-        removerCursoJLabel.setBounds(610, 380, 190, 0);
+        removerCursoJLabel.setBounds(610, 380, 190, 40);
 
         cadastrarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarDisciplinaJLabel);
@@ -131,7 +128,7 @@ public class Principal extends javax.swing.JFrame {
 
         listarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarDisciplinaJLabel);
-        listarDisciplinaJLabel.setBounds(800, 310, 180, 0);
+        listarDisciplinaJLabel.setBounds(800, 310, 180, 40);
 
         atualizarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarDisciplinaJLabel);
@@ -139,7 +136,7 @@ public class Principal extends javax.swing.JFrame {
 
         removerDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerDisciplinaJLabel);
-        removerDisciplinaJLabel.setBounds(800, 380, 180, 0);
+        removerDisciplinaJLabel.setBounds(800, 380, 180, 40);
 
         cadastrarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarTurmaJLabel);
@@ -155,39 +152,7 @@ public class Principal extends javax.swing.JFrame {
 
         removerTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerTurmaJLabel);
-        removerTurmaJLabel.setBounds(980, 380, 180, 0);
-
-        removerSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(removerSalaJLabel);
-        removerSalaJLabel.setBounds(30, 700, 180, 0);
-
-        atualizarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(atualizarSalaJLabel);
-        atualizarSalaJLabel.setBounds(30, 670, 180, 30);
-
-        listarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(listarSalaJLabel);
-        listarSalaJLabel.setBounds(30, 630, 180, 30);
-
-        cadastrarSalaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(cadastrarSalaJLabel);
-        cadastrarSalaJLabel.setBounds(30, 600, 180, 30);
-
-        removerLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(removerLaboratorioJLabel);
-        removerLaboratorioJLabel.setBounds(220, 700, 190, 0);
-
-        atualizarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(atualizarLaboratorioJLabel);
-        atualizarLaboratorioJLabel.setBounds(220, 660, 190, 40);
-
-        listarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(listarLaboratorioJLabel);
-        listarLaboratorioJLabel.setBounds(220, 630, 190, 30);
-
-        cadastrarLaboratorioJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(cadastrarLaboratorioJLabel);
-        cadastrarLaboratorioJLabel.setBounds(220, 596, 190, 0);
+        removerTurmaJLabel.setBounds(980, 380, 180, 40);
 
         logoutJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,40 +174,36 @@ public class Principal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_logoutJLabelMouseClicked
 
+    private void cadastrarAdminJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarAdminJLabelMouseClicked
+        new AdminCadastro();
+    }//GEN-LAST:event_cadastrarAdminJLabelMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;
     private javax.swing.JLabel atualizarAlunoJLabel;
     private javax.swing.JLabel atualizarCursoJLabel;
     private javax.swing.JLabel atualizarDisciplinaJLabel;
-    private javax.swing.JLabel atualizarLaboratorioJLabel;
     private javax.swing.JLabel atualizarProfessorJLabel;
-    private javax.swing.JLabel atualizarSalaJLabel;
     private javax.swing.JLabel atualizarTurmaJLabel;
     private javax.swing.JLabel backgroundjLabel;
     private javax.swing.JLabel cadastrarAdminJLabel;
     private javax.swing.JLabel cadastrarAlunoJLabel;
     private javax.swing.JLabel cadastrarCursoJLabel;
     private javax.swing.JLabel cadastrarDisciplinaJLabel;
-    private javax.swing.JLabel cadastrarLaboratorioJLabel;
     private javax.swing.JLabel cadastrarProfessorJLabel;
-    private javax.swing.JLabel cadastrarSalaJLabel;
     private javax.swing.JLabel cadastrarTurmaJLabel;
     private javax.swing.JLabel listarAdminJLabel;
     private javax.swing.JLabel listarAlunoJLabel;
     private javax.swing.JLabel listarCursoJLabel;
     private javax.swing.JLabel listarDisciplinaJLabel;
-    private javax.swing.JLabel listarLaboratorioJLabel;
     private javax.swing.JLabel listarProfessorJLabel;
-    private javax.swing.JLabel listarSalaJLabel;
     private javax.swing.JLabel listarTurmaJLabel;
     private javax.swing.JLabel logoutJLabel;
     private javax.swing.JLabel removerAdminJLabel;
     private javax.swing.JLabel removerAlunoJLabel;
     private javax.swing.JLabel removerCursoJLabel;
     private javax.swing.JLabel removerDisciplinaJLabel;
-    private javax.swing.JLabel removerLaboratorioJLabel;
     private javax.swing.JLabel removerProfessorJLabel;
-    private javax.swing.JLabel removerSalaJLabel;
     private javax.swing.JLabel removerTurmaJLabel;
     // End of variables declaration//GEN-END:variables
 }

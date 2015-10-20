@@ -22,7 +22,8 @@ public class AdminServiceImpl implements AdminService{
     
     @Override
     public void salvar(Administrador admin) {
-        repositorio.salvar(admin);
+        if (repositorio.buscarPorAtributo(Administrador.class, "login", admin.getLogin()) != null)
+            repositorio.salvar(admin);
     }
     
     @Override
