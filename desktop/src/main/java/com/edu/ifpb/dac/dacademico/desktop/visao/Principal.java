@@ -96,6 +96,11 @@ public class Principal extends javax.swing.JFrame {
         removerProfessorJLabel.setBounds(220, 380, 190, 40);
 
         cadastrarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarAlunoJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(cadastrarAlunoJLabel);
         cadastrarAlunoJLabel.setBounds(420, 280, 180, 30);
 
@@ -187,6 +192,10 @@ public class Principal extends javax.swing.JFrame {
     private void cadastrarProfessorJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarProfessorJLabelMouseClicked
         new ProfessorCadastro();
     }//GEN-LAST:event_cadastrarProfessorJLabelMouseClicked
+
+    private void cadastrarAlunoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarAlunoJLabelMouseClicked
+        new AlunoCadastro();
+    }//GEN-LAST:event_cadastrarAlunoJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;

@@ -12,6 +12,7 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 
 /**
  *
+<<<<<<< HEAD
  * @author Emanuel Batista da Silva Filho - emanuelbatista2011@gmail.com
  */
 public interface AlunoService {

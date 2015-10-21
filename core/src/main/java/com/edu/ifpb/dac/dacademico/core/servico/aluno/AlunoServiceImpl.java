@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +22,7 @@ import java.util.List;
 public class AlunoServiceImpl implements AlunoService{
     
      private Dao<Aluno, Long> repositorio;
+
 
     public AlunoServiceImpl(String unidadePersistencia) {
         this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
@@ -55,9 +57,17 @@ public class AlunoServiceImpl implements AlunoService{
             throw new ValidacaoException(errors);
         }
     }
-    @Override
-    public Aluno login(String login, String senha) throws LoginInexistenteException, SenhaErradaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    
+    @Override
+    public Aluno login (String login, String senha) 
+            throws LoginInexistenteException, SenhaErradaException{
+        List<Aluno> resultado = repositorio.buscarPorAtributo(Aluno.class, "login", login);
+        if (resultado == null || resultado.isEmpty())
+            throw new LoginInexistenteException();
+        Aluno aluno = resultado.get(0);
+        if (!aluno.getSenha().equals(senha))
+            throw new SenhaErradaException();
+        return aluno;
+    }
 }

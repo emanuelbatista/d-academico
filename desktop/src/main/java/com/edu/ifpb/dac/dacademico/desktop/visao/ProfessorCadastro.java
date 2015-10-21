@@ -97,7 +97,7 @@ public class ProfessorCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(entrarJButton);
-        entrarJButton.setBounds(360, 520, 90, 40);
+        entrarJButton.setBounds(330, 520, 120, 40);
 
         emailJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         emailJLabel.setForeground(new java.awt.Color(0, 77, 64));
@@ -201,6 +201,9 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         professor.setLogin(login);
         professor.setNomeCompleto(nomeCompleto);
         professor.setSenha(senha);
+        professor.setUnidade(unidade);
+        professor.setRegime(regime);
+        professor.setVinculo(vinculo);
         controller.cadastrar(professor);
         JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
