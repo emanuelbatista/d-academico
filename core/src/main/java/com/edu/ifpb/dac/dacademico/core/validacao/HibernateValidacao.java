@@ -6,7 +6,7 @@
 package com.edu.ifpb.dac.dacademico.core.validacao;
 
 import java.util.List;
-import com.edu.ifpb.dac.dacademico.core.exceptions.Error;
+import com.edu.ifpb.dac.dacademico.core.aux.Error;
 import java.util.ArrayList;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
