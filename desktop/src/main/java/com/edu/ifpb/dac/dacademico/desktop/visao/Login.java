@@ -3,6 +3,8 @@ package com.edu.ifpb.dac.dacademico.desktop.visao;
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.LoginController;
+import java.awt.KeyEventPostProcessor;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -70,6 +72,11 @@ public class Login extends javax.swing.JFrame {
                 voltarJButtonMouseClicked(evt);
             }
         });
+        voltarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarJButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(voltarJButton);
         voltarJButton.setBounds(20, 420, 90, 40);
 
@@ -77,6 +84,11 @@ public class Login extends javax.swing.JFrame {
         entrarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarJButtonMouseClicked(evt);
+            }
+        });
+        entrarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarJButtonActionPerformed(evt);
             }
         });
         getContentPane().add(entrarJButton);
@@ -90,18 +102,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarJButtonMouseClicked
-        String login = loginJTextField.getText();
-        String senha = new String(senhaJPasswordField.getPassword());
-        if (!login.trim().isEmpty() && !senha.trim().isEmpty()) {
-            try {
-                new Principal (controller.login(login, senha));
-                this.dispose();
-            } catch (LoginInexistenteException e) {
-                JOptionPane.showMessageDialog(null, "Erro no login", "O login informado não existe", JOptionPane.ERROR_MESSAGE);
-            } catch (SenhaErradaException e) {
-                JOptionPane.showMessageDialog(null, "Erro no login", "A senha informada não conrresponde ao login", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        
     }//GEN-LAST:event_entrarJButtonMouseClicked
 
     private void voltarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarJButtonMouseClicked
@@ -115,6 +116,25 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void voltarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarJButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_voltarJButtonActionPerformed
+
+    private void entrarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarJButtonActionPerformed
+        String login = loginJTextField.getText();
+        String senha = new String(senhaJPasswordField.getPassword());
+        if (!login.trim().isEmpty() && !senha.trim().isEmpty()) {
+            try {
+                new Principal (controller.login(login, senha));
+                this.dispose();
+            } catch (LoginInexistenteException e) {
+                JOptionPane.showMessageDialog(null, "Erro no login", "O login informado não existe", JOptionPane.ERROR_MESSAGE);
+            } catch (SenhaErradaException e) {
+                JOptionPane.showMessageDialog(null, "Erro no login", "A senha informada não conrresponde ao login", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_entrarJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundJLabel;

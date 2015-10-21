@@ -1,9 +1,7 @@
 package com.edu.ifpb.dac.dacademico.desktop.visao;
 
-import com.edu.ifpb.dac.dacademico.desktop.controladores.AdminController;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
-import java.awt.KeyEventPostProcessor;
-import java.awt.KeyboardFocusManager;
+import com.edu.ifpb.dac.dacademico.desktop.controladores.ProfessorController;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -11,31 +9,17 @@ import javax.swing.JOptionPane;
  *
  * @author douglasgabriel
  */
-public class AdminCadastro extends javax.swing.JFrame {
+public class ProfessorCadastro extends javax.swing.JFrame {
 
-    private AdminController controller = new AdminController();
+    private ProfessorController controller = new ProfessorController();
 
-    public AdminCadastro() {
+    public ProfessorCadastro() {
         initComponents();
-        setTitle("Cadastro de administrador");
+        setTitle("Cadastro de professor");
         setResizable(false);
         setSize(480, 573);
         setLocationRelativeTo(null);
         setVisible(true);
-        // Código para a frame escutar os atalhos Enter e Esc
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventPostProcessor(new KeyEventPostProcessor() {
-
-            @Override
-            public boolean postProcessKeyEvent(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    entrarJButton.doClick();
-                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    voltarJButton.doClick();
-                }
-                return true;
-            }
-        }
-        );
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +36,12 @@ public class AdminCadastro extends javax.swing.JFrame {
         emailJLabel = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         loginJTextField = new javax.swing.JTextField();
+        unidadeJLabel = new javax.swing.JLabel();
+        unidadeJTextField = new javax.swing.JTextField();
+        vinculoJLabel = new javax.swing.JLabel();
+        vinculoJTextField = new javax.swing.JTextField();
+        regimeJTextField = new javax.swing.JTextField();
+        regimeJLabel = new javax.swing.JLabel();
         backgroundJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,23 +52,23 @@ public class AdminCadastro extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
         getContentPane().add(senhaJPasswordField);
-        senhaJPasswordField.setBounds(10, 470, 440, 40);
+        senhaJPasswordField.setBounds(240, 360, 210, 40);
 
         senhaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         senhaJLabel.setForeground(new java.awt.Color(0, 77, 64));
         senhaJLabel.setText("Senha:");
         getContentPane().add(senhaJLabel);
-        senhaJLabel.setBounds(10, 440, 80, 30);
+        senhaJLabel.setBounds(240, 330, 80, 30);
         getContentPane().add(emailJTextField);
-        emailJTextField.setBounds(10, 310, 440, 40);
+        emailJTextField.setBounds(10, 280, 440, 40);
         getContentPane().add(nomeCompletoJTextField);
-        nomeCompletoJTextField.setBounds(10, 230, 440, 40);
+        nomeCompletoJTextField.setBounds(10, 200, 440, 40);
 
         nomeCompletoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         nomeCompletoJLabel.setForeground(new java.awt.Color(0, 77, 64));
         nomeCompletoJLabel.setText("Nome completo:");
         getContentPane().add(nomeCompletoJLabel);
-        nomeCompletoJLabel.setBounds(10, 200, 230, 30);
+        nomeCompletoJLabel.setBounds(10, 170, 230, 30);
 
         voltarJButton.setText("Voltar");
         voltarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,8 +84,8 @@ public class AdminCadastro extends javax.swing.JFrame {
         getContentPane().add(voltarJButton);
         voltarJButton.setBounds(10, 520, 90, 40);
 
-        entrarJButton.setBackground(new java.awt.Color(76, 76, 76));
-        entrarJButton.setText("Entrar");
+        entrarJButton.setBackground(new java.awt.Color(242, 241, 240));
+        entrarJButton.setText("Cadastrar");
         entrarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarJButtonMouseClicked(evt);
@@ -113,17 +103,41 @@ public class AdminCadastro extends javax.swing.JFrame {
         emailJLabel.setForeground(new java.awt.Color(0, 77, 64));
         emailJLabel.setText("E-mail:");
         getContentPane().add(emailJLabel);
-        emailJLabel.setBounds(10, 280, 80, 30);
+        emailJLabel.setBounds(10, 250, 80, 30);
 
         loginJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         loginJLabel.setForeground(new java.awt.Color(0, 77, 64));
         loginJLabel.setText("Login:");
         getContentPane().add(loginJLabel);
-        loginJLabel.setBounds(10, 360, 80, 30);
+        loginJLabel.setBounds(10, 330, 80, 30);
         getContentPane().add(loginJTextField);
-        loginJTextField.setBounds(10, 390, 440, 40);
+        loginJTextField.setBounds(10, 360, 210, 40);
 
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminCadastro.png"))); // NOI18N
+        unidadeJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        unidadeJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        unidadeJLabel.setText("Unidade:");
+        getContentPane().add(unidadeJLabel);
+        unidadeJLabel.setBounds(10, 410, 80, 30);
+        getContentPane().add(unidadeJTextField);
+        unidadeJTextField.setBounds(10, 440, 140, 40);
+
+        vinculoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        vinculoJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        vinculoJLabel.setText("Vínculo:");
+        getContentPane().add(vinculoJLabel);
+        vinculoJLabel.setBounds(170, 410, 80, 30);
+        getContentPane().add(vinculoJTextField);
+        vinculoJTextField.setBounds(170, 440, 140, 40);
+        getContentPane().add(regimeJTextField);
+        regimeJTextField.setBounds(330, 440, 120, 40);
+
+        regimeJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        regimeJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        regimeJLabel.setText("Regime:");
+        getContentPane().add(regimeJLabel);
+        regimeJLabel.setBounds(330, 410, 80, 30);
+
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorCadastro.png"))); // NOI18N
         getContentPane().add(backgroundJLabel);
         backgroundJLabel.setBounds(0, -10, 480, 200);
 
@@ -131,22 +145,7 @@ public class AdminCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarJButtonMouseClicked
-        if (temInformacoesObrigatoriasVazias()) {
-            JOptionPane.showMessageDialog(null, "Preencha todas as informações", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        String nomeCompleto = nomeCompletoJTextField.getText();
-        String email = emailJTextField.getText();
-        String login = loginJTextField.getText();
-        String senha = new String(senhaJPasswordField.getPassword());
-        Administrador admin = new Administrador();
-        admin.setEmail(email);
-        admin.setLogin(login);
-        admin.setNomeCompleto(nomeCompleto);
-        admin.setSenha(senha);
-        controller.cadastrar(admin);
-        JOptionPane.showMessageDialog(null, "Administrador cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        this.dispose();
+        
     }//GEN-LAST:event_entrarJButtonMouseClicked
 
     private boolean temInformacoesObrigatoriasVazias() {
@@ -154,10 +153,16 @@ public class AdminCadastro extends javax.swing.JFrame {
         String email = emailJTextField.getText();
         String login = loginJTextField.getText();
         String senha = senhaJPasswordField.getPassword().toString();
+        String unidade = unidadeJTextField.getText();
+        String vinculo = vinculoJTextField.getText();
+        String regime = regimeJTextField.getText();
         if (nomeCompleto.trim().isEmpty()
                 || email.trim().isEmpty()
                 || login.trim().isEmpty()
-                || senha.trim().isEmpty()) {
+                || senha.trim().isEmpty()
+                || unidade.trim().isEmpty()
+                || vinculo.trim().isEmpty()
+                || regime.trim().isEmpty()) {
             return true;
         }
         return false;
@@ -188,13 +193,16 @@ public class AdminCadastro extends javax.swing.JFrame {
         String email = emailJTextField.getText();
         String login = loginJTextField.getText();
         String senha = new String(senhaJPasswordField.getPassword());
-        Administrador admin = new Administrador();
-        admin.setEmail(email);
-        admin.setLogin(login);
-        admin.setNomeCompleto(nomeCompleto);
-        admin.setSenha(senha);
-        controller.cadastrar(admin);
-        JOptionPane.showMessageDialog(null, "Administrador cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        String unidade = unidadeJTextField.getText();
+        String vinculo = vinculoJTextField.getText();
+        String regime = regimeJTextField.getText();
+        Professor professor = new Professor();
+        professor.setEmail(email);
+        professor.setLogin(login);
+        professor.setNomeCompleto(nomeCompleto);
+        professor.setSenha(senha);
+        controller.cadastrar(professor);
+        JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed
 
@@ -207,8 +215,14 @@ public class AdminCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField loginJTextField;
     private javax.swing.JLabel nomeCompletoJLabel;
     private javax.swing.JTextField nomeCompletoJTextField;
+    private javax.swing.JLabel regimeJLabel;
+    private javax.swing.JTextField regimeJTextField;
     private javax.swing.JLabel senhaJLabel;
     private javax.swing.JPasswordField senhaJPasswordField;
+    private javax.swing.JLabel unidadeJLabel;
+    private javax.swing.JTextField unidadeJTextField;
+    private javax.swing.JLabel vinculoJLabel;
+    private javax.swing.JTextField vinculoJTextField;
     private javax.swing.JButton voltarJButton;
     // End of variables declaration//GEN-END:variables
 }
