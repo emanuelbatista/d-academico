@@ -171,6 +171,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutJLabelMouseClicked
+        new Login();
         this.dispose();
     }//GEN-LAST:event_logoutJLabelMouseClicked
 

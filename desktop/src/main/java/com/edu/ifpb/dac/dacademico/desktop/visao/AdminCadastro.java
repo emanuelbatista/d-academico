@@ -16,9 +16,9 @@ public class AdminCadastro extends javax.swing.JFrame {
 
     public AdminCadastro() {
         initComponents();
-        setTitle("Login");
+        setTitle("Cadastro de administrador");
         setResizable(false);
-        setSize(480, 500);
+        setSize(480, 573);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -47,23 +47,23 @@ public class AdminCadastro extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
         getContentPane().add(senhaJPasswordField);
-        senhaJPasswordField.setBounds(20, 290, 440, 40);
+        senhaJPasswordField.setBounds(10, 470, 440, 40);
 
         senhaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        senhaJLabel.setForeground(java.awt.Color.white);
+        senhaJLabel.setForeground(new java.awt.Color(0, 77, 64));
         senhaJLabel.setText("Senha:");
         getContentPane().add(senhaJLabel);
-        senhaJLabel.setBounds(20, 260, 80, 30);
+        senhaJLabel.setBounds(10, 440, 80, 30);
         getContentPane().add(emailJTextField);
-        emailJTextField.setBounds(20, 130, 440, 40);
+        emailJTextField.setBounds(10, 310, 440, 40);
         getContentPane().add(nomeCompletoJTextField);
-        nomeCompletoJTextField.setBounds(20, 50, 440, 40);
+        nomeCompletoJTextField.setBounds(10, 230, 440, 40);
 
         nomeCompletoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        nomeCompletoJLabel.setForeground(java.awt.Color.white);
+        nomeCompletoJLabel.setForeground(new java.awt.Color(0, 77, 64));
         nomeCompletoJLabel.setText("Nome completo:");
         getContentPane().add(nomeCompletoJLabel);
-        nomeCompletoJLabel.setBounds(20, 20, 230, 30);
+        nomeCompletoJLabel.setBounds(10, 200, 230, 30);
 
         voltarJButton.setText("Voltar");
         voltarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,8 +77,9 @@ public class AdminCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltarJButton);
-        voltarJButton.setBounds(20, 420, 90, 40);
+        voltarJButton.setBounds(10, 520, 90, 40);
 
+        entrarJButton.setBackground(new java.awt.Color(76, 76, 76));
         entrarJButton.setText("Entrar");
         entrarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,25 +87,25 @@ public class AdminCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(entrarJButton);
-        entrarJButton.setBounds(360, 420, 90, 40);
+        entrarJButton.setBounds(360, 520, 90, 40);
 
         emailJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        emailJLabel.setForeground(java.awt.Color.white);
+        emailJLabel.setForeground(new java.awt.Color(0, 77, 64));
         emailJLabel.setText("E-mail:");
         getContentPane().add(emailJLabel);
-        emailJLabel.setBounds(20, 100, 80, 30);
+        emailJLabel.setBounds(10, 280, 80, 30);
 
         loginJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        loginJLabel.setForeground(java.awt.Color.white);
+        loginJLabel.setForeground(new java.awt.Color(0, 77, 64));
         loginJLabel.setText("Login:");
         getContentPane().add(loginJLabel);
-        loginJLabel.setBounds(20, 180, 80, 30);
+        loginJLabel.setBounds(10, 360, 80, 30);
         getContentPane().add(loginJTextField);
-        loginJTextField.setBounds(20, 210, 440, 40);
+        loginJTextField.setBounds(10, 390, 440, 40);
 
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/inicio_background.png"))); // NOI18N
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminCadastro.png"))); // NOI18N
         getContentPane().add(backgroundJLabel);
-        backgroundJLabel.setBounds(0, -180, 1367, 769);
+        backgroundJLabel.setBounds(0, -10, 480, 200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
