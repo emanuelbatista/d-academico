@@ -1,6 +1,9 @@
 package com.edu.ifpb.dac.dacademico.desktop.visao;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.desktop.controladores.AdminController;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.ProfessorController;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -12,12 +15,33 @@ import javax.swing.JOptionPane;
 public class ProfessorCadastro extends javax.swing.JFrame {
 
     private ProfessorController controller = new ProfessorController();
+    Professor professor;
 
     public ProfessorCadastro() {
+        inicializar();
+    }
+
+    //Deve ser chamado quando for para atualizar um admin já cadastrado
+    public ProfessorCadastro(Professor professor) {
+        this.professor = professor;
+        inicializar();
+        setTitle("Atualização de professor");
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorUp.png")));
+        entrarJButton.setText("Atualizar");
+        nomeCompletoJTextField.setText(professor.getNomeCompleto());
+        emailJTextField.setText(professor.getEmail());
+        loginJTextField.setText(professor.getLogin());
+        senhaJPasswordField.setText(professor.getSenha());
+        unidadeJTextField.setText(professor.getUnidade());
+        regimeJTextField.setText(professor.getRegime());
+        vinculoJTextField.setText(professor.getVinculo());
+    }
+
+    private void inicializar() {
         initComponents();
         setTitle("Cadastro de professor");
         setResizable(false);
-        setSize(480, 573);
+        setSize(480, 590);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -36,13 +60,13 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         emailJLabel = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         loginJTextField = new javax.swing.JTextField();
+        backgroundJLabel = new javax.swing.JLabel();
+        vinculoJTextField = new javax.swing.JTextField();
+        regimeJLabel = new javax.swing.JLabel();
+        regimeJTextField = new javax.swing.JTextField();
         unidadeJLabel = new javax.swing.JLabel();
         unidadeJTextField = new javax.swing.JTextField();
         vinculoJLabel = new javax.swing.JLabel();
-        vinculoJTextField = new javax.swing.JTextField();
-        regimeJTextField = new javax.swing.JTextField();
-        regimeJLabel = new javax.swing.JLabel();
-        backgroundJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -52,23 +76,23 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
         getContentPane().add(senhaJPasswordField);
-        senhaJPasswordField.setBounds(240, 360, 210, 40);
+        senhaJPasswordField.setBounds(240, 370, 210, 40);
 
         senhaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         senhaJLabel.setForeground(new java.awt.Color(0, 77, 64));
         senhaJLabel.setText("Senha:");
         getContentPane().add(senhaJLabel);
-        senhaJLabel.setBounds(240, 330, 80, 30);
+        senhaJLabel.setBounds(240, 340, 80, 30);
         getContentPane().add(emailJTextField);
-        emailJTextField.setBounds(10, 280, 440, 40);
+        emailJTextField.setBounds(10, 290, 440, 40);
         getContentPane().add(nomeCompletoJTextField);
-        nomeCompletoJTextField.setBounds(10, 200, 440, 40);
+        nomeCompletoJTextField.setBounds(10, 210, 440, 40);
 
         nomeCompletoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         nomeCompletoJLabel.setForeground(new java.awt.Color(0, 77, 64));
         nomeCompletoJLabel.setText("Nome completo:");
         getContentPane().add(nomeCompletoJLabel);
-        nomeCompletoJLabel.setBounds(10, 170, 230, 30);
+        nomeCompletoJLabel.setBounds(10, 180, 230, 30);
 
         voltarJButton.setText("Voltar");
         voltarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,7 +108,6 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         getContentPane().add(voltarJButton);
         voltarJButton.setBounds(10, 520, 90, 40);
 
-        entrarJButton.setBackground(new java.awt.Color(242, 241, 240));
         entrarJButton.setText("Cadastrar");
         entrarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,49 +126,49 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         emailJLabel.setForeground(new java.awt.Color(0, 77, 64));
         emailJLabel.setText("E-mail:");
         getContentPane().add(emailJLabel);
-        emailJLabel.setBounds(10, 250, 80, 30);
+        emailJLabel.setBounds(10, 260, 80, 30);
 
         loginJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         loginJLabel.setForeground(new java.awt.Color(0, 77, 64));
         loginJLabel.setText("Login:");
         getContentPane().add(loginJLabel);
-        loginJLabel.setBounds(10, 330, 80, 30);
+        loginJLabel.setBounds(10, 340, 80, 30);
         getContentPane().add(loginJTextField);
-        loginJTextField.setBounds(10, 360, 210, 40);
+        loginJTextField.setBounds(10, 370, 200, 40);
 
-        unidadeJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        unidadeJLabel.setForeground(new java.awt.Color(0, 77, 64));
-        unidadeJLabel.setText("Unidade:");
-        getContentPane().add(unidadeJLabel);
-        unidadeJLabel.setBounds(10, 410, 80, 30);
-        getContentPane().add(unidadeJTextField);
-        unidadeJTextField.setBounds(10, 440, 140, 40);
-
-        vinculoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        vinculoJLabel.setForeground(new java.awt.Color(0, 77, 64));
-        vinculoJLabel.setText("Vínculo:");
-        getContentPane().add(vinculoJLabel);
-        vinculoJLabel.setBounds(170, 410, 80, 30);
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorCadastro.png"))); // NOI18N
+        getContentPane().add(backgroundJLabel);
+        backgroundJLabel.setBounds(0, -10, 480, 200);
         getContentPane().add(vinculoJTextField);
-        vinculoJTextField.setBounds(170, 440, 140, 40);
-        getContentPane().add(regimeJTextField);
-        regimeJTextField.setBounds(330, 440, 120, 40);
+        vinculoJTextField.setBounds(170, 450, 140, 40);
 
         regimeJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         regimeJLabel.setForeground(new java.awt.Color(0, 77, 64));
         regimeJLabel.setText("Regime:");
         getContentPane().add(regimeJLabel);
-        regimeJLabel.setBounds(330, 410, 80, 30);
+        regimeJLabel.setBounds(330, 420, 120, 30);
+        getContentPane().add(regimeJTextField);
+        regimeJTextField.setBounds(330, 450, 120, 40);
 
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorCadastro.png"))); // NOI18N
-        getContentPane().add(backgroundJLabel);
-        backgroundJLabel.setBounds(0, -10, 480, 200);
+        unidadeJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        unidadeJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        unidadeJLabel.setText("Unidade:");
+        getContentPane().add(unidadeJLabel);
+        unidadeJLabel.setBounds(10, 420, 80, 30);
+        getContentPane().add(unidadeJTextField);
+        unidadeJTextField.setBounds(10, 450, 140, 40);
+
+        vinculoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        vinculoJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        vinculoJLabel.setText("Vinculo:");
+        getContentPane().add(vinculoJLabel);
+        vinculoJLabel.setBounds(170, 420, 80, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarJButtonMouseClicked
-        
+
     }//GEN-LAST:event_entrarJButtonMouseClicked
 
     private boolean temInformacoesObrigatoriasVazias() {
@@ -154,8 +177,8 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         String login = loginJTextField.getText();
         String senha = senhaJPasswordField.getPassword().toString();
         String unidade = unidadeJTextField.getText();
-        String vinculo = vinculoJTextField.getText();
         String regime = regimeJTextField.getText();
+        String vinculo = vinculoJTextField.getText();
         if (nomeCompleto.trim().isEmpty()
                 || email.trim().isEmpty()
                 || login.trim().isEmpty()
@@ -194,18 +217,37 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         String login = loginJTextField.getText();
         String senha = new String(senhaJPasswordField.getPassword());
         String unidade = unidadeJTextField.getText();
-        String vinculo = vinculoJTextField.getText();
         String regime = regimeJTextField.getText();
-        Professor professor = new Professor();
+        String vinculo = vinculoJTextField.getText();
+        String mensagemSucesso;
+        boolean jaExiste;
+        if (professor == null) {
+            professor = new Professor();
+            mensagemSucesso = "Professor cadastrado com sucesso";
+            jaExiste = false;
+        } else {
+            mensagemSucesso = "Professor atualizado com sucesso";
+            jaExiste = true;
+        }
         professor.setEmail(email);
         professor.setLogin(login);
         professor.setNomeCompleto(nomeCompleto);
         professor.setSenha(senha);
         professor.setUnidade(unidade);
-        professor.setRegime(regime);
         professor.setVinculo(vinculo);
-        controller.cadastrar(professor);
-        JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        professor.setRegime(regime);
+        if (jaExiste) {
+            try {
+                controller.atualizar(professor);
+            } catch (ValidacaoException e) {
+                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+                return;
+            }
+        } else //TODO: validar cadastro de professores
+        {
+            controller.cadastrar(professor);
+        }
+        JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed
 

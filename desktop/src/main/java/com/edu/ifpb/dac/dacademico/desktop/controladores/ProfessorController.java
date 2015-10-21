@@ -1,12 +1,12 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 
 /**
  *
@@ -23,6 +23,22 @@ public class ProfessorController {
         } catch (ValidacaoException ex) {
             ex.getErrors().forEach(System.out::println);
         }
+    }
+    
+    public void atualizar (Professor professor) throws ValidacaoException{
+        service.atualizar(professor);
+    }
+    
+    public void remover (Professor professor){
+        service.remover(professor);
+    }
+    
+    public Professor recuperarPeloLogin (String login) throws LoginInexistenteException{
+        return service.recuperarPeloLogin(login);
+    }
+    
+    public List<Professor> listarTodos(){
+        return service.listarTodos();
     }
     
 }

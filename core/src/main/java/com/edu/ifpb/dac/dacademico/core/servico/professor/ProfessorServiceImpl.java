@@ -112,4 +112,18 @@ public class ProfessorServiceImpl implements ProfessorService {
         }
     }
 
+    @Override
+    public List<Professor> listarTodos() {
+        return repositorio.listarTodos(Professor.class);
+    }
+
+    @Override
+    public Professor recuperarPeloLogin(String login) throws LoginInexistenteException{
+        try{
+            return repositorio.buscarPorAtributo(Professor.class, "login", login).get(0);
+        }catch (Exception e){
+            throw new LoginInexistenteException();
+        }
+    }
+
 }
