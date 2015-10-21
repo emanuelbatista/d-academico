@@ -54,10 +54,20 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         removerAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removerAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removerAdminJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(removerAdminJLabel);
         removerAdminJLabel.setBounds(30, 380, 180, 40);
 
         atualizarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atualizarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atualizarAdminJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(atualizarAdminJLabel);
         atualizarAdminJLabel.setBounds(30, 350, 180, 30);
 
@@ -205,6 +215,14 @@ public class Principal extends javax.swing.JFrame {
     private void listarAdminJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarAdminJLabelMouseClicked
         new AdminList();
     }//GEN-LAST:event_listarAdminJLabelMouseClicked
+
+    private void atualizarAdminJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atualizarAdminJLabelMouseClicked
+        new AdminList();
+    }//GEN-LAST:event_atualizarAdminJLabelMouseClicked
+
+    private void removerAdminJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removerAdminJLabelMouseClicked
+        new AdminList();
+    }//GEN-LAST:event_removerAdminJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;
