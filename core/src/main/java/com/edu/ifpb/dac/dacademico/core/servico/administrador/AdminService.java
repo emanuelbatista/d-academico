@@ -14,8 +14,12 @@ public interface AdminService {
     
     void salvar (Administrador admin) throws ValidacaoException;
     
+    void atualizar (Administrador admin);
+    
     public Administrador login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException;
     
     public List<Administrador> listarTodos ();
+    
+    public Administrador recuperarPeloLogin(String login) throws LoginInexistenteException;
 }

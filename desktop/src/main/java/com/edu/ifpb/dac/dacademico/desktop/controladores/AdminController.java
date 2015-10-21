@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
@@ -24,8 +25,16 @@ public class AdminController {
         }
     }
     
+    public void atualizar (Administrador admin){
+        service.atualizar(admin);
+    }
+    
     public List<Administrador> listarTodos (){
         return service.listarTodos();
+    }
+    
+    public Administrador recuperarPeloLogin (String login) throws LoginInexistenteException{
+        return service.recuperarPeloLogin(login);
     }
     
 }
