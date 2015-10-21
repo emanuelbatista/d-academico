@@ -1,5 +1,7 @@
 package com.edu.ifpb.dac.dacademico.entidades.persistencia;
 
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
+import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +94,11 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
     
     public String getUnidadePersistencia(){        
         return unidadePersistencia;
+    }
+
+    @Override
+    public List<T> listarTodos(Class<T> classe) {
+        return entityManager.createQuery("Select t from "+classe.getSimpleName()+" t").getResultList();
     }
     
 

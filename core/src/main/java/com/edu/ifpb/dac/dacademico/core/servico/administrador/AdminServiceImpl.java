@@ -37,5 +37,9 @@ public class AdminServiceImpl implements AdminService{
             throw new SenhaErradaException();
         return admin;
     }
+    
+    public List<Administrador> listarTodos (){
+        return repositorio.listarTodos(Administrador.class);
+    }
 
 }

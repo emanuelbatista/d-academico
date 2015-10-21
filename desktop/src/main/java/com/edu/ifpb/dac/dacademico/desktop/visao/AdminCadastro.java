@@ -22,20 +22,6 @@ public class AdminCadastro extends javax.swing.JFrame {
         setSize(480, 573);
         setLocationRelativeTo(null);
         setVisible(true);
-        // Código para a frame escutar os atalhos Enter e Esc
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventPostProcessor(new KeyEventPostProcessor() {
-
-            @Override
-            public boolean postProcessKeyEvent(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    entrarJButton.doClick();
-                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    voltarJButton.doClick();
-                }
-                return true;
-            }
-        }
-        );
     }
 
     @SuppressWarnings("unchecked")
