@@ -62,6 +62,11 @@ public class Principal extends javax.swing.JFrame {
         atualizarAdminJLabel.setBounds(30, 350, 180, 30);
 
         listarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarAdminJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(listarAdminJLabel);
         listarAdminJLabel.setBounds(30, 310, 180, 40);
 
@@ -196,6 +201,10 @@ public class Principal extends javax.swing.JFrame {
     private void cadastrarAlunoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarAlunoJLabelMouseClicked
         new AlunoCadastro();
     }//GEN-LAST:event_cadastrarAlunoJLabelMouseClicked
+
+    private void listarAdminJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarAdminJLabelMouseClicked
+        new AdminList();
+    }//GEN-LAST:event_listarAdminJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;

@@ -65,5 +65,9 @@ public class AdminServiceImpl implements AdminService {
         }
         return admin;
     }
+    
+    public List<Administrador> listarTodos (){
+        return repositorio.listarTodos(Administrador.class);
+    }
 
 }

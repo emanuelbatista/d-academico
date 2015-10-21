@@ -5,6 +5,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,10 @@ public class AdminController {
         } catch (ValidacaoException ex) {
             ex.getErrors().forEach(System.out::println);
         }
+    }
+    
+    public List<Administrador> listarTodos (){
+        return service.listarTodos();
     }
     
 }
