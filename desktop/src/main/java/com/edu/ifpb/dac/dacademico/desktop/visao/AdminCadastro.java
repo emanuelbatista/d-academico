@@ -1,7 +1,6 @@
 package com.edu.ifpb.dac.dacademico.desktop.visao;
 
 import com.edu.ifpb.dac.dacademico.desktop.controladores.AdminController;
-import com.edu.ifpb.dac.dacademico.desktop.controladores.LoginController;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -118,7 +117,7 @@ public class AdminCadastro extends javax.swing.JFrame {
         String nomeCompleto = nomeCompletoJTextField.getText();
         String email = emailJTextField.getText();
         String login = loginJTextField.getText();
-        String senha = senhaJPasswordField.getPassword().toString();
+        String senha = new String(senhaJPasswordField.getPassword());
         Administrador admin = new Administrador();
         admin.setEmail(email);
         admin.setLogin(login);
