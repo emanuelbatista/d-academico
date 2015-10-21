@@ -201,6 +201,9 @@ public class ProfessorCadastro extends javax.swing.JFrame {
         professor.setLogin(login);
         professor.setNomeCompleto(nomeCompleto);
         professor.setSenha(senha);
+        professor.setUnidade(unidade);
+        professor.setRegime(regime);
+        professor.setVinculo(vinculo);
         controller.cadastrar(professor);
         JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
