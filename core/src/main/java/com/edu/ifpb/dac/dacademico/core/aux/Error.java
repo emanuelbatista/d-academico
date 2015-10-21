@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.edu.ifpb.dac.dacademico.core.exceptions;
+package com.edu.ifpb.dac.dacademico.core.aux;
 
 /**
  *
@@ -39,6 +39,13 @@ public class Error<T>{
     public void setField(String field) {
         this.field = field;
     }
+
+    @Override
+    public String toString() {
+        return "Error{" + "rootBean=" + rootBean + ", message=" + message + ", field=" + field + '}';
+    }
+    
+    
     
     
 }

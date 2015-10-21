@@ -2,12 +2,15 @@ package com.edu.ifpb.dac.dacademico.core.servico.professor;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -40,8 +43,31 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public void salvar(Professor professor) {
+    public void salvar(Professor professor) throws ValidacaoException {
+        validarProfessor(professor);
         repositorio.salvar(professor);
+    }
+    
+     private void validarProfessor(Professor professor) throws ValidacaoException {
+        String email = professor.getEmail();
+        String login = professor.getLogin();
+        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Professor>> errors = HibernateValidacao.<Professor>validar(professor);
+        if (repositorio.buscarPorAtributo(Professor.class, "login", login) != null) {
+            com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error();
+            error.setField("login");
+            error.setMessage("Esse login já está cadastrado");
+            error.setRootBean(professor);
+            errors.add(error);
+        }
+        if (repositorio.buscarPorAtributo(Professor.class, "email", email) != null) {
+            com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error<>();
+            error.setField("email");
+            error.setMessage("Esse email já está cadastrado");
+            errors.add(error);
+        }
+        if (!errors.isEmpty()) {
+            throw new ValidacaoException(errors);
+        }
     }
 
     @Override
@@ -55,7 +81,8 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public void atualizar(Professor professor) {
+    public void atualizar(Professor professor) throws ValidacaoException {
+        validarProfessor(professor);
         repositorio.atualizar(professor);
     }
 

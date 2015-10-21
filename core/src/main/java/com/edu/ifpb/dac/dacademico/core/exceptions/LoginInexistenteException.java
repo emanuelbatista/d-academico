@@ -7,4 +7,4 @@ package com.edu.ifpb.dac.dacademico.core.exceptions;
  */
 public class LoginInexistenteException extends Exception{
 
-}
+    }

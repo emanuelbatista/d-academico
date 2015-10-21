@@ -3,6 +3,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -12,7 +13,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Professor extends Pessoa{
     
-    private String unidade, vinculo, regime;
+    @NotBlank(message = "O campo de unidade está vazio")
+    private String unidade;
+    @NotBlank(message = "O campo vinculo está vazio")
+    private String vinculo;
+    @NotBlank(message = "O campo regime está vazio")
+    private String regime;
     @OneToMany(mappedBy = "professor")
     private List<Turma> turmas;
 

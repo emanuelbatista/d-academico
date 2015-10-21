@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
@@ -16,7 +17,11 @@ public class AdminController {
     private AdminService service = new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
     public void cadastrar (Administrador admin){
-        service.salvar(admin);
+        try {
+            service.salvar(admin);
+        } catch (ValidacaoException ex) {
+            ex.getErrors().forEach(System.out::println);
+        }
     }
     
     public List<Administrador> listarTodos (){
