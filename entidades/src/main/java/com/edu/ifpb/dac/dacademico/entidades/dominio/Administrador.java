@@ -1,7 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
 
 /**
  *

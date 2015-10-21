@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -17,14 +20,20 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
-    private String nomeCompleto, senha;
+    @NotBlank(message = "Seu nome está vazio")
+    private String nomeCompleto;
+    @NotEmpty(message = "Senha está vazia")
+    private String senha;
     // É possível que a pessoa não possua e-mail, por isso não pode ser um valor único
+    @Email(message = "Email está no formato inválido")
     @Column(unique = true, nullable = false)
-    private String email, login;
+    private String email;
+    @NotBlank(message = "Login está vazio")
+    private String login;
 
     public long getCod() {
         return cod;
@@ -65,5 +74,5 @@ public abstract class Pessoa {
     public void setLogin(String login) {
         this.login = login;
     }
-    
+
 }
