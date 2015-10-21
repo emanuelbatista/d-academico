@@ -97,7 +97,7 @@ public class ProfessorCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(entrarJButton);
-        entrarJButton.setBounds(360, 520, 90, 40);
+        entrarJButton.setBounds(330, 520, 120, 40);
 
         emailJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         emailJLabel.setForeground(new java.awt.Color(0, 77, 64));
