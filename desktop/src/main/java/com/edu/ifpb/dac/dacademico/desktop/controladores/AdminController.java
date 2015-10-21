@@ -29,6 +29,10 @@ public class AdminController {
         service.atualizar(admin);
     }
     
+    public void remover (Administrador admin){
+        service.remover(admin);
+    }
+    
     public List<Administrador> listarTodos (){
         return service.listarTodos();
     }

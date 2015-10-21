@@ -16,6 +16,8 @@ public interface AdminService {
     
     void atualizar (Administrador admin);
     
+    void remover (Administrador admin);
+    
     public Administrador login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException;
     

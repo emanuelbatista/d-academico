@@ -84,4 +84,9 @@ public class AdminServiceImpl implements AdminService {
         repositorio.atualizar(admin);
     }
 
+    @Override
+    public void remover(Administrador admin) {
+        repositorio.remover(admin);
+    }
+
 }
