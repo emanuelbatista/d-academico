@@ -71,4 +71,23 @@ public class AdminServiceImpl implements AdminService {
         return repositorio.listarTodos(Administrador.class);
     }
 
+    @Override
+    public Administrador recuperarPeloLogin(String login) throws LoginInexistenteException{
+        try{
+            return repositorio.buscarPorAtributo(Administrador.class, "login", login).get(0);
+        }catch (Exception e){
+            throw new LoginInexistenteException();
+        }
+    }
+
+    @Override
+    public void atualizar(Administrador admin) {
+        repositorio.atualizar(admin);
+    }
+
+    @Override
+    public void remover(Administrador admin) {
+        repositorio.remover(admin);
+    }
+
 }

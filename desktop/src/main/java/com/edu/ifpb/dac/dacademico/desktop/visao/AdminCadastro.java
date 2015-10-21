@@ -14,12 +14,30 @@ import javax.swing.JOptionPane;
 public class AdminCadastro extends javax.swing.JFrame {
 
     private AdminController controller = new AdminController();
+    Administrador admin;
 
-    public AdminCadastro() {
+    public AdminCadastro() {        
+        inicializar();
+    }
+    
+    //Deve ser chamado quando for para atualizar um admin já cadastrado
+    public AdminCadastro(Administrador admin){
+        this.admin = admin;
+        inicializar();
+        setTitle("Atualização de administrador");
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminUp.png")));
+        entrarJButton.setText("Atualizar");
+        nomeCompletoJTextField.setText(admin.getNomeCompleto());
+        emailJTextField.setText(admin.getEmail());
+        loginJTextField.setText(admin.getLogin());
+        senhaJPasswordField.setText(admin.getSenha());
+    }
+    
+    private void inicializar (){
         initComponents();
         setTitle("Cadastro de administrador");
         setResizable(false);
-        setSize(480, 573);
+        setSize(480, 590);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -116,22 +134,7 @@ public class AdminCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarJButtonMouseClicked
-        if (temInformacoesObrigatoriasVazias()) {
-            JOptionPane.showMessageDialog(null, "Preencha todas as informações", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        String nomeCompleto = nomeCompletoJTextField.getText();
-        String email = emailJTextField.getText();
-        String login = loginJTextField.getText();
-        String senha = new String(senhaJPasswordField.getPassword());
-        Administrador admin = new Administrador();
-        admin.setEmail(email);
-        admin.setLogin(login);
-        admin.setNomeCompleto(nomeCompleto);
-        admin.setSenha(senha);
-        controller.cadastrar(admin);
-        JOptionPane.showMessageDialog(null, "Administrador cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        this.dispose();
+        
     }//GEN-LAST:event_entrarJButtonMouseClicked
 
     private boolean temInformacoesObrigatoriasVazias() {
@@ -173,13 +176,25 @@ public class AdminCadastro extends javax.swing.JFrame {
         String email = emailJTextField.getText();
         String login = loginJTextField.getText();
         String senha = new String(senhaJPasswordField.getPassword());
-        Administrador admin = new Administrador();
+        String mensagemSucesso;
+        boolean jaExiste;
+        if (admin == null){
+            admin = new Administrador();
+            mensagemSucesso = "Administrador atualizado com sucesso";
+            jaExiste = true;
+        }else{
+            mensagemSucesso = "Administrador cadastrado com sucesso";
+            jaExiste = false;
+        }
         admin.setEmail(email);
         admin.setLogin(login);
         admin.setNomeCompleto(nomeCompleto);
         admin.setSenha(senha);
-        controller.cadastrar(admin);
-        JOptionPane.showMessageDialog(null, "Administrador cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        if (jaExiste)
+            controller.atualizar(admin);
+        else
+            controller.cadastrar(admin);
+        JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed
 
