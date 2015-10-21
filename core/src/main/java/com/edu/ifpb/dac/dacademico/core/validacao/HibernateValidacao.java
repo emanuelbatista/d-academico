@@ -21,7 +21,7 @@ import javax.validation.ValidatorFactory;
 public class HibernateValidacao{
     
     public static <T> List<Error<T>> validar(T t){
-         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         Validator validator = validatorFactory.getValidator();
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(t);
         List<Error<T>> messageErrors = new ArrayList<>();
