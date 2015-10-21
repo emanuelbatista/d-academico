@@ -180,11 +180,11 @@ public class AdminCadastro extends javax.swing.JFrame {
         boolean jaExiste;
         if (admin == null){
             admin = new Administrador();
-            mensagemSucesso = "Administrador atualizado com sucesso";
-            jaExiste = true;
-        }else{
             mensagemSucesso = "Administrador cadastrado com sucesso";
             jaExiste = false;
+        }else{
+            mensagemSucesso = "Administrador atualizado com sucesso";
+            jaExiste = true;
         }
         admin.setEmail(email);
         admin.setLogin(login);
