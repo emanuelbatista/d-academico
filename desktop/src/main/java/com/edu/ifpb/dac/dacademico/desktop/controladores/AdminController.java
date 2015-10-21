@@ -17,12 +17,8 @@ public class AdminController {
 
     private AdminService service = new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
-    public void cadastrar (Administrador admin){
-        try {
+    public void cadastrar (Administrador admin) throws ValidacaoException{
             service.salvar(admin);
-        } catch (ValidacaoException ex) {
-            ex.getErrors().forEach(System.out::println);
-        }
     }
     
     public void atualizar (Administrador admin){

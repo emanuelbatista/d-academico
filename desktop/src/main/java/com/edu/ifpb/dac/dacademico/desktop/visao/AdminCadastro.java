@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.desktop.visao;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.AdminController;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.awt.KeyEventPostProcessor;
@@ -193,7 +194,12 @@ public class AdminCadastro extends javax.swing.JFrame {
         if (jaExiste)
             controller.atualizar(admin);
         else
-            controller.cadastrar(admin);
+            try{
+                controller.cadastrar(admin);
+            }catch (ValidacaoException e){
+                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+                return;
+            }
         JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed
