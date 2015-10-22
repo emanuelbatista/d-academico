@@ -27,6 +27,18 @@ public class DisciplinaController {
         disciplinaService.atualizar(disciplina);
     }
     
+    public void remover (Disciplina disciplina){
+        disciplinaService.remover(disciplina);
+    }
+    
+    public Disciplina recuperar (Long cod){
+        return disciplinaService.recuperar(cod);
+    }
+    
+    public List<Disciplina> listarTodos (){
+        return disciplinaService.listarTodos();
+    }
+    
     public List<Curso> listarCursos (){
         cursoService.listarTodos();
     }
