@@ -125,7 +125,7 @@ public class CursoList extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover o curso") == JOptionPane.OK_OPTION)
                 controller.remover(curso);
             atualizarTabela();
-        } catch (LoginInexistenteException ex) {
+        } catch (CodigoInexistenteException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar curso selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
         }catch (ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
