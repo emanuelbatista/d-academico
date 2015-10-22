@@ -15,12 +15,12 @@ public class CursoCadastro extends javax.swing.JFrame {
     private CursoController controller = new CursoController();
     Curso curso;
 
-    public CursoCadastro() {        
+    public CursoCadastro() {
         inicializar();
     }
-    
+
     //Deve ser chamado quando for para atualizar um admin já cadastrado
-    public CursoCadastro(Curso curso){
+    public CursoCadastro(Curso curso) {
         this.curso = curso;
         inicializar();
         setTitle("Atualização de curso");
@@ -31,14 +31,14 @@ public class CursoCadastro extends javax.swing.JFrame {
         unidadeJTextField.setText(curso.getUnidade());
         periodojSpinner.setValue(curso.getPeriodo());
     }
-    
-    private void inicializar (){
+
+    private void inicializar() {
         initComponents();
         setTitle("Cadastro de curso");
         setResizable(false);
         setSize(480, 590);
         setLocationRelativeTo(null);
-        setVisible(true);        
+        setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -133,7 +133,7 @@ public class CursoCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarJButtonMouseClicked
-        
+
     }//GEN-LAST:event_entrarJButtonMouseClicked
 
     private boolean temInformacoesObrigatoriasVazias() {
@@ -142,7 +142,7 @@ public class CursoCadastro extends javax.swing.JFrame {
         String unidade = unidadeJTextField.getText();
         if (nome.trim().isEmpty()
                 || abreviacao.trim().isEmpty()
-                || unidade.trim().isEmpty()){
+                || unidade.trim().isEmpty()) {
             return true;
         }
         return false;
@@ -172,28 +172,31 @@ public class CursoCadastro extends javax.swing.JFrame {
         String nome = nomeJTextField.getText();
         String abreviacao = abreviacaoJTextField.getText();
         String unidade = unidadeJTextField.getText();
+        Integer periodo =Integer.valueOf(periodojSpinner.getValue().toString());
         String mensagemSucesso;
         boolean jaExiste;
-        if (curso == null){
+        if (curso == null) {
             curso = new Curso();
             mensagemSucesso = "Curso cadastrado com sucesso";
             jaExiste = false;
-        }else{
+        } else {
             mensagemSucesso = "Curso atualizado com sucesso";
             jaExiste = true;
         }
         curso.setAbreviacao(abreviacao);
         curso.setUnidade(unidade);
         curso.setDescricao(nome);
-        if (jaExiste)
-            controller.atualizar(curso);
-        else
-            try{
-                controller.cadastrar(curso);
-            }catch (ValidacaoException e){
-                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
-                return;
+        curso.setPeriodo(periodo);
+        try {
+            if (jaExiste) {
+                controller.atualizar(curso);
+            } else {
+                controller.cadastro(curso);
             }
+        } catch (ValidacaoException e) {
+            e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+            return;
+        }
         JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed

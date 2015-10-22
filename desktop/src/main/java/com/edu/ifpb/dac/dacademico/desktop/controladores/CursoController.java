@@ -1,5 +1,7 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
@@ -15,11 +17,11 @@ public class CursoController {
 
     private CursoService service = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
-    public void cadastro (Curso curso){
+    public void cadastro (Curso curso) throws ValidacaoException{
         service.salvar(curso);
     }
     
-    public void atualizar (Curso curso){
+    public void atualizar (Curso curso) throws ValidacaoException{
         service.atualizar(curso);
     }
     
@@ -31,8 +33,8 @@ public class CursoController {
         return service.listarTodos();
     }
     
-    public Curso recuperar (long cod){
-        return service.recuperar(cod);
+    public Curso recuperar (long cod) throws EntidadeInexistenteException{
+        return service.buscar(cod);
     }
     
 }

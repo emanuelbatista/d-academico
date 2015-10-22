@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.core.servico.disciplina;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
@@ -8,6 +9,8 @@ import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -59,7 +62,11 @@ public class DisciplinaServiceImpl implements DisciplinaService{
             Disciplina disciplina = new Disciplina();
             JsonObject obj = array.getJsonObject(i);
             disciplina.setCod(Integer.parseInt(obj.getString("codigo")));
-            disciplina.setCurso(cursoService.buscar(Long.parseLong(obj.getString("curso"))));
+            try {
+                disciplina.setCurso(cursoService.buscar(Long.parseLong(obj.getString("curso"))));
+            } catch (EntidadeInexistenteException ex) {
+                Logger.getLogger(DisciplinaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
             disciplina.setDescricao(obj.getString("descricao"));
             disciplina.setAbreviacao(obj.getString("abreviacao"));
             disciplina.setPeriodo(Integer.parseInt(obj.getString("periodo")));

@@ -1,9 +1,11 @@
 package com.edu.ifpb.dac.dacademico.core.servico.curso;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 /**
  *
@@ -15,9 +17,13 @@ public interface CursoService {
 
     void remover(Curso curso);
 
-    Curso buscar(long id);
+    Curso buscar(long id) throws EntidadeInexistenteException;
+    
+    List<Curso> listarTodos(); 
 
     void atualizar(Curso curso) throws ValidacaoException;
+    
+    List<Curso> buscarPorDescricao(String descricao);
 
     void urlParaBanco(String host) throws MalformedURLException, IOException;
 
