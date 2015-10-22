@@ -9,6 +9,7 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
+import java.util.List;
 
 /**
  *
@@ -18,6 +19,14 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 public interface AlunoService {
     
     void salvar (Aluno aluno) throws ValidacaoException;
+    
+    Aluno recuperarPeloLogin (String login) throws LoginInexistenteException;
+    
+    void remover (Aluno aluno);
+    
+    void atualizar (Aluno aluno) throws ValidacaoException;
+    
+    List<Aluno> listarTodos();
     
     public Aluno login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException;

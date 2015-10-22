@@ -32,11 +32,11 @@ public class AlunoServiceImpl implements AlunoService{
 
     @Override
     public void salvar(Aluno aluno) throws ValidacaoException {
-        validarAdmin(aluno);
+        validarAluno(aluno);
         repositorio.salvar(aluno);
     }
 
-    private void validarAdmin(Aluno aluno) throws ValidacaoException {
+    private void validarAluno(Aluno aluno) throws ValidacaoException {
         String email = aluno.getEmail();
         String login = aluno.getLogin();
         List<com.edu.ifpb.dac.dacademico.core.aux.Error<Aluno>> errors = HibernateValidacao.<Aluno>validar(aluno);
@@ -72,5 +72,30 @@ public class AlunoServiceImpl implements AlunoService{
         if (!aluno.getSenha().equals(senha))
             throw new SenhaErradaException();
         return aluno;
+    }
+
+    @Override
+    public void atualizar(Aluno aluno) throws ValidacaoException{
+        validarAluno(aluno);
+        repositorio.atualizar(aluno);
+    }
+
+    @Override
+    public List<Aluno> listarTodos() {
+        return  repositorio.listarTodos(Aluno.class);
+    }
+
+    @Override
+    public Aluno recuperarPeloLogin(String login) throws LoginInexistenteException{
+        try{
+            return repositorio.buscarPorAtributo(Aluno.class, "login", login).get(0);
+        } catch (Exception e){
+            throw new LoginInexistenteException();
+        }
+    }
+
+    @Override
+    public void remover(Aluno aluno) {
+        repositorio.remover(aluno);
     }
 }
