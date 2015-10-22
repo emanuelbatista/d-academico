@@ -10,11 +10,11 @@ import java.util.List;
  *
  * @author douglasgabriel
  */
-public interface AdminService {
+public interface AdminService{
     
     void salvar (Administrador admin) throws ValidacaoException;
     
-    void atualizar (Administrador admin);
+    void atualizar (Administrador admin) throws ValidacaoException;
     
     void remover (Administrador admin);
     

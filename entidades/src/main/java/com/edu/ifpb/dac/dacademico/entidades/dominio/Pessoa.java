@@ -75,4 +75,28 @@ public abstract class Pessoa {
         this.login = login;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (int) (this.cod ^ (this.cod >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (this.cod != other.cod) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+
 }

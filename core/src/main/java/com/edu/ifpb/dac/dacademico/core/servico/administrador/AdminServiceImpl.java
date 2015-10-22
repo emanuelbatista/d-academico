@@ -34,14 +34,17 @@ public class AdminServiceImpl implements AdminService {
         String email = admin.getEmail();
         String login = admin.getLogin();
         List<Error<Administrador>> errors = HibernateValidacao.<Administrador>validar(admin);
-        if (!repositorio.buscarPorAtributo(Administrador.class, "login", login).isEmpty()) {
+        List<Administrador> adminList=repositorio.buscarPorAtributo(Administrador.class, "login", login);
+        Administrador adminBanco=repositorio.buscar(Administrador.class, admin.getCod());
+        if (!adminList.isEmpty() && !adminBanco.getLogin().equals(login)  ) {
             Error<Administrador> error = new Error();
             error.setField("login");
             error.setMessage("Esse login já está cadastrado");
             error.setRootBean(admin);
             errors.add(error);
         }
-        if (!repositorio.buscarPorAtributo(Administrador.class, "email", email).isEmpty()) {
+        adminList=repositorio.buscarPorAtributo(Administrador.class, "email", email);
+        if (!adminList.isEmpty() && !adminBanco.getEmail().equals(email)) {
             Error<Administrador> error = new Error<>();
             error.setField("email");
             error.setMessage("Esse email já está cadastrado");
@@ -81,7 +84,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void atualizar(Administrador admin) {
+    public void atualizar(Administrador admin) throws ValidacaoException{
+        validarAdmin(admin);
         repositorio.atualizar(admin);
     }
 

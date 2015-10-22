@@ -7,6 +7,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +24,11 @@ public class AdminController {
     }
     
     public void atualizar (Administrador admin){
-        service.atualizar(admin);
+        try {
+            service.atualizar(admin);
+        } catch (ValidacaoException ex) {
+            ex.getErrors().forEach(System.out::println);
+        }
     }
     
     public void remover (Administrador admin){

@@ -52,14 +52,17 @@ public class ProfessorServiceImpl implements ProfessorService {
         String email = professor.getEmail();
         String login = professor.getLogin();
         List<com.edu.ifpb.dac.dacademico.core.aux.Error<Professor>> errors = HibernateValidacao.<Professor>validar(professor);
-        if (repositorio.buscarPorAtributo(Professor.class, "login", login) != null) {
+        List<Professor> professores=repositorio.buscarPorAtributo(Professor.class, "login", login);
+        Professor profBanco=repositorio.buscar(Professor.class, professor.getCod());
+        if (!professores.isEmpty() && !profBanco.getLogin().equals(login)) {
             com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error();
             error.setField("login");
             error.setMessage("Esse login já está cadastrado");
             error.setRootBean(professor);
             errors.add(error);
         }
-        if (repositorio.buscarPorAtributo(Professor.class, "email", email) != null) {
+        professores=repositorio.buscarPorAtributo(Professor.class, "email", email);
+        if (!professores.isEmpty() && !profBanco.getLogin().equals(email)) {
             com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error<>();
             error.setField("email");
             error.setMessage("Esse email já está cadastrado");

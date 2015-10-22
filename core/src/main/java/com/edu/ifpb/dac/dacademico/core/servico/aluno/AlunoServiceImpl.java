@@ -40,14 +40,17 @@ public class AlunoServiceImpl implements AlunoService{
         String email = aluno.getEmail();
         String login = aluno.getLogin();
         List<com.edu.ifpb.dac.dacademico.core.aux.Error<Aluno>> errors = HibernateValidacao.<Aluno>validar(aluno);
-        if (repositorio.buscarPorAtributo(Aluno.class, "login", login) != null) {
+        List<Aluno> alunos=repositorio.buscarPorAtributo(Aluno.class, "login", login);
+        Aluno alunoBanco=repositorio.buscar(Aluno.class, aluno.getCod());
+        if (!alunos.isEmpty() && !alunoBanco.getLogin().equals(login)) {
             com.edu.ifpb.dac.dacademico.core.aux.Error<Aluno> error = new com.edu.ifpb.dac.dacademico.core.aux.Error();
             error.setField("login");
             error.setMessage("Esse login já está cadastrado");
             error.setRootBean(aluno);
             errors.add(error);
         }
-        if (repositorio.buscarPorAtributo(Aluno.class, "email", email) != null) {
+        alunos=repositorio.buscarPorAtributo(Aluno.class, "email", email);
+        if (!alunos.isEmpty() && !alunoBanco.getEmail().equals(email)) {
             com.edu.ifpb.dac.dacademico.core.aux.Error<Aluno> error = new com.edu.ifpb.dac.dacademico.core.aux.Error<>();
             error.setField("email");
             error.setMessage("Esse email já está cadastrado");
