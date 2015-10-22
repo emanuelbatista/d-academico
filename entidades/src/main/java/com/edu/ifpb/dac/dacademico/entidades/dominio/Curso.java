@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -17,7 +19,9 @@ public class Curso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
-    private String descricao, abreviacao, unidade;    
+    @NotBlank
+    private String descricao, abreviacao, unidade; 
+    @Size(min = 1)
     private int periodo;
 
     public long getCod() {

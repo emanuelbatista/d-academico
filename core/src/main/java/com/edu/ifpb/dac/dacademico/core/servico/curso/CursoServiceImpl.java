@@ -1,11 +1,14 @@
 package com.edu.ifpb.dac.dacademico.core.servico.curso;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -25,7 +28,8 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public void salvar(Curso curso) {
+    public void salvar(Curso curso) throws ValidacaoException{
+        validarCurso(curso);
         repositorio.salvar(curso);
     }
 
@@ -40,8 +44,17 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public void atualizar(Curso curso) {
+    public void atualizar(Curso curso) throws ValidacaoException{
+        validarCurso(curso);
         repositorio.atualizar(curso);
+    }
+    
+    private void validarCurso(Curso curso) throws ValidacaoException{
+        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Curso>> erros=HibernateValidacao.<Curso>validar(curso);
+        if(!erros.isEmpty()){
+            throw new ValidacaoException(erros);
+        }
+        
     }
 
     @Override
