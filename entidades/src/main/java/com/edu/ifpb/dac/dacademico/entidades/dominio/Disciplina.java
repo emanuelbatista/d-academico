@@ -1,10 +1,14 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -12,12 +16,14 @@ import javax.persistence.ManyToOne;
  * @version 0.1
  */
 @Entity
-public class Disciplina {
+public class Disciplina implements Serializable {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long cod;
+    @Min(1)
     private int aulasPorSemana, periodo, cargaHoraria;
+    @NotBlank
     private String descricao, abreviacao;
     @ManyToOne
     private Curso curso;

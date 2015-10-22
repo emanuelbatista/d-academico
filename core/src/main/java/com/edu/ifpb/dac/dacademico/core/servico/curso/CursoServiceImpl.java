@@ -100,7 +100,11 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public List<Curso> buscarPorDescricao(String descricao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Curso buscarPorDescricao(String descricao) {
+        List<Curso> cursos=repositorio.buscarPorAtributo(Curso.class, "descricao", descricao);
+        if(!cursos.isEmpty()){
+            return cursos.get(0);
+        }
+        return null;
     }
 }

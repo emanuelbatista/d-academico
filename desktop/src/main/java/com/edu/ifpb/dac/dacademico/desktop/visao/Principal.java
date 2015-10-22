@@ -188,10 +188,20 @@ public class Principal extends javax.swing.JFrame {
         removerCursoJLabel.setBounds(610, 380, 190, 40);
 
         cadastrarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarDisciplinaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarDisciplinaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(cadastrarDisciplinaJLabel);
         cadastrarDisciplinaJLabel.setBounds(800, 280, 180, 30);
 
         listarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listarDisciplinaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarDisciplinaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(listarDisciplinaJLabel);
         listarDisciplinaJLabel.setBounds(800, 310, 180, 40);
 
@@ -295,6 +305,14 @@ public class Principal extends javax.swing.JFrame {
     private void listarCursoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarCursoJLabelMouseClicked
        new CursoList();
     }//GEN-LAST:event_listarCursoJLabelMouseClicked
+
+    private void cadastrarDisciplinaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarDisciplinaJLabelMouseClicked
+        new DisciplinaCadastro();
+    }//GEN-LAST:event_cadastrarDisciplinaJLabelMouseClicked
+
+    private void listarDisciplinaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarDisciplinaJLabelMouseClicked
+        new DisciplinaList();
+    }//GEN-LAST:event_listarDisciplinaJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;

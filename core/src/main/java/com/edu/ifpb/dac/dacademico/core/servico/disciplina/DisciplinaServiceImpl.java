@@ -1,14 +1,18 @@
 package com.edu.ifpb.dac.dacademico.core.servico.disciplina;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
+import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
@@ -21,7 +25,7 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class DisciplinaServiceImpl implements DisciplinaService{
+public class DisciplinaServiceImpl implements DisciplinaService {
 
     private Dao<Disciplina, Long> disciplinaRepositorio;
     private CursoService cursoService;
@@ -30,9 +34,10 @@ public class DisciplinaServiceImpl implements DisciplinaService{
         this.disciplinaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
         this.cursoService = new CursoServiceImpl(unidadePersistencia);
     }
-    
+
     @Override
-    public void salvar(Disciplina disciplina) {
+    public void salvar(Disciplina disciplina) throws ValidacaoException {
+        validarDisciplina(disciplina);
         disciplinaRepositorio.salvar(disciplina);
     }
 
@@ -47,8 +52,17 @@ public class DisciplinaServiceImpl implements DisciplinaService{
     }
 
     @Override
-    public void atualizar(Disciplina disciplina) {
+    public void atualizar(Disciplina disciplina) throws ValidacaoException {
+        validarDisciplina(disciplina);
         disciplinaRepositorio.atualizar(disciplina);
+    }
+
+    private void validarDisciplina(Disciplina disciplina) throws ValidacaoException {
+        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Disciplina>> erros = HibernateValidacao.<Disciplina>validar(disciplina);
+        if (!erros.isEmpty()) {
+            throw new ValidacaoException(erros);
+        }
+
     }
 
     @Override
@@ -79,5 +93,10 @@ public class DisciplinaServiceImpl implements DisciplinaService{
             }
         }
     }
-    
+
+    @Override
+    public List<Disciplina> listarTodos() {
+        return disciplinaRepositorio.listarTodos(Disciplina.class);
+    }
+
 }

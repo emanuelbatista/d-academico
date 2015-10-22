@@ -23,7 +23,7 @@ public interface CursoService {
 
     void atualizar(Curso curso) throws ValidacaoException;
     
-    List<Curso> buscarPorDescricao(String descricao);
+    Curso buscarPorDescricao(String descricao);
 
     void urlParaBanco(String host) throws MalformedURLException, IOException;
 
