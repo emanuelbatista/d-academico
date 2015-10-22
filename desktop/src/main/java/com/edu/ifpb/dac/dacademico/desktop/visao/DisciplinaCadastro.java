@@ -48,6 +48,8 @@ public class DisciplinaCadastro extends javax.swing.JFrame {
         List<Curso> cursos = controller.listarCursos();
         for (Curso curso : cursos)
             cursojComboBox.addItem(curso.getDescricao());
+        if (disciplina != null)
+            cursojComboBox.setSelectedItem(disciplina.getCurso().getDescricao());
     }
 
     @SuppressWarnings("unchecked")
