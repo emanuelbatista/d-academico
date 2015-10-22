@@ -1,11 +1,9 @@
 package com.edu.ifpb.dac.dacademico.desktop.visao;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
-import com.edu.ifpb.dac.dacademico.desktop.controladores.CursoController;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
+import com.edu.ifpb.dac.dacademico.desktop.controladores.DisciplinaController;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,14 +11,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author douglasgabriel
  */
-public class CursoList extends javax.swing.JFrame {
+public class DisciplinaList extends javax.swing.JFrame {
 
-    CursoController controller = new CursoController();
+    DisciplinaController controller = new DisciplinaController();
     DefaultTableModel tableModel;
 
-    public CursoList() {
+    public DisciplinaList() {
         initComponents();
-        setTitle("Lista de cursos");
+        setTitle("Lista de disciplinas");
         setResizable(false);
         setSize(480, 573);
         setLocationRelativeTo(null);
@@ -33,11 +31,13 @@ public class CursoList extends javax.swing.JFrame {
         tableModel.addColumn("Codigo");
         tableModel.addColumn("Nome");
         tableModel.addColumn("Abreviação");
-        tableModel.addColumn("Unidade");
-        tableModel.addColumn("Períodos");
-        List<Curso> cursos = controller.listarTodos();
-        for (Curso curso : cursos) {
-            tableModel.addRow(new Object[]{curso.getCod(),curso.getDescricao(), curso.getAbreviacao(), curso.getUnidade(), curso.getPeriodo()});
+        tableModel.addColumn("Aulas por semana");
+        tableModel.addColumn("Carga horária");
+        tableModel.addColumn("Curso");
+        tableModel.addColumn("Período");
+        List<Disciplina> disciplinas = controller.listarTodos();
+        for (Disciplina disciplina : disciplinas) {
+            tableModel.addRow(new Object[]{disciplina.getCod(), disciplina.getDescricao(), disciplina.getAbreviacao(), disciplina.getAulasPorSemana(), disciplina.getCargaHoraria(), disciplina.getCurso().getAbreviacao(), disciplina.getPeriodo()});
         }
         jTable.setModel(tableModel);
     }
@@ -58,7 +58,7 @@ public class CursoList extends javax.swing.JFrame {
 
         coverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminLista.png"))); // NOI18N
         getContentPane().add(coverjLabel);
-        coverjLabel.setBounds(0, 0, 16401, 194);
+        coverjLabel.setBounds(0, 0, 529, 194);
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,7 +113,7 @@ public class CursoList extends javax.swing.JFrame {
 
     private void atualizarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarjButtonActionPerformed
         try {
-            new CursoCadastro(controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString())));
+            new DisciplinaCadastro(controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString())));
             this.dispose();
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -124,14 +124,14 @@ public class CursoList extends javax.swing.JFrame {
 
     private void removerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerjButtonActionPerformed
         try {
-            Curso curso = controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString()));
-            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover o curso") == JOptionPane.OK_OPTION)
-                controller.remover(curso);
+            Disciplina disciplina = controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover a disciplina?") == JOptionPane.OK_OPTION)
+                controller.remover(disciplina);
             atualizarTabela();
+        } catch (EntidadeInexistenteException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar disciplina selecionada", "Erro", JOptionPane.ERROR_MESSAGE);
         }catch (ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
-        } catch (EntidadeInexistenteException ex) {
-            Logger.getLogger(CursoList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_removerjButtonActionPerformed
 
