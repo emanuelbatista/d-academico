@@ -49,6 +49,7 @@ public class CursoServiceImpl implements CursoService{
         repositorio.atualizar(curso);
     }
     
+    
     private void validarCurso(Curso curso) throws ValidacaoException{
         List<com.edu.ifpb.dac.dacademico.core.aux.Error<Curso>> erros=HibernateValidacao.<Curso>validar(curso);
         if(!erros.isEmpty()){
