@@ -15,7 +15,6 @@ public class Professor extends Pessoa{
     
     @NotBlank(message = "O campo de unidade está vazio")
     private String unidade;
-    @NotBlank(message = "O campo vinculo está vazio")
     private String vinculo;
     @NotBlank(message = "O campo regime está vazio")
     private String regime;

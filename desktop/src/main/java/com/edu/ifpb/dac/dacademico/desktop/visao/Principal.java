@@ -108,10 +108,20 @@ public class Principal extends javax.swing.JFrame {
         listarProfessorJLabel.setBounds(220, 310, 190, 40);
 
         atualizarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atualizarProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atualizarProfessorJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(atualizarProfessorJLabel);
         atualizarProfessorJLabel.setBounds(220, 350, 190, 30);
 
         removerProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removerProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removerProfessorJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(removerProfessorJLabel);
         removerProfessorJLabel.setBounds(220, 380, 190, 40);
 
@@ -125,14 +135,29 @@ public class Principal extends javax.swing.JFrame {
         cadastrarAlunoJLabel.setBounds(420, 280, 180, 30);
 
         listarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarAlunoJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(listarAlunoJLabel);
         listarAlunoJLabel.setBounds(420, 310, 180, 40);
 
         atualizarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atualizarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atualizarAlunoJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(atualizarAlunoJLabel);
         atualizarAlunoJLabel.setBounds(420, 350, 180, 30);
 
         removerAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removerAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removerAlunoJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(removerAlunoJLabel);
         removerAlunoJLabel.setBounds(420, 380, 180, 40);
 
@@ -232,6 +257,26 @@ public class Principal extends javax.swing.JFrame {
     private void listarProfessorJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarProfessorJLabelMouseClicked
         new ProfessorList();
     }//GEN-LAST:event_listarProfessorJLabelMouseClicked
+
+    private void atualizarProfessorJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atualizarProfessorJLabelMouseClicked
+        new ProfessorList();
+    }//GEN-LAST:event_atualizarProfessorJLabelMouseClicked
+
+    private void removerProfessorJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removerProfessorJLabelMouseClicked
+        new ProfessorList();
+    }//GEN-LAST:event_removerProfessorJLabelMouseClicked
+
+    private void listarAlunoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarAlunoJLabelMouseClicked
+        new AlunoList();
+    }//GEN-LAST:event_listarAlunoJLabelMouseClicked
+
+    private void atualizarAlunoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atualizarAlunoJLabelMouseClicked
+        new AlunoList();
+    }//GEN-LAST:event_atualizarAlunoJLabelMouseClicked
+
+    private void removerAlunoJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removerAlunoJLabelMouseClicked
+        new AlunoList();
+    }//GEN-LAST:event_removerAlunoJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;

@@ -1,12 +1,12 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
 import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 
 /**
  *
@@ -17,12 +17,24 @@ public class AlunoController {
 
     private AlunoService service = new AlunoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
-    public void cadastrar (Aluno aluno){
-        try {
-            service.salvar(aluno);
-        } catch (ValidacaoException ex) {
-            Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void cadastrar (Aluno aluno) throws ValidacaoException{        
+        service.salvar(aluno);        
+    }
+    
+    public void atualizar (Aluno aluno) throws ValidacaoException{
+        service.atualizar(aluno);
+    }
+    
+    public void remover (Aluno aluno){
+        service.remover(aluno);
+    }
+    
+    public List<Aluno> listarTodos(){
+        return service.listarTodos();
+    }
+    
+    public Aluno recuperarPeloLogin (String login) throws LoginInexistenteException{
+        return service.recuperarPeloLogin(login);
     }
     
 }
