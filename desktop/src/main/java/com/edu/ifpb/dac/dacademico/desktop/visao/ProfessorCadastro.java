@@ -243,9 +243,13 @@ public class ProfessorCadastro extends javax.swing.JFrame {
                 e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
                 return;
             }
-        } else //TODO: validar cadastro de professores
-        {
-            controller.cadastrar(professor);
+        } else{
+            try {
+                controller.cadastrar(professor);
+            } catch (ValidacaoException e) {
+                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+                return;
+            }
         }
         JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();

@@ -17,12 +17,8 @@ public class ProfessorController {
 
     private ProfessorService service = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
-    public void cadastrar (Professor professor){
-        try {
+    public void cadastrar (Professor professor)throws ValidacaoException{
             service.salvar(professor);
-        } catch (ValidacaoException ex) {
-            ex.getErrors().forEach(System.out::println);
-        }
     }
     
     public void atualizar (Professor professor) throws ValidacaoException{
