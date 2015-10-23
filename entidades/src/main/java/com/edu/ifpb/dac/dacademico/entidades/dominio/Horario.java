@@ -2,6 +2,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,7 +26,7 @@ public class Horario {
     private String descricao;
     @Enumerated(EnumType.ORDINAL)
     private DayOfWeek dia;
-    private LocalDateTime inicio, fim;
+    private LocalTime inicio, fim;
     @OneToMany (mappedBy = "horario")
     private List<Aula> aulas;    
 
@@ -53,19 +54,19 @@ public class Horario {
         this.dia = dia;
     }
 
-    public LocalDateTime getInicio() {
+    public LocalTime getInicio() {
         return inicio;
     }
 
-    public void setInicio(LocalDateTime inicio) {
+    public void setInicio(LocalTime inicio) {
         this.inicio = inicio;
     }
 
-    public LocalDateTime getFim() {
+    public LocalTime getFim() {
         return fim;
     }
 
-    public void setFim(LocalDateTime fim) {
+    public void setFim(LocalTime fim) {
         this.fim = fim;
     }
 

@@ -48,6 +48,9 @@ public class Principal extends javax.swing.JFrame {
         atualizarTurmaJLabel = new javax.swing.JLabel();
         removerTurmaJLabel = new javax.swing.JLabel();
         logoutJLabel = new javax.swing.JLabel();
+        turmaReposicaojLabel = new javax.swing.JLabel();
+        turmaAlunosjLabel = new javax.swing.JLabel();
+        turmaAulasjLabel = new javax.swing.JLabel();
         backgroundjLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -258,6 +261,30 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(logoutJLabel);
         logoutJLabel.setBounds(1194, 20, 120, 60);
 
+        turmaReposicaojLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                turmaReposicaojLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(turmaReposicaojLabel);
+        turmaReposicaojLabel.setBounds(1150, 350, 180, 30);
+
+        turmaAlunosjLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                turmaAlunosjLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(turmaAlunosjLabel);
+        turmaAlunosjLabel.setBounds(1150, 270, 180, 40);
+
+        turmaAulasjLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                turmaAulasjLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(turmaAulasjLabel);
+        turmaAulasjLabel.setBounds(1150, 310, 180, 40);
+
         backgroundjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/modelo.png"))); // NOI18N
         getContentPane().add(backgroundjLabel);
         backgroundjLabel.setBounds(-13, -10, 1690, 770);
@@ -350,6 +377,18 @@ public class Principal extends javax.swing.JFrame {
         new TurmaList();
     }//GEN-LAST:event_removerTurmaJLabelMouseClicked
 
+    private void turmaReposicaojLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turmaReposicaojLabelMouseClicked
+        new TurmaList();
+    }//GEN-LAST:event_turmaReposicaojLabelMouseClicked
+
+    private void turmaAlunosjLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turmaAlunosjLabelMouseClicked
+        new TurmaList();
+    }//GEN-LAST:event_turmaAlunosjLabelMouseClicked
+
+    private void turmaAulasjLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turmaAulasjLabelMouseClicked
+        new TurmaList();        
+    }//GEN-LAST:event_turmaAulasjLabelMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;
     private javax.swing.JLabel atualizarAlunoJLabel;
@@ -377,5 +416,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel removerDisciplinaJLabel;
     private javax.swing.JLabel removerProfessorJLabel;
     private javax.swing.JLabel removerTurmaJLabel;
+    private javax.swing.JLabel turmaAlunosjLabel;
+    private javax.swing.JLabel turmaAulasjLabel;
+    private javax.swing.JLabel turmaReposicaojLabel;
     // End of variables declaration//GEN-END:variables
 }

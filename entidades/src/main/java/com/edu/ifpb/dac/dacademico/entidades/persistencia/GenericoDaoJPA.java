@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.transaction.TransactionScoped;
 
 /**
  *
@@ -27,6 +28,7 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
     }
     
     @Override
+    @TransactionScoped
     public void salvar(T entidade) {
         EntityTransaction transacao = entityManager.getTransaction();
         try{

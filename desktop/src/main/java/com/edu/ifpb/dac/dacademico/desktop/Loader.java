@@ -7,6 +7,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
+import com.edu.ifpb.dac.dacademico.core.servico.horario.HorarioService;
+import com.edu.ifpb.dac.dacademico.core.servico.horario.HorarioServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
@@ -19,8 +21,12 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.visao.Inicio;
 import com.edu.ifpb.dac.dacademico.desktop.visao.Login;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  *
@@ -46,8 +52,8 @@ public class Loader {
         /*TurmaService disciplinaService = new TurmaServiceImpl(unidadePersistencia);
         disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");*/
         
-        /*AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
-        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");*/
+        AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
+        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");
         
         /*Administrador admin = new Administrador();
         admin.setEmail("admin@admin.com");
@@ -55,6 +61,14 @@ public class Loader {
         admin.setSenha("admin");
         new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT).salvar(admin);*/
         
-        new Login();
+        /*HorarioService service = new HorarioServiceImpl(unidadePersistencia);
+        Horario horario = new Horario();
+        horario.setDescricao("M1");
+        horario.setDia(DayOfWeek.MONDAY);
+        horario.setInicio(LocalTime.of(7, 0));
+        horario.setFim(LocalTime.of(7, 50));
+        service.salvar(horario);*/
+        
+//        new Login();
     }
 }
