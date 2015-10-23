@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.core.servico.aula;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
@@ -20,6 +21,8 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -92,7 +95,11 @@ public class AulaServicoImpl implements AulaServico{
                 horarioRepositorio.salvar(horario);
             }
             aula.setHorario(horario);
-            aula.setDisciplina(disciplinaService.buscar(Long.parseLong(obj.getString("disc_cod"))));
+            try {
+                aula.setDisciplina(disciplinaService.buscar(Long.parseLong(obj.getString("disc_cod"))));
+            } catch (EntidadeInexistenteException ex) {
+                ex.printStackTrace();
+            }
             aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
             aula.setProfessor(professorService.buscar(Long.parseLong(obj.getString("prof_cod"))));
             aula.setSala(salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala"))));

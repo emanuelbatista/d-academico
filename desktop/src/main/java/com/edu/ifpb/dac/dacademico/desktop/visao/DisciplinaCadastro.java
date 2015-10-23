@@ -41,7 +41,8 @@ public class DisciplinaCadastro extends javax.swing.JFrame {
         setResizable(false);
         setSize(480, 590);
         setLocationRelativeTo(null);
-        setVisible(true);        
+        setVisible(true);
+        iniciarComboBox();
     }
     
     private void iniciarComboBox (){

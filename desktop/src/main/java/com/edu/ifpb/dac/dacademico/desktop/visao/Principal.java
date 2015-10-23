@@ -60,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(removerAdminJLabel);
-        removerAdminJLabel.setBounds(30, 380, 180, 40);
+        removerAdminJLabel.setBounds(10, 380, 180, 40);
 
         atualizarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atualizarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,7 +69,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atualizarAdminJLabel);
-        atualizarAdminJLabel.setBounds(30, 350, 180, 30);
+        atualizarAdminJLabel.setBounds(10, 350, 180, 30);
 
         listarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,7 +78,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listarAdminJLabel);
-        listarAdminJLabel.setBounds(30, 310, 180, 40);
+        listarAdminJLabel.setBounds(10, 310, 180, 40);
 
         cadastrarAdminJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadastrarAdminJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarAdminJLabel);
-        cadastrarAdminJLabel.setBounds(30, 280, 180, 30);
+        cadastrarAdminJLabel.setBounds(10, 280, 180, 30);
 
         cadastrarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadastrarProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +96,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarProfessorJLabel);
-        cadastrarProfessorJLabel.setBounds(220, 280, 190, 30);
+        cadastrarProfessorJLabel.setBounds(200, 280, 190, 30);
 
         listarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listarProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,7 +105,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listarProfessorJLabel);
-        listarProfessorJLabel.setBounds(220, 310, 190, 40);
+        listarProfessorJLabel.setBounds(200, 310, 190, 40);
 
         atualizarProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atualizarProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,7 +114,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atualizarProfessorJLabel);
-        atualizarProfessorJLabel.setBounds(220, 350, 190, 30);
+        atualizarProfessorJLabel.setBounds(200, 350, 190, 30);
 
         removerProfessorJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         removerProfessorJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +123,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(removerProfessorJLabel);
-        removerProfessorJLabel.setBounds(220, 380, 190, 40);
+        removerProfessorJLabel.setBounds(200, 380, 190, 40);
 
         cadastrarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadastrarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarAlunoJLabel);
-        cadastrarAlunoJLabel.setBounds(420, 280, 180, 30);
+        cadastrarAlunoJLabel.setBounds(400, 280, 180, 30);
 
         listarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,7 +141,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listarAlunoJLabel);
-        listarAlunoJLabel.setBounds(420, 310, 180, 40);
+        listarAlunoJLabel.setBounds(400, 310, 180, 40);
 
         atualizarAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atualizarAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,7 +150,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atualizarAlunoJLabel);
-        atualizarAlunoJLabel.setBounds(420, 350, 180, 30);
+        atualizarAlunoJLabel.setBounds(400, 350, 180, 30);
 
         removerAlunoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         removerAlunoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,7 +159,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(removerAlunoJLabel);
-        removerAlunoJLabel.setBounds(420, 380, 180, 40);
+        removerAlunoJLabel.setBounds(400, 380, 180, 40);
 
         cadastrarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadastrarCursoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +168,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarCursoJLabel);
-        cadastrarCursoJLabel.setBounds(610, 280, 180, 30);
+        cadastrarCursoJLabel.setBounds(590, 280, 180, 30);
 
         listarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listarCursoJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,15 +177,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listarCursoJLabel);
-        listarCursoJLabel.setBounds(610, 310, 190, 40);
+        listarCursoJLabel.setBounds(590, 310, 190, 40);
 
         atualizarCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarCursoJLabel);
-        atualizarCursoJLabel.setBounds(610, 350, 180, 30);
+        atualizarCursoJLabel.setBounds(590, 350, 180, 30);
 
         removerCursoJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerCursoJLabel);
-        removerCursoJLabel.setBounds(610, 380, 190, 40);
+        removerCursoJLabel.setBounds(590, 380, 190, 40);
 
         cadastrarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadastrarDisciplinaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrarDisciplinaJLabel);
-        cadastrarDisciplinaJLabel.setBounds(800, 280, 180, 30);
+        cadastrarDisciplinaJLabel.setBounds(780, 280, 180, 30);
 
         listarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listarDisciplinaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,31 +203,31 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listarDisciplinaJLabel);
-        listarDisciplinaJLabel.setBounds(800, 310, 180, 40);
+        listarDisciplinaJLabel.setBounds(780, 310, 180, 40);
 
         atualizarDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarDisciplinaJLabel);
-        atualizarDisciplinaJLabel.setBounds(800, 350, 180, 30);
+        atualizarDisciplinaJLabel.setBounds(780, 350, 180, 30);
 
         removerDisciplinaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerDisciplinaJLabel);
-        removerDisciplinaJLabel.setBounds(800, 380, 180, 40);
+        removerDisciplinaJLabel.setBounds(780, 380, 180, 40);
 
         cadastrarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cadastrarTurmaJLabel);
-        cadastrarTurmaJLabel.setBounds(980, 280, 180, 30);
+        cadastrarTurmaJLabel.setBounds(970, 280, 180, 30);
 
         listarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(listarTurmaJLabel);
-        listarTurmaJLabel.setBounds(980, 310, 180, 30);
+        listarTurmaJLabel.setBounds(970, 310, 180, 30);
 
         atualizarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(atualizarTurmaJLabel);
-        atualizarTurmaJLabel.setBounds(980, 350, 180, 30);
+        atualizarTurmaJLabel.setBounds(970, 350, 180, 30);
 
         removerTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(removerTurmaJLabel);
-        removerTurmaJLabel.setBounds(980, 380, 180, 40);
+        removerTurmaJLabel.setBounds(970, 380, 180, 40);
 
         logoutJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
