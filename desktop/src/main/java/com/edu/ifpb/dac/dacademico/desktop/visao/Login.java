@@ -29,7 +29,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logoJLabel = new javax.swing.JLabel();
         senhaJPasswordField = new javax.swing.JPasswordField();
         senhaJLabel = new javax.swing.JLabel();
         loginJTextField = new javax.swing.JTextField();
@@ -45,26 +44,22 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(null);
-
-        logoJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
-        getContentPane().add(logoJLabel);
-        logoJLabel.setBounds(110, 40, 250, 100);
         getContentPane().add(senhaJPasswordField);
-        senhaJPasswordField.setBounds(20, 350, 440, 40);
+        senhaJPasswordField.setBounds(90, 310, 320, 40);
 
         senhaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         senhaJLabel.setForeground(java.awt.Color.white);
         senhaJLabel.setText("Senha:");
         getContentPane().add(senhaJLabel);
-        senhaJLabel.setBounds(20, 320, 80, 30);
+        senhaJLabel.setBounds(90, 280, 80, 30);
         getContentPane().add(loginJTextField);
-        loginJTextField.setBounds(20, 260, 440, 40);
+        loginJTextField.setBounds(90, 230, 320, 40);
 
         loginJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         loginJLabel.setForeground(java.awt.Color.white);
         loginJLabel.setText("Login:");
         getContentPane().add(loginJLabel);
-        loginJLabel.setBounds(20, 230, 80, 30);
+        loginJLabel.setBounds(90, 200, 80, 30);
 
         voltarJButton.setText("Voltar");
         voltarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,7 +73,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(voltarJButton);
-        voltarJButton.setBounds(20, 420, 90, 40);
+        voltarJButton.setBounds(90, 420, 90, 40);
 
         entrarJButton.setText("Entrar");
         entrarJButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,11 +87,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(entrarJButton);
-        entrarJButton.setBounds(360, 420, 90, 40);
+        entrarJButton.setBounds(320, 420, 90, 40);
 
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/inicio_background.png"))); // NOI18N
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/login_background.png"))); // NOI18N
         getContentPane().add(backgroundJLabel);
-        backgroundJLabel.setBounds(0, -180, 1367, 769);
+        backgroundJLabel.setBounds(0, 0, 501, 501);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,7 +136,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton entrarJButton;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JTextField loginJTextField;
-    private javax.swing.JLabel logoJLabel;
     private javax.swing.JLabel senhaJLabel;
     private javax.swing.JPasswordField senhaJPasswordField;
     private javax.swing.JButton voltarJButton;

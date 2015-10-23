@@ -26,7 +26,7 @@ public class DisciplinaCadastro extends javax.swing.JFrame {
         this.disciplina = disciplina;
         inicializar();
         setTitle("Atualização de disciplina");
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alunoUp.png")));
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/disciplinaUp.png")));
         entrarJButton.setText("Atualizar");
         nomeJTextField.setText(disciplina.getDescricao());
         abreviacaoJTextField.setText(disciplina.getAbreviacao());
@@ -130,7 +130,7 @@ public class DisciplinaCadastro extends javax.swing.JFrame {
         getContentPane().add(cursoJLabel);
         cursoJLabel.setBounds(10, 420, 130, 30);
 
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alunoCadastro.png"))); // NOI18N
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/disciplinaCadastro.png"))); // NOI18N
         getContentPane().add(backgroundJLabel);
         backgroundJLabel.setBounds(0, -10, 480, 200);
 

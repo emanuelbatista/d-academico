@@ -56,9 +56,9 @@ public class DisciplinaList extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        coverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminLista.png"))); // NOI18N
+        coverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/disciplinaLista.png"))); // NOI18N
         getContentPane().add(coverjLabel);
-        coverjLabel.setBounds(0, 0, 529, 194);
+        coverjLabel.setBounds(0, 0, 518, 192);
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -24,7 +24,7 @@ public class CursoCadastro extends javax.swing.JFrame {
         this.curso = curso;
         inicializar();
         setTitle("Atualização de curso");
-        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adminUp.png")));
+        backgroundJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cursoUp.png")));
         entrarJButton.setText("Atualizar");
         nomeJTextField.setText(curso.getDescricao());
         abreviacaoJTextField.setText(curso.getAbreviacao());
@@ -56,6 +56,7 @@ public class CursoCadastro extends javax.swing.JFrame {
         unidadeJTextField = new javax.swing.JTextField();
         backgroundJLabel = new javax.swing.JLabel();
         periodojSpinner = new javax.swing.JSpinner();
+        backgroundJLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -128,6 +129,10 @@ public class CursoCadastro extends javax.swing.JFrame {
         periodojSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         getContentPane().add(periodojSpinner);
         periodojSpinner.setBounds(90, 450, 60, 30);
+
+        backgroundJLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cursoCadastro.png"))); // NOI18N
+        getContentPane().add(backgroundJLabel1);
+        backgroundJLabel1.setBounds(0, -10, 480, 200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +210,7 @@ public class CursoCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel abreviacaoJLabel;
     private javax.swing.JTextField abreviacaoJTextField;
     private javax.swing.JLabel backgroundJLabel;
+    private javax.swing.JLabel backgroundJLabel1;
     private javax.swing.JButton entrarJButton;
     private javax.swing.JLabel nomeJLabel;
     private javax.swing.JTextField nomeJTextField;
