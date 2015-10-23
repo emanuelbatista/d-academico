@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
  * @version 0.1
  */
 @Entity
-public class Turma {
+public class Turma implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

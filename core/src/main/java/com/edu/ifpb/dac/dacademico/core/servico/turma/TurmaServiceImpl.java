@@ -1,5 +1,8 @@
 package com.edu.ifpb.dac.dacademico.core.servico.turma;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
@@ -9,6 +12,7 @@ import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -45,13 +49,33 @@ public class TurmaServiceImpl implements TurmaService{
     }
 
     @Override
-    public Turma buscar(long id) {
-        return turmaRepositorio.buscar(Turma.class, id);
+    public Turma buscar(long id) throws EntidadeInexistenteException{
+        Turma turma=turmaRepositorio.buscar(Turma.class, id);
+        if(turma!=null){
+            return turma;
+        }
+        throw new EntidadeInexistenteException();
     }
 
     @Override
     public void atualizar(Turma turma) {
         turmaRepositorio.atualizar(turma);
+    }
+    
+    private void validarTurma(Turma turma) throws ValidacaoException{
+        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Turma>> erros=HibernateValidacao.<Turma>validar(turma);
+        List<Turma> turmas=turmaRepositorio.buscarPorAtributo(Turma.class, "identificacao", turma.getIdentificacao());
+        Turma turmaBanco=turmaRepositorio.buscar(Turma.class, turma.getCod());
+         if (!turmas.isEmpty() && turma.getCod()==0 || !turmas.isEmpty() && !turmaBanco.getIdentificacao().equals(turma.getIdentificacao())) {
+             com.edu.ifpb.dac.dacademico.core.aux.Error erro=new com.edu.ifpb.dac.dacademico.core.aux.Error();
+             erro.setField("identificacao");
+             erro.setMessage("Indentificação já existe");
+             erro.setRootBean(turma);
+             erros.add(erro);
+         }
+         if(!erros.isEmpty()){
+             throw new ValidacaoException(erros);
+         }
     }
 
     @Override
@@ -81,6 +105,20 @@ public class TurmaServiceImpl implements TurmaService{
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public List<Turma> listarTodos() {
+        return turmaRepositorio.listarTodos(Turma.class);
+    }
+
+    @Override
+    public Turma buscarPelaIdentificacao(String id) throws EntidadeInexistenteException{
+        List<Turma> turmas=turmaRepositorio.buscarPorAtributo(Turma.class, "identificacao", id);
+        if(!turmas.isEmpty()){
+            return turmas.get(0);
+        }
+        throw new EntidadeInexistenteException();
     }
     
 }

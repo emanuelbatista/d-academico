@@ -1,5 +1,7 @@
 package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
@@ -31,11 +33,11 @@ public class TurmaController {
         return turmaService.listarTodos();
     }
     
-    public void atualizar (Turma turma){
+    public void atualizar (Turma turma) throws ValidacaoException{
         turmaService.atualizar(turma);
     }
     
-    public Turma recuperar (long cod){
+    public Turma recuperar (long cod) throws EntidadeInexistenteException{
         return turmaService.buscar(cod);
     }
     
@@ -43,11 +45,11 @@ public class TurmaController {
         turmaService.remover(turma);
     }
     
-    public Turma recuperarPelaIdentificacao (String identificacao){
-        return turmaService.recuperarPelaIdentificacao(identificacao);
+    public Turma recuperarPelaIdentificacao (String identificacao) throws EntidadeInexistenteException{
+        return turmaService.buscarPelaIdentificacao(identificacao);
     }
     
-    public void cadastrar (Turma turma){
+    public void cadastrar (Turma turma) throws ValidacaoException{
         turmaService.salvar(turma);
     }
     
@@ -64,7 +66,7 @@ public class TurmaController {
     }
     
     public List<Disciplina> listarDisciplinasPeloCurso (Curso curso){
-        return disciplinaService.recuperarPorCurso(curso);
+        return disciplinaService.buscarPeloCurso(curso);
     }
     
 }

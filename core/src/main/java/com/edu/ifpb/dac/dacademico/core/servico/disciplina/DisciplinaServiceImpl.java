@@ -99,4 +99,9 @@ public class DisciplinaServiceImpl implements DisciplinaService {
         return disciplinaRepositorio.listarTodos(Disciplina.class);
     }
 
+    @Override
+    public List<Disciplina> buscarPeloCurso(Curso curso) {
+        return disciplinaRepositorio.buscarPorAtributo(Disciplina.class,"curso.cod",curso.getCod());
+    }
+
 }
