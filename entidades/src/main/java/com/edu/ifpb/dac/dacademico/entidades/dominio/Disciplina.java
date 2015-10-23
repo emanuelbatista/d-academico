@@ -83,5 +83,10 @@ public class Disciplina implements Serializable {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
     
 }

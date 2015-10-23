@@ -53,4 +53,9 @@ public class Professor extends Pessoa{
         this.regime = regime;
     }
 
+    @Override
+    public String toString() {
+        return super.getNomeCompleto();
+    }
+    
 }
