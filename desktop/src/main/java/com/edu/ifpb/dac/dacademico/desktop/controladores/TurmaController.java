@@ -27,8 +27,24 @@ public class TurmaController {
     private ProfessorService professorService = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
+    public List<Turma> listarTodos (){
+        return turmaService.listarTodos();
+    }
+    
     public void atualizar (Turma turma){
         turmaService.atualizar(turma);
+    }
+    
+    public Turma recuperar (long cod){
+        return turmaService.buscar(cod);
+    }
+    
+    public void remover (Turma turma){
+        turmaService.remover(turma);
+    }
+    
+    public Turma recuperarPelaIdentificacao (String identificacao){
+        return turmaService.recuperarPelaIdentificacao(identificacao);
     }
     
     public void cadastrar (Turma turma){
