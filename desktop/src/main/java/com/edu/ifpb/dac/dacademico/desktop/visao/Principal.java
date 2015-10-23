@@ -214,18 +214,38 @@ public class Principal extends javax.swing.JFrame {
         removerDisciplinaJLabel.setBounds(780, 380, 180, 40);
 
         cadastrarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarTurmaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarTurmaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(cadastrarTurmaJLabel);
         cadastrarTurmaJLabel.setBounds(970, 280, 180, 30);
 
         listarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listarTurmaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarTurmaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(listarTurmaJLabel);
         listarTurmaJLabel.setBounds(970, 310, 180, 30);
 
         atualizarTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atualizarTurmaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                atualizarTurmaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(atualizarTurmaJLabel);
         atualizarTurmaJLabel.setBounds(970, 350, 180, 30);
 
         removerTurmaJLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removerTurmaJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removerTurmaJLabelMouseClicked(evt);
+            }
+        });
         getContentPane().add(removerTurmaJLabel);
         removerTurmaJLabel.setBounds(970, 380, 180, 40);
 
@@ -313,6 +333,22 @@ public class Principal extends javax.swing.JFrame {
     private void listarDisciplinaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarDisciplinaJLabelMouseClicked
         new DisciplinaList();
     }//GEN-LAST:event_listarDisciplinaJLabelMouseClicked
+
+    private void cadastrarTurmaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarTurmaJLabelMouseClicked
+        new TurmaCadastro();
+    }//GEN-LAST:event_cadastrarTurmaJLabelMouseClicked
+
+    private void listarTurmaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarTurmaJLabelMouseClicked
+        new TurmaList();
+    }//GEN-LAST:event_listarTurmaJLabelMouseClicked
+
+    private void atualizarTurmaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atualizarTurmaJLabelMouseClicked
+        new TurmaList();
+    }//GEN-LAST:event_atualizarTurmaJLabelMouseClicked
+
+    private void removerTurmaJLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removerTurmaJLabelMouseClicked
+        new TurmaList();
+    }//GEN-LAST:event_removerTurmaJLabelMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel atualizarAdminJLabel;
