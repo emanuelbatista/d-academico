@@ -5,6 +5,7 @@
  */
 package com.edu.ifpb.dac.dacademico.core.servico.aluno;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
@@ -21,6 +22,8 @@ public interface AlunoService {
     void salvar (Aluno aluno) throws ValidacaoException;
     
     Aluno recuperarPeloLogin (String login) throws LoginInexistenteException;
+    
+    Aluno recuperarPelaMatricula (String matricula) throws EntidadeInexistenteException;
     
     void remover (Aluno aluno);
     

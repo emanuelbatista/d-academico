@@ -6,6 +6,7 @@
  */
 package com.edu.ifpb.dac.dacademico.core.servico.aluno;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
@@ -97,5 +98,14 @@ public class AlunoServiceImpl implements AlunoService{
     @Override
     public void remover(Aluno aluno) {
         repositorio.remover(aluno);
+    }
+
+    @Override
+    public Aluno recuperarPelaMatricula(String matricula) throws EntidadeInexistenteException{
+        try{
+        return repositorio.buscarPorAtributo(Aluno.class, "matricula", matricula).get(0);
+        } catch (Exception e){
+            throw new EntidadeInexistenteException();
+        }
     }
 }

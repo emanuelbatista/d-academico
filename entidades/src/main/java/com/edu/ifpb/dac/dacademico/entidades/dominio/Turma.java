@@ -2,6 +2,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Turma implements Serializable {
     private String identificacao;
     @ManyToOne
     private Professor professor;
-    @ManyToMany(mappedBy = "turmas")
+    @ManyToMany(mappedBy = "turmas", cascade = CascadeType.MERGE)
     private List<Aluno> alunos;
     @ManyToOne
     private Curso curso;

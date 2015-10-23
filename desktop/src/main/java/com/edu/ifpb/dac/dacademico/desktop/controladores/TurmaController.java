@@ -2,6 +2,8 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
+import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
@@ -11,6 +13,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
@@ -28,6 +31,7 @@ public class TurmaController {
     private CursoService cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private ProfessorService professorService = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private AlunoService alunoService = new AlunoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
     public List<Turma> listarTodos (){
         return turmaService.listarTodos();
@@ -67,6 +71,10 @@ public class TurmaController {
     
     public List<Disciplina> listarDisciplinasPeloCurso (Curso curso){
         return disciplinaService.buscarPeloCurso(curso);
+    }
+    
+    public Aluno recuperarAlunoPelaMatricula (String matricula) throws EntidadeInexistenteException{
+        return alunoService.recuperarPelaMatricula(matricula);
     }
     
 }
