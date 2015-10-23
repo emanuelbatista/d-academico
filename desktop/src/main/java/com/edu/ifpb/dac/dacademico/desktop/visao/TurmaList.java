@@ -2,7 +2,6 @@ package com.edu.ifpb.dac.dacademico.desktop.visao;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.TurmaController;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,6 +28,7 @@ public class TurmaList extends javax.swing.JFrame {
 
     private void atualizarTabela() {
         tableModel = new DefaultTableModel();
+        tableModel.addColumn("cod");
         tableModel.addColumn("Identificação");
         tableModel.addColumn("Curso");
         tableModel.addColumn("Professor");
@@ -36,7 +36,19 @@ public class TurmaList extends javax.swing.JFrame {
         tableModel.addColumn("Alunos");
         List<Turma> turmas = controller.listarTodos();
         for (Turma turma : turmas) {
-            tableModel.addRow(new Object[]{turma.getIdentificacao(), turma.getCurso().getAbreviacao(), turma.getProfessor().getNomeCompleto(), turma.getCurso().getAbreviacao(), turma.getDisciplina().getDescricao(), turma.getAlunos().size()});
+            try{
+                tableModel.addRow(
+                        new Object[]{
+                            turma.getCod()
+                            , turma.getIdentificacao()
+                            , turma.getCurso().getAbreviacao()
+                            , turma.getProfessor() != null ? turma.getProfessor().getNomeCompleto() : ""
+                            , turma.getDisciplina().getDescricao()
+                            , turma.getAlunos() != null ? turma.getAlunos().size() : 0
+                        });
+            }catch (Exception e){
+                System.out.println(turma);
+            }
         }
         jTable.setModel(tableModel);
     }
@@ -112,7 +124,7 @@ public class TurmaList extends javax.swing.JFrame {
 
     private void atualizarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarjButtonActionPerformed
         try {
-            new TurmaCadastro(controller.recuperarPelaIdentificacao(jTable.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            new TurmaCadastro(controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString())));
             this.dispose();
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -123,7 +135,7 @@ public class TurmaList extends javax.swing.JFrame {
 
     private void removerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerjButtonActionPerformed
         try {
-            Turma turma = controller.recuperarPelaIdentificacao(jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
+            Turma turma = controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString()));
             if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover a disciplina?") == JOptionPane.OK_OPTION)
                 controller.remover(turma);
             atualizarTabela();

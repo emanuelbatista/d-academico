@@ -100,7 +100,11 @@ public class AulaServicoImpl implements AulaServico{
             } catch (EntidadeInexistenteException ex) {
                 ex.printStackTrace();
             }
-            aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
+            try {
+                aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
+            } catch (EntidadeInexistenteException ex) {
+                ex.printStackTrace();
+            }
             aula.setProfessor(professorService.buscar(Long.parseLong(obj.getString("prof_cod"))));
             aula.setSala(salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala"))));
             aula.setLaboratorio(salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio"))));

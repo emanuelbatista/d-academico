@@ -89,4 +89,9 @@ public class Turma implements Serializable {
         this.alunos = alunos;
     }
 
+    @Override
+    public String toString() {
+        return "Turma{" + "cod=" + cod + ", identificacao=" + identificacao + ", professor=" + professor + ", alunos=" + alunos + ", curso=" + curso + ", disciplina=" + disciplina + ", aulas=" + aulas + '}';
+    }
+    
 }

@@ -42,6 +42,7 @@ public class TurmaCadastro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         iniciarCursoComboBox();
+        iniciarProfessorComboBox();
         disciplinajComboBox.setEnabled(false);
     }
     
@@ -56,19 +57,20 @@ public class TurmaCadastro extends javax.swing.JFrame {
     private void iniciarProfessorComboBox (){
         List<Professor> professores = controller.listarProfessores();
         for (Professor professor : professores)
-            cursojComboBox.addItem(professor);
+            professorjComboBox.addItem(professor);
         if (turma != null)
-            cursojComboBox.setSelectedItem(turma.getProfessor());
+            professorjComboBox.setSelectedItem(turma.getProfessor());
     }
     
     private void iniciarDisciplinaComboBox (){
+        disciplinajComboBox.removeAllItems();
         disciplinajComboBox.setEnabled(true);
         Curso curso = controller.recuperarCursoPelaDescricao((String) cursojComboBox.getSelectedItem());
         List<Disciplina> disciplinas = controller.listarDisciplinasPeloCurso(curso);
         for (Disciplina disciplina : disciplinas)
-            cursojComboBox.addItem(disciplina);
+            disciplinajComboBox.addItem(disciplina);
         if (turma != null)
-            cursojComboBox.setSelectedItem(turma.getDisciplina());
+            disciplinajComboBox.setSelectedItem(turma.getDisciplina());
     }
 
     @SuppressWarnings("unchecked")
