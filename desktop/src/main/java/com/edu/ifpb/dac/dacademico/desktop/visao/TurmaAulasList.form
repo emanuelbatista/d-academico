@@ -28,7 +28,7 @@
     <Component class="javax.swing.JLabel" name="coverjLabel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/turmaGerenciarAluno.png"/>
+          <Image iconType="3" name="/imagens/turmaAulas.png"/>
         </Property>
       </Properties>
       <Constraints>

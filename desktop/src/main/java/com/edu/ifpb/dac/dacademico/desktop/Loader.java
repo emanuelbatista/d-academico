@@ -52,8 +52,8 @@ public class Loader {
         /*TurmaService disciplinaService = new TurmaServiceImpl(unidadePersistencia);
         disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");*/
         
-        AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
-        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");
+        /*AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
+        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");*/
         
         /*Administrador admin = new Administrador();
         admin.setEmail("admin@admin.com");
@@ -69,6 +69,6 @@ public class Loader {
         horario.setFim(LocalTime.of(7, 50));
         service.salvar(horario);*/
         
-//        new Login();
+        new Login();
     }
 }

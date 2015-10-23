@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.core.servico.sala;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
@@ -22,4 +23,5 @@ public interface SalaService {
     void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException;
     public SalaNormal buscarSalaNormal (long id);
     public Laboratorio buscarLaboratorio (long id);
+    public Sala buscarPelaAbreviacao (String abr) throws EntidadeInexistenteException;
 }

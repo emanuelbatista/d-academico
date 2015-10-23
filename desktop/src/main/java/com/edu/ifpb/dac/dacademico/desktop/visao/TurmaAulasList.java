@@ -4,7 +4,11 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.TurmaController;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,13 +16,25 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author douglasgabriel
  */
-public class TurmaAulaList extends javax.swing.JFrame {
+public class TurmaAulasList extends javax.swing.JFrame {
 
+    private enum TabelaHorario {
+        
+        M1(1), M2(2), M3(3), M4(4), M5(5), T1(6), T2(7), T3(8), T4(9), T5(10)
+        , N1(11), N2(12), N3(13), N4(14);
+        
+        int posicao;
+        
+        private TabelaHorario (int posicao){
+            this.posicao = posicao;
+        }
+    }
+    
     private TurmaController controller = new TurmaController();
     private DefaultTableModel tableModel;
     private Turma turma;
 
-    public TurmaAulaList(Turma turma) {
+    public TurmaAulasList(Turma turma) {
         this.turma = turma;
         initComponents();
         nomeTurmaJLabel.setText(turma.getDisciplina().getDescricao() + ", " + turma.getCurso().getDescricao());
@@ -32,17 +48,24 @@ public class TurmaAulaList extends javax.swing.JFrame {
 
     private void atualizarTabela() {
         tableModel = new DefaultTableModel();
-        tableModel.addColumn("Nome");
-        tableModel.addColumn("E-mail");
-        tableModel.addColumn("Matrícula");
-        for (Aluno aluno : turma.getAlunos()) {
+        tableModel.addColumn("Horário");
+        tableModel.addColumn("Segunda-Feira");
+        tableModel.addColumn("Terça-Feira");
+        tableModel.addColumn("Quarta-Feira");
+        tableModel.addColumn("Quinta-Feira");
+        tableModel.addColumn("Sexta-Feira");
+        for (TabelaHorario horario : TabelaHorario.values()){
+            tableModel.addRow(new Object[]{horario.toString()});            
+        }
+        for (Aula aula : turma.getAulas()) {
             try {
-                tableModel.addRow(
-                        new Object[]{
-                            aluno.getNomeCompleto(), aluno.getEmail(), aluno.getMatricula()
-                        });
+                tableModel.setValueAt(
+                        aula.getCod()
+                        , TabelaHorario.valueOf(aula.getHorario().getDescricao()).posicao
+                        , aula.getHorario().getDia().getValue()
+                );
             } catch (Exception e) {
-                System.out.println(aluno);
+                System.out.println(aula);
                 continue;
             }
         }
@@ -64,7 +87,7 @@ public class TurmaAulaList extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        coverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/turmaGerenciarAluno.png"))); // NOI18N
+        coverjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/turmaAulas.png"))); // NOI18N
         getContentPane().add(coverjLabel);
         coverjLabel.setBounds(0, 0, 610, 192);
 
@@ -127,14 +150,38 @@ public class TurmaAulaList extends javax.swing.JFrame {
 
     private void adicionarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarjButtonActionPerformed
         try {
-            String matricula = JOptionPane.showInputDialog(null, "Informe a matrícula do aluno:");
-            Aluno aluno = controller.recuperarAlunoPelaMatricula(matricula);
-            turma.getAlunos().add(aluno);
-            aluno.getTurmas().add(turma);
-            controller.atualizar(turma);
-            atualizarTabela();
-        } catch (EntidadeInexistenteException e) {
-            JOptionPane.showMessageDialog(null, "Nenhuma aluno com a matricula informada foi encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            if (jTable.getSelectedRow() == 0){
+                JOptionPane.showMessageDialog(null, "A célula da tabela selecionada não é válida", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) == null){
+                Aula aula = new Aula();
+                aula.setTurma(turma);
+                Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
+                aula.setHorario(horario);
+                aula.setSala(new ArrayList<>());
+                Sala sala = null;
+                do {
+                    try{
+                        if (aula.getSalas().size() > 0)
+                            if (!(JOptionPane.showConfirmDialog(null, "Deseja atribuir mais uma sala para a aula?") == JOptionPane.OK_OPTION))
+                                break;
+                        sala = controller.recuperarSalaPelaAbreviacao(JOptionPane.showInputDialog(null, "Informe a abreviação da sala que a aula será realizada"));
+                    }catch( EntidadeInexistenteException e){
+                        JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada com essa abreviação", "Erro", JOptionPane.ERROR_MESSAGE);
+                        if (aula.getSalas().size() <= 0)
+                            JOptionPane.showMessageDialog(null, "É necessário atribuir pelo menos uma sala para a aula", "Erro", JOptionPane.ERROR_MESSAGE);
+                        continue;
+                    }
+                }while(sala != null);
+                turma.getAulas().add(aula);
+                controller.atualizar(turma);
+            }else {
+                JOptionPane.showMessageDialog(null, "Já existe uma aula neste horário", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch (EntidadeInexistenteException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao recuperar o horário", "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (ValidacaoException e) {
             e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
         }
@@ -142,18 +189,17 @@ public class TurmaAulaList extends javax.swing.JFrame {
 
     private void removerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerjButtonActionPerformed
         try {
-            Aluno aluno = controller.recuperarAlunoPelaMatricula(jTable.getValueAt(jTable.getSelectedRow(), 2).toString());
-            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover o aluno?") == JOptionPane.OK_OPTION) {
-                turma.getAlunos().remove(aluno);
-                aluno.getTurmas().remove(turma);
+            Aula aula = controller.recuperarAula(Long.parseLong((String)jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn())));
+            if (aula != null){                
+                turma.getAulas().remove(aula);
+                controller.atualizar(turma);
+                controller.removerAula(aula);
+            }else {
+                JOptionPane.showMessageDialog(null, "Não existe aula cadastrada para este horário", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            controller.atualizar(turma);
-            atualizarTabela();
-        } catch (EntidadeInexistenteException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao carregar disciplina selecionada", "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
-        }catch (ValidacaoException e) {
+        } catch (ValidacaoException e) {
             e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
         }
     }//GEN-LAST:event_removerjButtonActionPerformed

@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.core.servico.sala;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
@@ -20,8 +21,8 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class SalaServiceImpl implements SalaService{
-    
+public class SalaServiceImpl implements SalaService {
+
     private Dao<Sala, Long> repositorio;
     private Dao<Laboratorio, Long> repositorioLaboratorio;
     private Dao<SalaNormal, Long> repositorioSalaNormal;
@@ -30,19 +31,19 @@ public class SalaServiceImpl implements SalaService{
         this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
         this.repositorioLaboratorio = new GenericoDaoJPA<>(unidadePersistencia);
         this.repositorioSalaNormal = new GenericoDaoJPA<>(unidadePersistencia);
-    }        
+    }
 
     @Override
     public void salvar(Sala sala) {
         repositorio.salvar(sala);
     }
-    
-    public void salvarLaboratorio(Sala sala){
+
+    public void salvarLaboratorio(Sala sala) {
         Laboratorio lab = (Laboratorio) sala;
         repositorioLaboratorio.salvar(lab);
     }
-    
-    public void salvarSalaNormal (Sala sala){
+
+    public void salvarSalaNormal(Sala sala) {
         SalaNormal salaNormal = (SalaNormal) sala;
         repositorioSalaNormal.salvar(salaNormal);
     }
@@ -56,12 +57,12 @@ public class SalaServiceImpl implements SalaService{
     public Sala buscar(long id) {
         return repositorio.buscar(Sala.class, id);
     }
-    
-    public SalaNormal buscarSalaNormal (long id){
+
+    public SalaNormal buscarSalaNormal(long id) {
         return repositorioSalaNormal.buscar(SalaNormal.class, id);
     }
-    
-    public Laboratorio buscarLaboratorio (long id){
+
+    public Laboratorio buscarLaboratorio(long id) {
         return repositorioLaboratorio.buscar(Laboratorio.class, id);
     }
 
@@ -76,23 +77,45 @@ public class SalaServiceImpl implements SalaService{
         JsonObject object = jsonReader.readObject();
         jsonReader.close();
         JsonArray array = object.getJsonArray("data");
-        for (int i = 0; i < array.size(); i++){
+        for (int i = 0; i < array.size(); i++) {
             Sala sala = null;
-            switch(tipo){
-                case LABORATORIO: sala = new Laboratorio();break;
-                case NORMAL:sala = new SalaNormal();break;
+            switch (tipo) {
+                case LABORATORIO:
+                    sala = new Laboratorio();
+                    break;
+                case NORMAL:
+                    sala = new SalaNormal();
+                    break;
             }
             JsonObject obj = array.getJsonObject(i);
             sala.setCod(Integer.parseInt(obj.getString("codigo")));
             sala.setAbreviacao(obj.getString("abreviacao"));
             sala.setDescricao(obj.getString("descricao"));
-            try{
-                switch(tipo){
-                    case LABORATORIO: salvarLaboratorio(sala);break;
-                    case NORMAL: salvarSalaNormal(sala);break;
-                }                
-            }catch (Exception e){
+            try {
+                switch (tipo) {
+                    case LABORATORIO:
+                        salvarLaboratorio(sala);
+                        break;
+                    case NORMAL:
+                        salvarSalaNormal(sala);
+                        break;
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public Sala buscarPelaAbreviacao(String abr) throws EntidadeInexistenteException {
+        try {
+            Sala sala;
+            return sala = repositorioSalaNormal.buscarPorAtributo(SalaNormal.class, "abreviacao", abr).get(0);
+        } catch (Exception e) {
+            try {
+                return repositorioLaboratorio.buscarPorAtributo(Laboratorio.class, "abreviacao", abr).get(0);
+            } catch (Exception ex) {
+                throw new EntidadeInexistenteException();
             }
         }
     }

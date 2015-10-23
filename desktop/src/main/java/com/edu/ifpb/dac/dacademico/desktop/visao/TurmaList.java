@@ -66,7 +66,7 @@ public class TurmaList extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         nomeCompletoJLabel = new javax.swing.JLabel();
         alunosjButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        aulasjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -142,9 +142,14 @@ public class TurmaList extends javax.swing.JFrame {
         getContentPane().add(alunosjButton);
         alunosjButton.setBounds(30, 540, 120, 40);
 
-        jButton3.setText("Aula");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(230, 540, 140, 40);
+        aulasjButton.setText("Aulas");
+        aulasjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aulasjButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(aulasjButton);
+        aulasjButton.setBounds(230, 540, 140, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,12 +192,22 @@ public class TurmaList extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_alunosjButtonActionPerformed
 
+    private void aulasjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aulasjButtonActionPerformed
+        try {
+            new TurmaAulasList(controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString())));
+        } catch (EntidadeInexistenteException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar turma selecionada", "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_aulasjButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alunosjButton;
     private javax.swing.JButton atualizarjButton;
+    private javax.swing.JButton aulasjButton;
     private javax.swing.JLabel coverjLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     private javax.swing.JLabel nomeCompletoJLabel;
