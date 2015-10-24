@@ -26,7 +26,6 @@ public class Aula implements Serializable {
     @ManyToOne
     private Horario horario;
     @ManyToMany
-//    @Transient
     private List<Sala> salas;
 
     public Aula (){
@@ -61,7 +60,7 @@ public class Aula implements Serializable {
         return salas;
     }
 
-    public void setSala(List<Sala> salas) {
+    public void setSalas(List<Sala> salas) {
         this.salas = salas;
     }
 
