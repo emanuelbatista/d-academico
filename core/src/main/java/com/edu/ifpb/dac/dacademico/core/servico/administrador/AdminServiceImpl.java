@@ -7,7 +7,7 @@ import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
-import com.edu.ifpb.dac.dacademico.core.aux.Error;
+import com.edu.ifpb.dac.dacademico.core.errors.Error;
 import java.util.List;
 
 /**

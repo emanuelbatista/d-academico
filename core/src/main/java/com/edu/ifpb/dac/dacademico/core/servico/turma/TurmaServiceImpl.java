@@ -63,11 +63,11 @@ public class TurmaServiceImpl implements TurmaService{
     }
     
     private void validarTurma(Turma turma) throws ValidacaoException{
-        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Turma>> erros=HibernateValidacao.<Turma>validar(turma);
+        List<com.edu.ifpb.dac.dacademico.core.errors.Error<Turma>> erros=HibernateValidacao.<Turma>validar(turma);
         List<Turma> turmas=turmaRepositorio.buscarPorAtributo(Turma.class, "identificacao", turma.getIdentificacao());
         Turma turmaBanco=turmaRepositorio.buscar(Turma.class, turma.getCod());
          if (!turmas.isEmpty() && turma.getCod()==0 || !turmas.isEmpty() && !turmaBanco.getIdentificacao().equals(turma.getIdentificacao())) {
-             com.edu.ifpb.dac.dacademico.core.aux.Error erro=new com.edu.ifpb.dac.dacademico.core.aux.Error();
+             com.edu.ifpb.dac.dacademico.core.errors.Error erro=new com.edu.ifpb.dac.dacademico.core.errors.Error();
              erro.setField("identificacao");
              erro.setMessage("Indentificação já existe");
              erro.setRootBean(turma);

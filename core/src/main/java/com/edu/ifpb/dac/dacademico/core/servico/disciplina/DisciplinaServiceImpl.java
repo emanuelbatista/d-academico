@@ -58,7 +58,7 @@ public class DisciplinaServiceImpl implements DisciplinaService {
     }
 
     private void validarDisciplina(Disciplina disciplina) throws ValidacaoException {
-        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Disciplina>> erros = HibernateValidacao.<Disciplina>validar(disciplina);
+        List<com.edu.ifpb.dac.dacademico.core.errors.Error<Disciplina>> erros = HibernateValidacao.<Disciplina>validar(disciplina);
         if (!erros.isEmpty()) {
             throw new ValidacaoException(erros);
         }

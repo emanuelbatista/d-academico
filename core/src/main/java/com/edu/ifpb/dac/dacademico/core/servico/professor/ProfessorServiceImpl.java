@@ -51,11 +51,11 @@ public class ProfessorServiceImpl implements ProfessorService {
      private void validarProfessor(Professor professor) throws ValidacaoException {
         String email = professor.getEmail();
         String login = professor.getLogin();
-        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Professor>> errors = HibernateValidacao.<Professor>validar(professor);
+        List<com.edu.ifpb.dac.dacademico.core.errors.Error<Professor>> errors = HibernateValidacao.<Professor>validar(professor);
         List<Professor> professores=repositorio.buscarPorAtributo(Professor.class, "login", login);
         Professor profBanco=repositorio.buscar(Professor.class, professor.getCod());
         if (!professores.isEmpty() && professor.getCod()==0 || !professores.isEmpty() && !profBanco.getLogin().equals(login)) {
-            com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error();
+            com.edu.ifpb.dac.dacademico.core.errors.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.errors.Error();
             error.setField("login");
             error.setMessage("Esse login já está cadastrado");
             error.setRootBean(professor);
@@ -63,7 +63,7 @@ public class ProfessorServiceImpl implements ProfessorService {
         }
         professores=repositorio.buscarPorAtributo(Professor.class, "email", email);
         if (!professores.isEmpty() && professor.getCod()==0 || !professores.isEmpty() && !profBanco.getEmail().equals(email)) {
-            com.edu.ifpb.dac.dacademico.core.aux.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.aux.Error<>();
+            com.edu.ifpb.dac.dacademico.core.errors.Error<Professor> error = new com.edu.ifpb.dac.dacademico.core.errors.Error<>();
             error.setField("email");
             error.setMessage("Esse email já está cadastrado");
             error.setRootBean(professor);

@@ -5,7 +5,7 @@
  */
 package com.edu.ifpb.dac.dacademico.core.exceptions;
 
-import com.edu.ifpb.dac.dacademico.core.aux.Error;
+import com.edu.ifpb.dac.dacademico.core.errors.Error;
 import java.util.LinkedList;
 import java.util.List;
 

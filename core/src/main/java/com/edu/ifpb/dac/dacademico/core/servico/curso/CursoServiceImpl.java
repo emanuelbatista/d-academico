@@ -55,11 +55,11 @@ public class CursoServiceImpl implements CursoService {
     }
 
     private void validarCurso(Curso curso) throws ValidacaoException {
-        List<com.edu.ifpb.dac.dacademico.core.aux.Error<Curso>> erros = HibernateValidacao.<Curso>validar(curso);
+        List<com.edu.ifpb.dac.dacademico.core.errors.Error<Curso>> erros = HibernateValidacao.<Curso>validar(curso);
         List<Curso> cursos=repositorio.buscarPorAtributo(Curso.class, "descricao", curso.getDescricao());
         Curso cursoBanco=repositorio.buscar(Curso.class,curso.getCod());
         if(!cursos.isEmpty() && curso.getCod()==0 || !cursos.isEmpty() && !cursoBanco.getDescricao().equals(curso.getDescricao())){
-            com.edu.ifpb.dac.dacademico.core.aux.Error<Curso> erro=new com.edu.ifpb.dac.dacademico.core.aux.Error();
+            com.edu.ifpb.dac.dacademico.core.errors.Error<Curso> erro=new com.edu.ifpb.dac.dacademico.core.errors.Error();
             erro.setField("descricao");
             erro.setMessage("Essa descricao do curso já existe");
             erro.setRootBean(curso);
