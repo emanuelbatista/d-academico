@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -18,7 +19,7 @@ import javax.persistence.OneToMany;
  * @version 0.1
  */
 @Entity
-public class Horario {
+public class Horario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

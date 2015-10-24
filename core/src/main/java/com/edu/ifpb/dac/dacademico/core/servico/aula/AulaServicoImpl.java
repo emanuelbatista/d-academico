@@ -21,6 +21,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -105,6 +106,7 @@ public class AulaServicoImpl implements AulaServico{
             aula.getSalas().add(salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio"))));
             try {
                 horario.getAulas().add(aula);
+                aula.setSala(new ArrayList<>());
                 aulaRepositorio.salvar(aula);
             } catch (Exception e) {
                 e.printStackTrace();

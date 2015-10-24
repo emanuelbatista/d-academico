@@ -13,6 +13,7 @@
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Professor</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno</class>
+    <validation-mode>NONE</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dacademico"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

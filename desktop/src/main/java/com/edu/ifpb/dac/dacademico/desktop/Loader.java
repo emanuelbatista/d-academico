@@ -36,24 +36,24 @@ import java.time.LocalTime;
 public class Loader {
     public static void main(String[] args) throws IOException {
         String unidadePersistencia = "com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU";
-        /*ProfessorServiceImpl service = new ProfessorServiceImpl(unidadePersistencia);
-        service.urlParaBanco("http://200.129.71.228/horarios/data/professores.json");
+//        ProfessorServiceImpl service = new ProfessorServiceImpl(unidadePersistencia);
+//        service.urlParaBanco("http://200.129.71.228/horarios/data/professores.json");
+//        
+//        SalaService salaService = new SalaServiceImpl(unidadePersistencia);
+//        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.NORMAL);
+//        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.LABORATORIO);
+//        
+//        CursoService cursoService = new CursoServiceImpl(unidadePersistencia);
+//        cursoService.urlParaBanco("http://200.129.71.228/horarios/data/cursos.json");
+//        
+//        DisciplinaService disciplinaService = new DisciplinaServiceImpl(unidadePersistencia);
+//        disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/disciplinas.json");
+//        
+//        TurmaService turmaService = new TurmaServiceImpl(unidadePersistencia);
+//        turmaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");
         
-        SalaService salaService = new SalaServiceImpl(unidadePersistencia);
-        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.NORMAL);
-        salaService.urlParaBanco("http://200.129.71.228/horarios/data/laboratorios.json", SalaTipo.LABORATORIO);
-        
-        CursoService cursoService = new CursoServiceImpl(unidadePersistencia);
-        cursoService.urlParaBanco("http://200.129.71.228/horarios/data/cursos.json");*/
-        
-        /*DisciplinaService disciplinaService = new DisciplinaServiceImpl(unidadePersistencia);
-        disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/disciplinas.json");*/
-        
-        /*TurmaService disciplinaService = new TurmaServiceImpl(unidadePersistencia);
-        disciplinaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");*/
-        
-        /*AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
-        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");*/
+        AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
+        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");
         
         /*Administrador admin = new Administrador();
         admin.setEmail("admin@admin.com");
@@ -69,6 +69,6 @@ public class Loader {
         horario.setFim(LocalTime.of(7, 50));
         service.salvar(horario);*/
         
-        new Login();
+//        new Login();
     }
 }
