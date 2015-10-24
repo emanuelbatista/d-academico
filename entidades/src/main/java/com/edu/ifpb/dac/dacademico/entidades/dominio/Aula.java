@@ -3,14 +3,12 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 /**
  *
@@ -27,8 +25,8 @@ public class Aula implements Serializable {
     private Turma turma;
     @ManyToOne
     private Horario horario;
-//    @ManyToMany
-    @Transient
+    @ManyToMany
+//    @Transient
     private List<Sala> salas;
 
     public Aula (){
