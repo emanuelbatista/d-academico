@@ -13,6 +13,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
@@ -102,11 +103,14 @@ public class AulaServicoImpl implements AulaServico{
                 System.out.println("A aula não encontrou a turma");
                 continue;
             }
-            aula.getSalas().add(salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala"))));
-            aula.getSalas().add(salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio"))));
+            aula.setSalas(new ArrayList<>());
+            Sala sala;
+            if ((sala = salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala")))) != null)
+                aula.getSalas().add(sala);
+            if ((sala = salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio")))) != null)
+                aula.getSalas().add(sala);
             try {
                 horario.getAulas().add(aula);
-                aula.setSala(new ArrayList<>());
                 aulaRepositorio.salvar(aula);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -158,7 +158,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 aula.setTurma(turma);
                 Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
                 aula.setHorario(horario);
-                aula.setSala(new ArrayList<>());
+                aula.setSalas(new ArrayList<>());
                 Sala sala = null;
                 do {
                     try{
