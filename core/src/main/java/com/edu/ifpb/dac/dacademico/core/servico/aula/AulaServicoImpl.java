@@ -13,7 +13,9 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
 import java.io.IOException;
@@ -33,16 +35,16 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class AulaServicoImpl implements AulaServico{
-    
+public class AulaServicoImpl implements AulaServico {
+
     private Dao<Aula, Long> aulaRepositorio;
-    private Dao<Horario, Long> horarioRepositorio;    
+    private Dao<Horario, Long> horarioRepositorio;
 
     public AulaServicoImpl(String unidadePersistencia) {
         this.aulaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
         this.horarioRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
     }
-    
+
     @Override
     public void salvar(Aula aula) {
         aulaRepositorio.salvar(aula);
@@ -72,17 +74,17 @@ public class AulaServicoImpl implements AulaServico{
         JsonArray array = object.getJsonArray("data");
         CursoService cursoService = new CursoServiceImpl(aulaRepositorio.getUnidadePersistencia());
         TurmaService turmaService = new TurmaServiceImpl(aulaRepositorio.getUnidadePersistencia());
-        SalaService salaService = new SalaServiceImpl(aulaRepositorio.getUnidadePersistencia());        
+        SalaService salaService = new SalaServiceImpl(aulaRepositorio.getUnidadePersistencia());
 //        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < array.size(); i++) {
             Aula aula = new Aula();
             JsonObject obj = array.getJsonObject(i);
             Horario horario = horarioRepositorio.buscar(Horario.class, Long.parseLong(obj.getString("hor_cod")));
-            if (horario == null){
+            if (horario == null) {
                 horario = new Horario();
                 horario.setCod(Long.parseLong(obj.getString("hor_cod")));
                 horario.setDescricao(obj.getString("hor_desc"));
-                horario.setDia(DayOfWeek.values()[Integer.parseInt(obj.getString("dia_abrev"))-1]);
+                horario.setDia(DayOfWeek.values()[Integer.parseInt(obj.getString("dia_abrev")) - 1]);
                 String[] horInicio = obj.getString("hor_inicio").split(":");
                 String[] horFim = obj.getString("hor_fim").split(":");
                 horario.setInicio(LocalTime.of(Integer.parseInt(horInicio[0]), Integer.parseInt(horInicio[1])));
@@ -99,23 +101,23 @@ public class AulaServicoImpl implements AulaServico{
             aula.setHorario(horario);
             try {
                 aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
+                SalaNormal salaNormal;
+                if ((salaNormal = salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala")))) != null) {
+                    aula.setSalaNormal(salaNormal);
+                }
+                Laboratorio laboratorio;
+                if ((laboratorio = salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio")))) != null) {
+                    aula.setLaboratorio(laboratorio);
+                }
+                horario.getAulas().add(aula);
+                aulaRepositorio.salvar(aula);
             } catch (EntidadeInexistenteException ex) {
                 System.out.println("A aula não encontrou a turma");
                 continue;
-            }
-            aula.setSalas(new ArrayList<>());
-            Sala sala;
-            if ((sala = salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala")))) != null)
-                aula.getSalas().add(sala);
-            if ((sala = salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio")))) != null)
-                aula.getSalas().add(sala);
-            try {
-                horario.getAulas().add(aula);
-                aulaRepositorio.salvar(aula);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-    }
 
+    }
 }

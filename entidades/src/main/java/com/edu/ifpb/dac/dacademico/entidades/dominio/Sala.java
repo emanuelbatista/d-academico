@@ -1,12 +1,16 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -24,7 +28,7 @@ public abstract class Sala implements Serializable {
 
     private long cod;
     private SalaTipo salaTipo;
-    private String abreviacao, descricao;
+    private String abreviacao, descricao;    
 
     @Id
     @Column(name = "cod")

@@ -28,7 +28,6 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
     }
     
     @Override
-    @TransactionScoped
     public void salvar(T entidade) {
         EntityTransaction transacao = entityManager.getTransaction();
         try{

@@ -158,21 +158,20 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 aula.setTurma(turma);
                 Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
                 aula.setHorario(horario);
-                aula.setSalas(new ArrayList<>());
                 Sala sala = null;
-                do {
-                    try{
-                        if (aula.getSalas().size() > 0)
-                            if (!(JOptionPane.showConfirmDialog(null, "Deseja atribuir mais uma sala para a aula?") == JOptionPane.OK_OPTION))
-                                break;
-                        sala = controller.recuperarSalaPelaAbreviacao(JOptionPane.showInputDialog(null, "Informe a abreviação da sala que a aula será realizada"));
-                    }catch( EntidadeInexistenteException e){
-                        JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada com essa abreviação", "Erro", JOptionPane.ERROR_MESSAGE);
-                        if (aula.getSalas().size() <= 0)
-                            JOptionPane.showMessageDialog(null, "É necessário atribuir pelo menos uma sala para a aula", "Erro", JOptionPane.ERROR_MESSAGE);
-                        continue;
-                    }
-                }while(sala != null);
+//                do {
+//                    try{
+//                        if (aula.getSalas().size() > 0)
+//                            if (!(JOptionPane.showConfirmDialog(null, "Deseja atribuir mais uma sala para a aula?") == JOptionPane.OK_OPTION))
+//                                break;
+//                        sala = controller.recuperarSalaPelaAbreviacao(JOptionPane.showInputDialog(null, "Informe a abreviação da sala que a aula será realizada"));
+//                    }catch( EntidadeInexistenteException e){
+//                        JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada com essa abreviação", "Erro", JOptionPane.ERROR_MESSAGE);
+//                        if (aula.getSalas().size() <= 0)
+//                            JOptionPane.showMessageDialog(null, "É necessário atribuir pelo menos uma sala para a aula", "Erro", JOptionPane.ERROR_MESSAGE);
+//                        continue;
+//                    }
+//                }while(sala != null);
                 turma.getAulas().add(aula);
                 controller.atualizar(turma);
             }else {

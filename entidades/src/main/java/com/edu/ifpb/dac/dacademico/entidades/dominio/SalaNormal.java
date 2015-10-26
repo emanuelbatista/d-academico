@@ -25,4 +25,8 @@ public class SalaNormal extends Sala{
         return super.getDescricao();
     }
     
+    public void setCod(Long cod){
+        super.setCod(cod);
+    }
+    
 }

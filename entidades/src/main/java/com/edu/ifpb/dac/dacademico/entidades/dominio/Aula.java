@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
@@ -27,13 +28,9 @@ public class Aula implements Serializable {
     private Turma turma;
     @ManyToOne
     private Horario horario;
-    @ManyToMany
-    private List<Sala> salas;
+    private Laboratorio laboratorio;
+    private SalaNormal salaNormal;
 
-    public Aula (){
-        this.salas = new ArrayList<>();
-    }
-    
     public long getCod() {
         return cod;
     }
@@ -58,12 +55,20 @@ public class Aula implements Serializable {
         this.horario = horario;
     }
 
-    public List<Sala> getSalas() {
-        return salas;
+    public Laboratorio getLaboratorio() {
+        return laboratorio;
     }
 
-    public void setSalas(List<Sala> salas) {
-        this.salas = salas;
+    public void setLaboratorio(Laboratorio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
+
+    public SalaNormal getSalaNormal() {
+        return salaNormal;
+    }
+
+    public void setSalaNormal(SalaNormal salaNormal) {
+        this.salaNormal = salaNormal;
     }
 
 }

@@ -16,4 +16,8 @@ public class Laboratorio extends Sala{
         return super.getCod();
     }
     
+    public void setCod(Long cod){
+        super.setCod(cod);
+    }
+    
 }
