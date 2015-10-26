@@ -25,8 +25,6 @@ public class Horario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
     private String descricao;
-    @Enumerated(EnumType.ORDINAL)
-    private DayOfWeek dia;
     private LocalTime inicio, fim;
     @OneToMany (mappedBy = "horario")
     private List<Aula> aulas;    
@@ -45,14 +43,6 @@ public class Horario implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public DayOfWeek getDia() {
-        return dia;
-    }
-
-    public void setDia(DayOfWeek dia) {
-        this.dia = dia;
     }
 
     public LocalTime getInicio() {

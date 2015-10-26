@@ -84,7 +84,6 @@ public class AulaServicoImpl implements AulaServico {
                 horario = new Horario();
                 horario.setCod(Long.parseLong(obj.getString("hor_cod")));
                 horario.setDescricao(obj.getString("hor_desc"));
-                horario.setDia(DayOfWeek.values()[Integer.parseInt(obj.getString("dia_abrev")) - 1]);
                 String[] horInicio = obj.getString("hor_inicio").split(":");
                 String[] horFim = obj.getString("hor_fim").split(":");
                 horario.setInicio(LocalTime.of(Integer.parseInt(horInicio[0]), Integer.parseInt(horInicio[1])));
@@ -99,16 +98,23 @@ public class AulaServicoImpl implements AulaServico {
                 horarioRepositorio.salvar(horario);
             }
             aula.setHorario(horario);
+            aula.setDia(DayOfWeek.values()[Integer.parseInt(obj.getString("dia_abrev")) - 1]);
             try {
                 aula.setTurma(turmaService.buscar(Long.parseLong(obj.getString("tur_cod"))));
-                SalaNormal salaNormal;
-                if ((salaNormal = salaService.buscarSalaNormal(Long.parseLong(obj.getString("sala")))) != null) {
-                    aula.setSalaNormal(salaNormal);
+                String valor = obj.get("sala").toString();
+                if (valor != null) {
+                    SalaNormal salaNormal = salaService.buscarSalaNormal(Long.parseLong((obj.getString("sala"))));
+                    if (salaNormal != null) {
+                        aula.setSalaNormal(salaNormal);
+                    }
                 }
-                Laboratorio laboratorio;
-                if ((laboratorio = salaService.buscarLaboratorio(Long.parseLong(obj.getString("laboratorio")))) != null) {
-                    aula.setLaboratorio(laboratorio);
-                }
+                valor = obj.get("laboratorio").toString();
+                if (valor != null) {
+                    Laboratorio laboratorio = salaService.buscarLaboratorio(Long.parseLong((obj.getString("laboratorio"))));
+                    if (laboratorio != null) {
+                        aula.setLaboratorio(laboratorio);
+                    }
+                }                
                 horario.getAulas().add(aula);
                 aulaRepositorio.salvar(aula);
             } catch (EntidadeInexistenteException ex) {

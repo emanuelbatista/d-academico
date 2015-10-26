@@ -1,9 +1,12 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +29,12 @@ public class Aula implements Serializable {
     private Turma turma;
     @ManyToOne
     private Horario horario;
+    @ManyToOne
     private Laboratorio laboratorio;
+    @ManyToOne
     private SalaNormal salaNormal;
+    @Enumerated(EnumType.STRING)
+    private DayOfWeek dia;
 
     public long getCod() {
         return cod;
@@ -41,6 +48,14 @@ public class Aula implements Serializable {
         return turma;
     }
 
+    public DayOfWeek getDia() {
+        return dia;
+    }
+
+    public void setDia(DayOfWeek dia) {
+        this.dia = dia;
+    }
+    
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
@@ -69,4 +84,9 @@ public class Aula implements Serializable {
         this.salaNormal = salaNormal;
     }
 
+    @Override
+    public String toString() {
+        return turma.getDisciplina().getAbreviacao();
+    }
+    
 }

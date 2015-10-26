@@ -8,6 +8,7 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -60,12 +61,11 @@ public class TurmaAulasList extends javax.swing.JFrame {
         for (Aula aula : turma.getAulas()) {
             try {
                 tableModel.setValueAt(
-                        aula.getCod()
-                        , TabelaHorario.valueOf(aula.getHorario().getDescricao()).posicao
-                        , aula.getHorario().getDia().getValue()
+                        aula
+                        , TabelaHorario.valueOf(aula.getHorario().getDescricao()).posicao-1
+                        , aula.getDia().getValue()
                 );
             } catch (Exception e) {
-                System.out.println(aula);
                 continue;
             }
         }
@@ -150,7 +150,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
 
     private void adicionarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarjButtonActionPerformed
         try {
-            if (jTable.getSelectedRow() == 0){
+            if (jTable.getSelectedColumn()== 0){
                 JOptionPane.showMessageDialog(null, "A célula da tabela selecionada não é válida", "Erro", JOptionPane.ERROR_MESSAGE);
             }
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) == null){
@@ -158,6 +158,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 aula.setTurma(turma);
                 Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
                 aula.setHorario(horario);
+                aula.setDia(DayOfWeek.of(jTable.getSelectedColumn()));
                 Sala sala = null;
 //                do {
 //                    try{
@@ -174,6 +175,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
 //                }while(sala != null);
                 turma.getAulas().add(aula);
                 controller.atualizar(turma);
+                atualizarTabela();
             }else {
                 JOptionPane.showMessageDialog(null, "Já existe uma aula neste horário", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -188,11 +190,12 @@ public class TurmaAulasList extends javax.swing.JFrame {
 
     private void removerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerjButtonActionPerformed
         try {
-            Aula aula = controller.recuperarAula(Long.parseLong((String)jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn())));
+            Aula aula = (Aula) jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn());
             if (aula != null){                
                 turma.getAulas().remove(aula);
                 controller.atualizar(turma);
                 controller.removerAula(aula);
+                atualizarTabela();
             }else {
                 JOptionPane.showMessageDialog(null, "Não existe aula cadastrada para este horário", "Erro", JOptionPane.ERROR_MESSAGE);
             }
