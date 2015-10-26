@@ -44,7 +44,7 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
     public void remover(T entidade) {
         EntityTransaction transacao = entityManager.getTransaction();
         try{
-            transacao.begin();
+            transacao.begin();            
             entityManager.remove(entidade);            
             transacao.commit();
         }catch (Exception ex){

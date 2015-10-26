@@ -117,7 +117,7 @@ public class TurmaController {
         aulaService.remover(aula);
     }
     
-    public void removerReposicaoAula (ReposicaoAula reposicaoAula){
-        reposicaoAulaService.remover(reposicaoAula);
+    public void removerReposicaoAula (ReposicaoAula reposicaoAula){        
+        reposicaoAulaService.remover(reposicaoAulaService.buscar(reposicaoAula.getCod()));
     }
 }
