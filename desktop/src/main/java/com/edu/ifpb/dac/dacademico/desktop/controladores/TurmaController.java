@@ -6,6 +6,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
 import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
+import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServico;
+import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServicoImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
@@ -21,6 +23,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
@@ -44,6 +47,7 @@ public class TurmaController {
     private AulaServico aulaService = new AulaServicoImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private HorarioService horarioService = new HorarioServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private SalaService salaService = new SalaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private ReposicaoAulaServico reposicaoAulaService = new ReposicaoAulaServicoImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     
     public List<Turma> listarTodos (){        
         return turmaService.listarTodos();
@@ -93,6 +97,10 @@ public class TurmaController {
         return aulaService.buscar(cod);
     }
     
+    public ReposicaoAula recuperarReposicaoAula(Long cod){
+        return reposicaoAulaService.buscar(cod);
+    }
+    
     public Horario recuperarHorario (Long cod){
         return horarioService.recuperar(cod);
     }
@@ -109,4 +117,7 @@ public class TurmaController {
         aulaService.remover(aula);
     }
     
+    public void removerReposicaoAula (ReposicaoAula reposicaoAula){
+        reposicaoAulaService.remover(reposicaoAula);
+    }
 }

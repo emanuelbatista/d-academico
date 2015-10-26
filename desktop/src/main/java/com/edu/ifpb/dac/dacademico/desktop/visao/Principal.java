@@ -261,6 +261,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(logoutJLabel);
         logoutJLabel.setBounds(1194, 20, 120, 60);
 
+        turmaReposicaojLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         turmaReposicaojLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 turmaReposicaojLabelMouseClicked(evt);
@@ -269,6 +270,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(turmaReposicaojLabel);
         turmaReposicaojLabel.setBounds(1150, 350, 180, 30);
 
+        turmaAlunosjLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         turmaAlunosjLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 turmaAlunosjLabelMouseClicked(evt);
@@ -277,6 +279,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(turmaAlunosjLabel);
         turmaAlunosjLabel.setBounds(1150, 270, 180, 40);
 
+        turmaAulasjLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         turmaAulasjLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 turmaAulasjLabelMouseClicked(evt);

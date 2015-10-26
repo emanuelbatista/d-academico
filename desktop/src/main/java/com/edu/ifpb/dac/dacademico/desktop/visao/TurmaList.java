@@ -63,7 +63,7 @@ public class TurmaList extends javax.swing.JFrame {
         voltarjButton = new javax.swing.JButton();
         atualizarjButton = new javax.swing.JButton();
         removerjButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ReposicaoAulasjButton = new javax.swing.JButton();
         nomeCompletoJLabel = new javax.swing.JLabel();
         alunosjButton = new javax.swing.JButton();
         aulasjButton = new javax.swing.JButton();
@@ -123,9 +123,14 @@ public class TurmaList extends javax.swing.JFrame {
         getContentPane().add(removerjButton);
         removerjButton.setBounds(440, 450, 130, 40);
 
-        jButton1.setText("Reposição");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(440, 540, 140, 40);
+        ReposicaoAulasjButton.setText("Reposição");
+        ReposicaoAulasjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReposicaoAulasjButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ReposicaoAulasjButton);
+        ReposicaoAulasjButton.setBounds(440, 540, 140, 40);
 
         nomeCompletoJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         nomeCompletoJLabel.setForeground(new java.awt.Color(0, 77, 64));
@@ -202,12 +207,22 @@ public class TurmaList extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_aulasjButtonActionPerformed
 
+    private void ReposicaoAulasjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReposicaoAulasjButtonActionPerformed
+        try {
+            new TurmaReposicaoAulasList(controller.recuperar(Long.parseLong(jTable.getValueAt(jTable.getSelectedRow(), 0).toString())));
+        } catch (EntidadeInexistenteException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar turma selecionada", "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ReposicaoAulasjButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ReposicaoAulasjButton;
     private javax.swing.JButton alunosjButton;
     private javax.swing.JButton atualizarjButton;
     private javax.swing.JButton aulasjButton;
     private javax.swing.JLabel coverjLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     private javax.swing.JLabel nomeCompletoJLabel;

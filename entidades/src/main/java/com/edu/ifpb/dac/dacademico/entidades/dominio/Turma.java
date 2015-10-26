@@ -33,7 +33,17 @@ public class Turma implements Serializable {
     private Disciplina disciplina;
     @OneToMany(mappedBy = "turma")
     private List<Aula> aulas;
+    @OneToMany(mappedBy = "turma")
+    private List<ReposicaoAula> reposicaoAulas;
 
+    public List<ReposicaoAula> getReposicaoAulas() {
+        return reposicaoAulas;
+    }
+
+    public void setReposicaoAulas(List<ReposicaoAula> reposicaoAulas) {
+        this.reposicaoAulas = reposicaoAulas;
+    }
+    
     public List<Aula> getAulas() {
         return aulas;
     }
