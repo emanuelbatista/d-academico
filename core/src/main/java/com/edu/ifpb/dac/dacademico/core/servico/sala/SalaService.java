@@ -22,6 +22,8 @@ public interface SalaService {
     void atualizar (Sala sala);
     void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException;
     public SalaNormal buscarSalaNormal (long id);
+    public SalaNormal buscarSalaNormalPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException;
     public Laboratorio buscarLaboratorio (long id);
+    public Laboratorio buscarLaboratorioPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException;
     public Sala buscarPelaAbreviacao (String abr) throws EntidadeInexistenteException;
 }

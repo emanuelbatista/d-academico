@@ -61,9 +61,25 @@ public class SalaServiceImpl implements SalaService {
     public SalaNormal buscarSalaNormal(long id) {
         return repositorioSalaNormal.buscar(SalaNormal.class, id);
     }
+    
+    public SalaNormal buscarSalaNormalPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException{
+        try{
+            return repositorioSalaNormal.buscarPorAtributo(SalaNormal.class, "abreviacao", abreviacao).get(0);
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw new EntidadeInexistenteException();
+        }
+    }
 
     public Laboratorio buscarLaboratorio(long id) {
         return repositorioLaboratorio.buscar(Laboratorio.class, id);
+    }
+    
+    public Laboratorio buscarLaboratorioPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException{
+        try{
+            return repositorioLaboratorio.buscarPorAtributo(Laboratorio.class, "abreviacao", abreviacao).get(0);
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw new EntidadeInexistenteException();
+        }
     }
 
     @Override
