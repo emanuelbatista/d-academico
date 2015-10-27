@@ -208,11 +208,11 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
                 }else{
                 try{
                     if(laboratoriojTextField.getText().equals("")){
-                        SalaNormal sala = (SalaNormal)controller.recuperarSalaNormalPelaAbreviacao(salaTextField.getText());
+                        SalaNormal sala = controller.recuperarSalaNormalPelaAbreviacao(salaTextField.getText());
                         reposicao.setSalaNormal(sala);
                         
                     }else{
-                        Laboratorio lab = (Laboratorio)controller.recuperarLaboratorioPelaAbreviacao(laboratoriojTextField.getText());
+                        Laboratorio lab = controller.recuperarLaboratorioPelaAbreviacao(laboratoriojTextField.getText());
                         reposicao.setLaboratorio(lab);
                     }
                 } catch(EntidadeInexistenteException e){

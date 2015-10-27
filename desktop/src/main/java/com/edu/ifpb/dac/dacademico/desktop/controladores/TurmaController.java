@@ -6,8 +6,6 @@ import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
 import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
-import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServico;
-import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServicoImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
@@ -16,6 +14,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.horario.HorarioService;
 import com.edu.ifpb.dac.dacademico.core.servico.horario.HorarioServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
+import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServico;
+import com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula.ReposicaoAulaServicoImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
@@ -23,12 +23,14 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
 import java.util.List;
 
@@ -113,11 +115,11 @@ public class TurmaController {
         return salaService.buscarPelaAbreviacao(abr);
     }
     
-    public Sala recuperarSalaNormalPelaAbreviacao (String abr) throws EntidadeInexistenteException{
+    public SalaNormal recuperarSalaNormalPelaAbreviacao (String abr) throws EntidadeInexistenteException{
         return salaService.buscarSalaNormalPelaAbreviacao(abr);
     }
     
-    public Sala recuperarLaboratorioPelaAbreviacao (String abr) throws EntidadeInexistenteException{
+    public Laboratorio recuperarLaboratorioPelaAbreviacao (String abr) throws EntidadeInexistenteException{
         return salaService.buscarLaboratorioPelaAbreviacao(abr);
     }
     
