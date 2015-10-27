@@ -6,7 +6,9 @@ import com.edu.ifpb.dac.dacademico.desktop.controladores.TurmaController;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -83,6 +85,11 @@ public class TurmaAulasList extends javax.swing.JFrame {
         adicionarjButton = new javax.swing.JButton();
         removerjButton = new javax.swing.JButton();
         nomeTurmaJLabel = new javax.swing.JLabel();
+        SalaJLabel = new javax.swing.JLabel();
+        salaTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        SalaJLabel1 = new javax.swing.JLabel();
+        laboratoriojTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -110,7 +117,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 230, 430, 210);
+        jScrollPane1.setBounds(20, 230, 430, 150);
 
         voltarjButton.setText("Voltar");
         voltarjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +152,26 @@ public class TurmaAulasList extends javax.swing.JFrame {
         getContentPane().add(nomeTurmaJLabel);
         nomeTurmaJLabel.setBounds(20, 190, 430, 30);
 
+        SalaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        SalaJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        SalaJLabel.setText("Sala:");
+        getContentPane().add(SalaJLabel);
+        SalaJLabel.setBounds(20, 390, 40, 30);
+        getContentPane().add(salaTextField);
+        salaTextField.setBounds(60, 390, 130, 30);
+
+        jLabel1.setText("Digite a abreviação de uma sala ou laboratório.");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 430, 230, 14);
+
+        SalaJLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        SalaJLabel1.setForeground(new java.awt.Color(0, 77, 64));
+        SalaJLabel1.setText("Laboratório:");
+        getContentPane().add(SalaJLabel1);
+        SalaJLabel1.setBounds(210, 390, 90, 30);
+        getContentPane().add(laboratoriojTextField);
+        laboratoriojTextField.setBounds(300, 390, 150, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,7 +186,22 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
                 aula.setHorario(horario);
                 aula.setDia(DayOfWeek.of(jTable.getSelectedColumn()));
-                Sala sala = null;
+                if((salaTextField.getText().equals(""))&&(laboratoriojTextField.getText().equals(""))){
+                    JOptionPane.showMessageDialog(null, "Adicione a abreviação de uma sala ou laboratorio para a aula!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    try{
+                        if(laboratoriojTextField.getText().equals("")){
+                            SalaNormal sala = (SalaNormal)controller.recuperarSalaPelaAbreviacao(salaTextField.getText());
+                            aula.setSalaNormal(sala);
+                        }else{
+                            Laboratorio lab = (Laboratorio)controller.recuperarSalaPelaAbreviacao(laboratoriojTextField.getText());
+                            aula.setLaboratorio(lab);
+                        }
+                    } catch(EntidadeInexistenteException e){
+                            JOptionPane.showMessageDialog(null, "Abreviações informadas não existem!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                
 //                do {
 //                    try{
 //                        if (aula.getSalas().size() > 0)
@@ -211,12 +253,17 @@ public class TurmaAulasList extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarjButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SalaJLabel;
+    private javax.swing.JLabel SalaJLabel1;
     private javax.swing.JButton adicionarjButton;
     private javax.swing.JLabel coverjLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
+    private javax.swing.JTextField laboratoriojTextField;
     private javax.swing.JLabel nomeTurmaJLabel;
     private javax.swing.JButton removerjButton;
+    private javax.swing.JTextField salaTextField;
     private javax.swing.JButton voltarjButton;
     // End of variables declaration//GEN-END:variables
 }
