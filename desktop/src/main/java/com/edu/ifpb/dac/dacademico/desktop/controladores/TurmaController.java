@@ -113,6 +113,14 @@ public class TurmaController {
         return salaService.buscarPelaAbreviacao(abr);
     }
     
+    public Sala recuperarSalaNormalPelaAbreviacao (String abr) throws EntidadeInexistenteException{
+        return salaService.buscarSalaNormalPelaAbreviacao(abr);
+    }
+    
+    public Sala recuperarLaboratorioPelaAbreviacao (String abr) throws EntidadeInexistenteException{
+        return salaService.buscarLaboratorioPelaAbreviacao(abr);
+    }
+    
     public void removerAula (Aula aula){
         aulaService.remover(aula);
     }

@@ -162,7 +162,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
 
         jLabel1.setText("Digite a abreviação de uma sala ou laboratório.");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 430, 230, 14);
+        jLabel1.setBounds(20, 430, 360, 14);
 
         SalaJLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         SalaJLabel1.setForeground(new java.awt.Color(0, 77, 64));
@@ -189,17 +189,17 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 if((salaTextField.getText().equals(""))&&(laboratoriojTextField.getText().equals(""))){
                     JOptionPane.showMessageDialog(null, "Adicione a abreviação de uma sala ou laboratorio para a aula!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    try{
-                        if(laboratoriojTextField.getText().equals("")){
-                            SalaNormal sala = (SalaNormal)controller.recuperarSalaPelaAbreviacao(salaTextField.getText());
-                            aula.setSalaNormal(sala);
-                        }else{
-                            Laboratorio lab = (Laboratorio)controller.recuperarSalaPelaAbreviacao(laboratoriojTextField.getText());
-                            aula.setLaboratorio(lab);
-                        }
-                    } catch(EntidadeInexistenteException e){
-                            JOptionPane.showMessageDialog(null, "Abreviações informadas não existem!", "Erro", JOptionPane.ERROR_MESSAGE);
+                try{
+                    if(laboratoriojTextField.getText().equals("")){
+                        SalaNormal sala = (SalaNormal)controller.recuperarSalaNormalPelaAbreviacao(salaTextField.getText());
+                        aula.setSalaNormal(sala);
+                        
+                    }else{
+                        Laboratorio lab = (Laboratorio)controller.recuperarLaboratorioPelaAbreviacao(laboratoriojTextField.getText());
+                        aula.setLaboratorio(lab);
                     }
+                } catch(EntidadeInexistenteException e){
+                        JOptionPane.showMessageDialog(null, "Abreviações informadas não existem!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
                 
 //                do {
@@ -218,6 +218,7 @@ public class TurmaAulasList extends javax.swing.JFrame {
                 turma.getAulas().add(aula);
                 controller.atualizar(turma);
                 atualizarTabela();
+                }
             }else {
                 JOptionPane.showMessageDialog(null, "Já existe uma aula neste horário", "Erro", JOptionPane.ERROR_MESSAGE);
             }

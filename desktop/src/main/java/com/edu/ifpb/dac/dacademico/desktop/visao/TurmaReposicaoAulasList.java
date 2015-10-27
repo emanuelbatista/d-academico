@@ -4,8 +4,10 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.desktop.controladores.TurmaController;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -85,6 +87,11 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
         dataJLabel = new javax.swing.JLabel();
         nomeTurmaJLabel1 = new javax.swing.JLabel();
         dataTextField = new javax.swing.JFormattedTextField();
+        SalaJLabel = new javax.swing.JLabel();
+        salaTextField = new javax.swing.JTextField();
+        SalaJLabel1 = new javax.swing.JLabel();
+        laboratoriojTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -145,13 +152,13 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
         dataJLabel.setForeground(new java.awt.Color(0, 77, 64));
         dataJLabel.setText("Data");
         getContentPane().add(dataJLabel);
-        dataJLabel.setBounds(20, 220, 430, 30);
+        dataJLabel.setBounds(20, 210, 120, 30);
 
         nomeTurmaJLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         nomeTurmaJLabel1.setForeground(new java.awt.Color(0, 77, 64));
         nomeTurmaJLabel1.setText("Nome da turma");
         getContentPane().add(nomeTurmaJLabel1);
-        nomeTurmaJLabel1.setBounds(20, 190, 430, 30);
+        nomeTurmaJLabel1.setBounds(20, 180, 110, 30);
 
         try {
             dataTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -159,7 +166,27 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(dataTextField);
-        dataTextField.setBounds(20, 250, 90, 30);
+        dataTextField.setBounds(20, 240, 90, 30);
+
+        SalaJLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        SalaJLabel.setForeground(new java.awt.Color(0, 77, 64));
+        SalaJLabel.setText("Sala:");
+        getContentPane().add(SalaJLabel);
+        SalaJLabel.setBounds(170, 210, 40, 30);
+        getContentPane().add(salaTextField);
+        salaTextField.setBounds(170, 240, 130, 30);
+
+        SalaJLabel1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        SalaJLabel1.setForeground(new java.awt.Color(0, 77, 64));
+        SalaJLabel1.setText("Laboratório:");
+        getContentPane().add(SalaJLabel1);
+        SalaJLabel1.setBounds(310, 210, 90, 30);
+        getContentPane().add(laboratoriojTextField);
+        laboratoriojTextField.setBounds(310, 240, 150, 30);
+
+        jLabel1.setText("Digite a abreviação de uma sala ou laboratório.");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(170, 270, 310, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,7 +203,21 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
                 Horario horario = controller.recuperarHorarioPelaDescricao((String)jTable.getValueAt(jTable.getSelectedRow(), 0));
                 reposicao.setHorario(horario);
                 reposicao.setDia(DayOfWeek.of(jTable.getSelectedColumn()));
-                Sala sala = null;
+                if((salaTextField.getText().equals(""))&&(laboratoriojTextField.getText().equals(""))){
+                    JOptionPane.showMessageDialog(null, "Adicione a abreviação de uma sala ou laboratorio para a aula!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }else{
+                try{
+                    if(laboratoriojTextField.getText().equals("")){
+                        SalaNormal sala = (SalaNormal)controller.recuperarSalaNormalPelaAbreviacao(salaTextField.getText());
+                        reposicao.setSalaNormal(sala);
+                        
+                    }else{
+                        Laboratorio lab = (Laboratorio)controller.recuperarLaboratorioPelaAbreviacao(laboratoriojTextField.getText());
+                        reposicao.setLaboratorio(lab);
+                    }
+                } catch(EntidadeInexistenteException e){
+                        JOptionPane.showMessageDialog(null, "Abreviações informadas não existem!", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
 //                do {
 //                    try{
 //                        if (aula.getSalas().size() > 0)
@@ -193,6 +234,7 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
                 turma.getReposicaoAulas().add(reposicao);
                 controller.atualizar(turma);
                 atualizarTabela();
+                }
             }else {
                 JOptionPane.showMessageDialog(null, "Já existe uma reposicao de aula neste horário", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -230,14 +272,19 @@ public class TurmaReposicaoAulasList extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarjButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SalaJLabel;
+    private javax.swing.JLabel SalaJLabel1;
     private javax.swing.JButton adicionarjButton;
     private javax.swing.JLabel coverjLabel;
     private javax.swing.JLabel dataJLabel;
     private javax.swing.JFormattedTextField dataTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
+    private javax.swing.JTextField laboratoriojTextField;
     private javax.swing.JLabel nomeTurmaJLabel1;
     private javax.swing.JButton removerjButton;
+    private javax.swing.JTextField salaTextField;
     private javax.swing.JButton voltarjButton;
     // End of variables declaration//GEN-END:variables
 }
