@@ -15,8 +15,9 @@
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.converter.ConverterDate</class>
+    <validation-mode>NONE</validation-mode>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5435/dacademico"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dacademico"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="123456"/>
