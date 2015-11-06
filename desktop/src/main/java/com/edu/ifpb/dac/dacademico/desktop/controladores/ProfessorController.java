@@ -5,6 +5,8 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
 import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
  */
 public class ProfessorController {
 
-    private ProfessorService service = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private ProfessorService service = LookupService.lookup(LookupPath.PROFESSOR_SERVICE, ProfessorService.class);
     
     public void cadastrar (Professor professor)throws ValidacaoException{
             service.salvar(professor);

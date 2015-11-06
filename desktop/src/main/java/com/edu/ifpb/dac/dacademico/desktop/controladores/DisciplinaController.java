@@ -3,10 +3,9 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
-import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
-import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import java.util.List;
@@ -18,8 +17,8 @@ import java.util.List;
  */
 public class DisciplinaController {
 
-    private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private CursoServiceRemote cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private DisciplinaService disciplinaService = LookupService.lookup(LookupPath.DISCIPLINA_SERVICE, DisciplinaService.class);
+    private CursoServiceRemote cursoService = LookupService.lookup(LookupPath.CURSO_SERVICE, CursoServiceRemote.class);
 
     public void cadastrar(Disciplina disciplina) throws ValidacaoException {
         disciplinaService.salvar(disciplina);

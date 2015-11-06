@@ -3,8 +3,8 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
-import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class CursoController {
 
-    private CursoServiceRemote service = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private CursoServiceRemote service = LookupService.lookup(LookupPath.CURSO_SERVICE, CursoServiceRemote.class);
     
     public void cadastro (Curso curso) throws ValidacaoException{
         service.salvar(curso);

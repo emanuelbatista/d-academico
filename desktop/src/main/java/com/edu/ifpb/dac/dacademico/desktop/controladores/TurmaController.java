@@ -21,6 +21,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
@@ -41,15 +43,15 @@ import java.util.List;
  */
 public class TurmaController {
 
-    private TurmaService turmaService = new TurmaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private CursoServiceRemote cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private ProfessorService professorService = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private AlunoService alunoService = new AlunoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private AulaServico aulaService = new AulaServicoImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private HorarioService horarioService = new HorarioServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private SalaService salaService = new SalaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private ReposicaoAulaServico reposicaoAulaService = new ReposicaoAulaServicoImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private TurmaService turmaService = LookupService.lookup(LookupPath.TURMA_SERVICE, TurmaService.class);
+    private CursoServiceRemote cursoService = LookupService.lookup(LookupPath.CURSO_SERVICE, CursoServiceRemote.class);
+    private ProfessorService professorService = LookupService.lookup(LookupPath.PROFESSOR_SERVICE, ProfessorService.class);
+    private DisciplinaService disciplinaService = LookupService.lookup(LookupPath.DISCIPLINA_SERVICE, DisciplinaService.class);
+    private AlunoService alunoService = LookupService.lookup(LookupPath.ALUNO_SERVICE, AlunoService.class);
+    private AulaServico aulaService = LookupService.lookup(LookupPath.AULA_SERVICE, AulaServico.class);
+    private HorarioService horarioService = LookupService.lookup(LookupPath.HORARIO_SERVICE, HorarioService.class);
+    private SalaService salaService = LookupService.lookup(LookupPath.SALA_SERVICE, SalaService.class);
+    private ReposicaoAulaServico reposicaoAulaService = LookupService.lookup(LookupPath.REPOSICAO_SERVICE, ReposicaoAulaServico.class);
     
     public List<Turma> listarTodos (){        
         return turmaService.listarTodos();

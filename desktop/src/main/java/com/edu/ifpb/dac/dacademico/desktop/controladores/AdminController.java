@@ -3,12 +3,10 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
-import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
-import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -16,8 +14,8 @@ import java.util.logging.Logger;
  * @version 0.1
  */
 public class AdminController {
-
-    private AdminService service = new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    
+    private AdminService service = LookupService.lookup(LookupPath.ADMIN_SERVICE, AdminService.class);
     
     public void cadastrar (Administrador admin) throws ValidacaoException{
             service.salvar(admin);

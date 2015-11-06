@@ -2,8 +2,9 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
-import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
-import com.edu.ifpb.dac.dacademico.desktop.Configuracoes;
+import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 
 /**
@@ -13,9 +14,11 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
  */
 public class LoginController{
 
+    private AdminService service = LookupService.lookup(LookupPath.ADMIN_SERVICE, AdminService.class);
+    
     public Administrador login(String login, String senha)
             throws LoginInexistenteException, SenhaErradaException {
-            return new AdminServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT).login(login, senha);
+            return service.login(login, senha);
     }
 
 }
