@@ -2,22 +2,23 @@ package com.edu.ifpb.dac.dacademico.core.servico.horario;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author douglasgabriel
  * @version 0.1
  */
+@Stateless
+@Remote(HorarioService.class)
 public class HorarioServiceImpl implements HorarioService{
 
+    @EJB
     private Dao<Horario, Long> repositorio;
     
-    public HorarioServiceImpl(String unidadePersistencia){
-        repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
-
     @Override
     public void salvar(Horario horario) {
         repositorio.salvar(horario);

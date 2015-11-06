@@ -2,19 +2,23 @@ package com.edu.ifpb.dac.dacademico.core.servico.disciplina;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceLocal;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -25,15 +29,14 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
+@Stateless
+@Remote(DisciplinaService.class)
 public class DisciplinaServiceImpl implements DisciplinaService {
 
+    @EJB
     private Dao<Disciplina, Long> disciplinaRepositorio;
-    private CursoService cursoService;
-
-    public DisciplinaServiceImpl(String unidadePersistencia) {
-        this.disciplinaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.cursoService = new CursoServiceImpl(unidadePersistencia);
-    }
+    @EJB
+    private CursoServiceLocal cursoService;
 
     @Override
     public void salvar(Disciplina disciplina) throws ValidacaoException {

@@ -8,7 +8,7 @@
     </parent>
     <groupId>com.edu.ifpb.dac.dacademico</groupId>
     <artifactId>core</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>D-Academico - Core</name>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -30,6 +30,12 @@
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

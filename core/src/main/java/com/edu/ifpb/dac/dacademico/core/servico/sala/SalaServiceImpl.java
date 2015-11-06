@@ -4,13 +4,15 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.TiposSala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -21,17 +23,16 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
+@Stateless
+@Remote(SalaService.class)
 public class SalaServiceImpl implements SalaService {
 
+    @EJB
     private Dao<Sala, Long> repositorio;
+    @EJB
     private Dao<Laboratorio, Long> repositorioLaboratorio;
+    @EJB
     private Dao<SalaNormal, Long> repositorioSalaNormal;
-
-    public SalaServiceImpl(String unidadePersistencia) {
-        this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.repositorioLaboratorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.repositorioSalaNormal = new GenericoDaoJPA<>(unidadePersistencia);
-    }
 
     @Override
     public void salvar(Sala sala) {

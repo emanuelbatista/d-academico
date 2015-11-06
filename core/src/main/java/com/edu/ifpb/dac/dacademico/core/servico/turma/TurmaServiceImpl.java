@@ -7,13 +7,16 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Disciplina;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -24,20 +27,19 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
+@Stateless
+@Remote(TurmaService.class)
 public class TurmaServiceImpl implements TurmaService{
 
+    @EJB
     private Dao<Turma, Long> turmaRepositorio;
+    @EJB
     private Dao<Disciplina, Long> disciplinaRepositorio;
+    @EJB
     private Dao<Professor, Long> professorRepositorio;
+    @EJB
     private Dao<Curso, Long> cursoRepositorio;
 
-    public TurmaServiceImpl(String unidadePersistencia) {
-        this.turmaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.disciplinaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.cursoRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.professorRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
-    
     @Override
     public void salvar(Turma turma) {
         turmaRepositorio.salvar(turma);

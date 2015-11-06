@@ -5,23 +5,25 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
 import com.edu.ifpb.dac.dacademico.core.errors.Error;
+import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author douglasgabriel
  * @version 0.1
  */
-public class AdminServiceImpl implements AdminService {
+@Stateless
+@Remote(AdminService.class)
+public class AdminServiceImpl implements AdminService, Serializable{
 
+    @EJB
     private Dao<Administrador, Long> repositorio;
-
-    public AdminServiceImpl(String unidadePersistencia) {
-        this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
 
     @Override
     public void salvar(Administrador admin) throws ValidacaoException {

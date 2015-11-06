@@ -4,12 +4,16 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -20,13 +24,13 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class CursoServiceImpl implements CursoService {
+@Stateless
+@Remote(CursoServiceRemote.class)
+@Local(CursoServiceLocal.class)
+public class CursoServiceImpl implements CursoServiceRemote, CursoServiceLocal {
 
+    @EJB
     private Dao<Curso, Long> repositorio;
-
-    public CursoServiceImpl(String unidadePersistencia) {
-        this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
 
     @Override
     public void salvar(Curso curso) throws ValidacaoException {

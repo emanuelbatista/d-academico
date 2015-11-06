@@ -3,7 +3,7 @@ package com.edu.ifpb.dac.dacademico.desktop;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;

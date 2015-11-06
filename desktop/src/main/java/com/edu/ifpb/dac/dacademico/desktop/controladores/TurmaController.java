@@ -6,7 +6,7 @@ import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
 import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
@@ -42,7 +42,7 @@ import java.util.List;
 public class TurmaController {
 
     private TurmaService turmaService = new TurmaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private CursoService cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private CursoServiceRemote cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private ProfessorService professorService = new ProfessorServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
     private AlunoService alunoService = new AlunoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);

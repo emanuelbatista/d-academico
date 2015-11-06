@@ -1,30 +1,27 @@
-package com.edu.ifpb.dac.dacademico.entidades.persistencia;
+package com.edu.ifpb.dac.dacademico.core.dao;
 
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
-import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.transaction.TransactionScoped;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author douglasgabriel
  * @version 0.1
  */
+@Stateless
+@Local(Dao.class)
 public class GenericoDaoJPA<T, K> implements Dao<T, K>{
 
+    @PersistenceContext(unitName = "com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU")
     private EntityManager entityManager;
-    private String unidadePersistencia;
     
-    public GenericoDaoJPA(String unidadePersistencia){
-        this.unidadePersistencia = unidadePersistencia;
-        entityManager = Persistence
-                .createEntityManagerFactory(unidadePersistencia)
-                .createEntityManager();
+    public GenericoDaoJPA() {
     }
     
     @Override
@@ -91,11 +88,7 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
             e.printStackTrace();
             transacao.rollback();
         }
-    }
-    
-    public String getUnidadePersistencia(){        
-        return unidadePersistencia;
-    }
+    }       
 
     @Override
     public List<T> listarTodos(Class<T> classe) {

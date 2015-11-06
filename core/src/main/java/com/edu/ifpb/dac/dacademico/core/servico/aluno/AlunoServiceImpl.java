@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edu.ifpb.dac.dacademico.core.servico.aluno;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
@@ -12,24 +6,22 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
 import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Emanuel Batista da Silva Filho - emanuelbatista2011@gmail.com
  */
-public class AlunoServiceImpl implements AlunoService{
-    
-     private Dao<Aluno, Long> repositorio;
+@Stateless
+@Remote(AlunoService.class)
+public class AlunoServiceImpl implements AlunoService {
 
-
-    public AlunoServiceImpl(String unidadePersistencia) {
-        this.repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
-     
-     
+    @EJB
+    private Dao<Aluno, Long> repositorio;
 
     @Override
     public void salvar(Aluno aluno) throws ValidacaoException {
@@ -41,17 +33,17 @@ public class AlunoServiceImpl implements AlunoService{
         String email = aluno.getEmail();
         String login = aluno.getLogin();
         List<com.edu.ifpb.dac.dacademico.core.errors.Error<Aluno>> errors = HibernateValidacao.<Aluno>validar(aluno);
-        List<Aluno> alunos=repositorio.buscarPorAtributo(Aluno.class, "login", login);
-        Aluno alunoBanco=repositorio.buscar(Aluno.class, aluno.getCod());
-        if (!alunos.isEmpty() && aluno.getCod()==0 || !alunos.isEmpty() &&!alunoBanco.getLogin().equals(login)) {
+        List<Aluno> alunos = repositorio.buscarPorAtributo(Aluno.class, "login", login);
+        Aluno alunoBanco = repositorio.buscar(Aluno.class, aluno.getCod());
+        if (!alunos.isEmpty() && aluno.getCod() == 0 || !alunos.isEmpty() && !alunoBanco.getLogin().equals(login)) {
             com.edu.ifpb.dac.dacademico.core.errors.Error<Aluno> error = new com.edu.ifpb.dac.dacademico.core.errors.Error();
             error.setField("login");
             error.setMessage("Esse login já está cadastrado");
             error.setRootBean(aluno);
             errors.add(error);
         }
-        alunos=repositorio.buscarPorAtributo(Aluno.class, "email", email);
-        if (!alunos.isEmpty() && aluno.getCod()==0 || !alunos.isEmpty() && !alunoBanco.getEmail().equals(email)) {
+        alunos = repositorio.buscarPorAtributo(Aluno.class, "email", email);
+        if (!alunos.isEmpty() && aluno.getCod() == 0 || !alunos.isEmpty() && !alunoBanco.getEmail().equals(email)) {
             com.edu.ifpb.dac.dacademico.core.errors.Error<Aluno> error = new com.edu.ifpb.dac.dacademico.core.errors.Error<>();
             error.setField("email");
             error.setMessage("Esse email já está cadastrado");
@@ -61,36 +53,37 @@ public class AlunoServiceImpl implements AlunoService{
             throw new ValidacaoException(errors);
         }
     }
-    
-    
+
     @Override
-    public Aluno login (String login, String senha) 
-            throws LoginInexistenteException, SenhaErradaException{
+    public Aluno login(String login, String senha)
+            throws LoginInexistenteException, SenhaErradaException {
         List<Aluno> resultado = repositorio.buscarPorAtributo(Aluno.class, "login", login);
-        if (resultado == null || resultado.isEmpty())
+        if (resultado == null || resultado.isEmpty()) {
             throw new LoginInexistenteException();
+        }
         Aluno aluno = resultado.get(0);
-        if (!aluno.getSenha().equals(senha))
+        if (!aluno.getSenha().equals(senha)) {
             throw new SenhaErradaException();
+        }
         return aluno;
     }
 
     @Override
-    public void atualizar(Aluno aluno) throws ValidacaoException{
+    public void atualizar(Aluno aluno) throws ValidacaoException {
         validarAluno(aluno);
         repositorio.atualizar(aluno);
     }
 
     @Override
     public List<Aluno> listarTodos() {
-        return  repositorio.listarTodos(Aluno.class);
+        return repositorio.listarTodos(Aluno.class);
     }
 
     @Override
-    public Aluno recuperarPeloLogin(String login) throws LoginInexistenteException{
-        try{
+    public Aluno recuperarPeloLogin(String login) throws LoginInexistenteException {
+        try {
             return repositorio.buscarPorAtributo(Aluno.class, "login", login).get(0);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new LoginInexistenteException();
         }
     }
@@ -101,10 +94,10 @@ public class AlunoServiceImpl implements AlunoService{
     }
 
     @Override
-    public Aluno recuperarPelaMatricula(String matricula) throws EntidadeInexistenteException{
-        try{
-        return repositorio.buscarPorAtributo(Aluno.class, "matricula", matricula).get(0);
-        } catch (Exception e){
+    public Aluno recuperarPelaMatricula(String matricula) throws EntidadeInexistenteException {
+        try {
+            return repositorio.buscarPorAtributo(Aluno.class, "matricula", matricula).get(0);
+        } catch (Exception e) {
             throw new EntidadeInexistenteException();
         }
     }

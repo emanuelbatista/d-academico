@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author douglasgabriel
  */
-public interface CursoService {
+public interface CursoServiceLocal {
 
     void salvar(Curso curso) throws ValidacaoException;
 
@@ -26,5 +26,5 @@ public interface CursoService {
     Curso buscarPorDescricao(String descricao);
 
     void urlParaBanco(String host) throws MalformedURLException, IOException;
-
+    
 }

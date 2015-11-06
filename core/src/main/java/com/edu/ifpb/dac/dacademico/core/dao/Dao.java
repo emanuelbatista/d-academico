@@ -1,4 +1,4 @@
-package com.edu.ifpb.dac.dacademico.entidades.persistencia;
+package com.edu.ifpb.dac.dacademico.core.dao;
 
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.util.List;
@@ -19,5 +19,4 @@ public interface Dao<T,K> {
     public List<T> buscarPorAtributo (Class<T> classe, String nomeAtributo, Object valorAtributo);
     void atualizar (T entidade);
     List<T> listarTodos (Class<T> classe);
-    String getUnidadePersistencia ();
 }

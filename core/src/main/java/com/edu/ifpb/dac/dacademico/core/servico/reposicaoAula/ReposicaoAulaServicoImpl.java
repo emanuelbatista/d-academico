@@ -1,30 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.edu.ifpb.dac.dacademico.core.servico.reposicaoAula;
 
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.ReposicaoAula;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Rafael
  */
+@Stateless
+@Remote(ReposicaoAulaServico.class)
 public class ReposicaoAulaServicoImpl implements ReposicaoAulaServico{
 
+    @EJB
     private Dao<ReposicaoAula, Long> reposicaoAulaRepositorio;
-    
-    public ReposicaoAulaServicoImpl(String unidadePersistencia) {
-        this.reposicaoAulaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
     
     @Override
     public void salvar(ReposicaoAula reposicao) {

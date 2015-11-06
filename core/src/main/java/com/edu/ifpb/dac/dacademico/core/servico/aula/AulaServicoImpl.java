@@ -1,12 +1,8 @@
 package com.edu.ifpb.dac.dacademico.core.servico.aula;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
-import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
-import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
-import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
-import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
@@ -14,17 +10,17 @@ import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Sala;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -35,15 +31,14 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-public class AulaServicoImpl implements AulaServico {
+@Stateless
+@Remote(AulaServico.class)
+public class AulaServicoImpl implements AulaServico, Serializable {
 
+    @EJB
     private Dao<Aula, Long> aulaRepositorio;
+    @EJB
     private Dao<Horario, Long> horarioRepositorio;
-
-    public AulaServicoImpl(String unidadePersistencia) {
-        this.aulaRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-        this.horarioRepositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
 
     @Override
     public void salvar(Aula aula) {
@@ -72,9 +67,9 @@ public class AulaServicoImpl implements AulaServico {
         JsonObject object = jsonReader.readObject();
         jsonReader.close();
         JsonArray array = object.getJsonArray("data");
-        CursoService cursoService = new CursoServiceImpl(aulaRepositorio.getUnidadePersistencia());
-        TurmaService turmaService = new TurmaServiceImpl(aulaRepositorio.getUnidadePersistencia());
-        SalaService salaService = new SalaServiceImpl(aulaRepositorio.getUnidadePersistencia());
+        CursoServiceRemote cursoService = new CursoServiceImpl();
+        TurmaService turmaService = new TurmaServiceImpl();
+        SalaService salaService = new SalaServiceImpl();
 //        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < array.size(); i++) {
             Aula aula = new Aula();

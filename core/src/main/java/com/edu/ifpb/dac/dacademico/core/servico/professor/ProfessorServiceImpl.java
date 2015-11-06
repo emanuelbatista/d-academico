@@ -5,13 +5,15 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.Dao;
-import com.edu.ifpb.dac.dacademico.entidades.persistencia.GenericoDaoJPA;
+import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import javax.inject.Named;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -22,15 +24,13 @@ import javax.json.JsonReader;
  * @author douglasgabriel
  * @version 0.1
  */
-@Named
+@Stateless
+@Remote(ProfessorService.class)
 public class ProfessorServiceImpl implements ProfessorService {
 
+    @EJB
     private Dao<Professor, Long> repositorio;
 
-    public ProfessorServiceImpl(String unidadePersistencia) {
-        repositorio = new GenericoDaoJPA<>(unidadePersistencia);
-    }
-    
     @Override
     public Professor login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException{

@@ -2,7 +2,7 @@ package com.edu.ifpb.dac.dacademico.desktop.controladores;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
-import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoService;
+import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceRemote;
 import com.edu.ifpb.dac.dacademico.core.servico.curso.CursoServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaService;
 import com.edu.ifpb.dac.dacademico.core.servico.disciplina.DisciplinaServiceImpl;
@@ -19,7 +19,7 @@ import java.util.List;
 public class DisciplinaController {
 
     private DisciplinaService disciplinaService = new DisciplinaServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
-    private CursoService cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
+    private CursoServiceRemote cursoService = new CursoServiceImpl(Configuracoes.UNIDADE_PERSISTENCIA_DEFAULT);
 
     public void cadastrar(Disciplina disciplina) throws ValidacaoException {
         disciplinaService.salvar(disciplina);
