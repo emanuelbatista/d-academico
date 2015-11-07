@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.ManyToOne;
  * @version 0.1
  */
 @Entity
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa implements Serializable{
 
     @Column(unique = true)
     private String rg, cpf, matricula;

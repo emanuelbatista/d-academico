@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -11,7 +12,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @version 0.1
  */
 @Entity
-public class Professor extends Pessoa{
+public class Professor extends Pessoa implements Serializable{
     
     @NotBlank(message = "O campo de unidade está vazio")
     private String unidade;

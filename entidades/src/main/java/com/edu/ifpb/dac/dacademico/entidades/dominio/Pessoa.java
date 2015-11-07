@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

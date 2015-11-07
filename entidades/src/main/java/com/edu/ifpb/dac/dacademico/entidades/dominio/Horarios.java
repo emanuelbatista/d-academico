@@ -1,12 +1,13 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 /**
  *
  * @author douglasgabriel
  */
-public enum Horarios {
+public enum Horarios implements Serializable{
 
     M1(LocalTime.of(7, 0), LocalTime.of(7, 50)), M2(LocalTime.of(7, 50), LocalTime.of(8, 40))
     , M3(LocalTime.of(8, 40), LocalTime.of(9, 30)), M4(LocalTime.of(9, 45), LocalTime.of(10, 35))

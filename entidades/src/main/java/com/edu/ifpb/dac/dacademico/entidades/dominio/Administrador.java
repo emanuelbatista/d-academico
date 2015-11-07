@@ -1,5 +1,6 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
@@ -8,6 +9,6 @@ import javax.persistence.Entity;
  * @version 0.1
  */
 @Entity
-public class Administrador extends Pessoa{
-  
+public class Administrador extends Pessoa implements Serializable{
+    private static final long serialVersionUID = 1L;
 }
