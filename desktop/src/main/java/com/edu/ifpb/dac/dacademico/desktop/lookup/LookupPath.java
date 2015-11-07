@@ -7,7 +7,7 @@ package com.edu.ifpb.dac.dacademico.desktop.lookup;
  */
 public class LookupPath {
 
-    public static final String ADMIN_SERVICE = "java:global/web/AdminServiceImpl";
+    public static final String ADMIN_SERVICE = "java:global/web/AdminServiceImpl!com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService";
     public static final String ALUNO_SERVICE = "java:global/web/AlunoServiceImpl";    
     public static final String CURSO_SERVICE = "java:global/web/CursoServiceImpl";    
     public static final String DISCIPLINA_SERVICE = "java:global/web/DisciplinaServiceImpl";    

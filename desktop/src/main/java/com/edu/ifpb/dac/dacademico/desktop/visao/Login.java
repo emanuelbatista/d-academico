@@ -124,9 +124,9 @@ public class Login extends javax.swing.JFrame {
                 new Principal (controller.login(login, senha));
                 this.dispose();
             } catch (LoginInexistenteException e) {
-                JOptionPane.showMessageDialog(null, "Erro no login", "O login informado não existe", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "O login informado não existe","Erro no login", JOptionPane.ERROR_MESSAGE);
             } catch (SenhaErradaException e) {
-                JOptionPane.showMessageDialog(null, "Erro no login", "A senha informada não conrresponde ao login", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "A senha informada não conrresponde ao login", "Erro no login", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_entrarJButtonActionPerformed

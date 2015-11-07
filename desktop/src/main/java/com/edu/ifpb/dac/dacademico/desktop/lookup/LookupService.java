@@ -17,7 +17,7 @@ public class LookupService {
             Properties prop = new Properties();
             prop.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.enterprise.naming.SerialInitContextFactory");
             prop.setProperty("org.omg.CORBA.ORBInitialHost", "localhost");
-            prop.setProperty("org.omg.CORBA.ORBInitialPort", "8080");
+            prop.setProperty("org.omg.CORBA.ORBInitialPort", "3700");
             InitialContext context = new InitialContext(prop);
             return (T) context.lookup(recurso);
         } catch (NamingException ne) {            
