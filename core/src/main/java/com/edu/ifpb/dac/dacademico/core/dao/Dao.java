@@ -1,6 +1,5 @@
 package com.edu.ifpb.dac.dacademico.core.dao;
 
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
 import java.util.List;
 import java.util.Map;
 

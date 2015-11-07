@@ -3,10 +3,9 @@ package com.edu.ifpb.dac.dacademico.core.dao;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -15,10 +14,10 @@ import javax.persistence.PersistenceContext;
  * @version 0.1
  */
 @Stateless
-@Local(Dao.class)
+@Remote(Dao.class)
 public class GenericoDaoJPA<T, K> implements Dao<T, K>{
 
-    @PersistenceContext(unitName = "com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU")
+    @PersistenceContext
     private EntityManager entityManager;
     
     public GenericoDaoJPA() {
@@ -26,28 +25,12 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
     
     @Override
     public void salvar(T entidade) {
-        EntityTransaction transacao = entityManager.getTransaction();
-        try{
-            transacao.begin();
             entityManager.persist(entidade);
-            transacao.commit();
-        }catch (Exception ex){
-            ex.printStackTrace();
-            transacao.rollback();
-        }
     }
 
     @Override
     public void remover(T entidade) {
-        EntityTransaction transacao = entityManager.getTransaction();
-        try{
-            transacao.begin();            
             entityManager.remove(entidade);            
-            transacao.commit();
-        }catch (Exception ex){
-            ex.printStackTrace();
-            transacao.rollback();
-        }
     }
 
     @Override
@@ -79,15 +62,7 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K>{
 
     @Override
     public void atualizar(T entidade) {
-        EntityTransaction transacao = entityManager.getTransaction();
-        try{
-            transacao.begin();
             entityManager.merge(entidade);
-            transacao.commit();
-        }catch(Exception e){
-            e.printStackTrace();
-            transacao.rollback();
-        }
     }       
 
     @Override

@@ -5,7 +5,6 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.validacao.HibernateValidacao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Curso;
 import com.edu.ifpb.dac.dacademico.core.dao.Dao;
-import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
