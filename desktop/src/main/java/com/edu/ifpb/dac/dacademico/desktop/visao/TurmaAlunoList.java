@@ -155,6 +155,8 @@ public class TurmaAlunoList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
         }catch (ValidacaoException e) {
             e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Impossível remover o item, pois outros itens cadastrados o referenciam", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_removerjButtonActionPerformed
 

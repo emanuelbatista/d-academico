@@ -131,6 +131,8 @@ public class ProfessorList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao carregar professor selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
         }catch (ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(null, "Selecione um item da lista", "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Impossível remover o item, pois outros itens cadastrados o referenciam", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_removerjButtonActionPerformed
 
