@@ -22,11 +22,12 @@ public interface SalaService {
     Sala buscar (long id);
     void atualizar (Sala sala);
     void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException;
-    public List<Laboratorio> listarTodosLaboratorios();
     public List<SalaNormal> listarTodosSalasNormais();
     public SalaNormal buscarSalaNormal (long id);
     public SalaNormal buscarSalaNormalPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException;
     public Laboratorio buscarLaboratorio (long id);
     public Laboratorio buscarLaboratorioPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException;
     public Sala buscarPelaAbreviacao (String abr) throws EntidadeInexistenteException;
+
+    public List<Laboratorio> listarTodosLaboratorios();
 }
