@@ -1,5 +1,7 @@
 package com.edu.ifpb.dac.dacademico.desktop;
 
+import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
+import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminService;
 import com.edu.ifpb.dac.dacademico.core.servico.administrador.AdminServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServicoImpl;
@@ -18,6 +20,8 @@ import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaService;
 import com.edu.ifpb.dac.dacademico.core.servico.sala.SalaServiceImpl;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaService;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceImpl;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupPath;
+import com.edu.ifpb.dac.dacademico.desktop.lookup.LookupService;
 import com.edu.ifpb.dac.dacademico.desktop.visao.Inicio;
 import com.edu.ifpb.dac.dacademico.desktop.visao.Login;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Administrador;
@@ -34,7 +38,7 @@ import java.time.LocalTime;
  * @version 0.1
  */
 public class Loader {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ValidacaoException {
         
         String unidadePersistencia = "com.edu.ifpb.dac.dacademico_entidades_jar_1.0-SNAPSHOTPU";
 //        ProfessorServiceImpl service = new ProfessorServiceImpl(unidadePersistencia);
@@ -53,7 +57,7 @@ public class Loader {
 //        TurmaService turmaService = new TurmaServiceImpl(unidadePersistencia);
 //        turmaService.urlParaBanco("http://200.129.71.228/horarios/data/turmas.json");
         
-//        AulaServico aulaService = new AulaServicoImpl(unidadePersistencia);
+//        AulaServico aulaSerravice = new AulaServicoImpl(unidadePersistencia);
 //        aulaService.urlParaBanco("http://200.129.71.228/horarios/data/aulas.json");
 //        
         /*Administrador admin = new Administrador();
@@ -70,6 +74,12 @@ public class Loader {
         horario.setFim(LocalTime.of(7, 50));
         service.salvar(horario);*/
         
+//        AdminService service = LookupService.lookup(LookupPath.ADMIN_SERVICE, AdminService.class);
+//        Administrador admin = new Administrador();
+//        admin.setEmail("qualquer@admin.com");
+//        admin.setLogin("123");
+//        admin.setSenha("123");
+//        service.salvar(admin);
         new Login();
     }
 }

@@ -6,6 +6,7 @@
 package com.edu.ifpb.dac.dacademico.core.exceptions;
 
 import com.edu.ifpb.dac.dacademico.core.errors.Error;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Emanuel Batista da Silva Filho - emanuelbatista2011@gmail.com
  */
-public class ValidacaoException extends Exception{
+public class ValidacaoException extends Exception implements Serializable{
     
     private final List<Error<?>> errors;
 
