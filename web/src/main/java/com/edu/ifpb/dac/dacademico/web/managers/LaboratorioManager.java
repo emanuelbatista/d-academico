@@ -23,9 +23,9 @@ import javax.inject.Named;
 @SessionScoped
 public class LaboratorioManager implements Serializable{
     @EJB
-    private SalaService LabService;
+    private SalaService labService;
     
     public List<Laboratorio> listAll(){
-        return LabService.listarTodosLaboratorios();
+        return labService.listarTodosLaboratorios();
     }
 }
