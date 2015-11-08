@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>D-ACadêmico - Professores</title>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="page-header">   
+                <img src="imagens/logo.png"></img>
+                <br/>
+                <small>
+                    <a href="index.xhtml" class="btn btn-link">Inicio</a>
+                </small>
+                <small>
+                    <a href="salas.xhtml" class="btn btn-link">Salas</a>
+                </small>
+                <small>
+                    <a href="laboratorios.xhtml" class="btn btn-link">Laboratórios</a>
+                </small>
+                <small>
+                    <a href="professores.xhtml" class="btn btn-link">Professores</a>
+                </small>
+                <small>
+                    <a href="cursos.xhtml" class="btn btn-link">Cursos</a>
+                </small>
+            </div>
+            <div class="panel panel-body">
+                <div class="row">                    
+                    <div class="col-md-12 col-lg-12">
+                        <h3>Professores</h3>
+                        <h:dataTable value="#{professorManager.listAll()}" var="professor" class="table table-striped">
+                            <h:column class="text-capitalize">#{professor.nomeCompleto}</h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </h:body>
+</html>
+

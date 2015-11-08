@@ -7,6 +7,7 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.SalaTipo;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,8 @@ public interface SalaService {
     Sala buscar (long id);
     void atualizar (Sala sala);
     void urlParaBanco(String host, SalaTipo tipo) throws MalformedURLException, IOException;
+    public List<Laboratorio> listarTodosLaboratorios();
+    public List<SalaNormal> listarTodosSalasNormais();
     public SalaNormal buscarSalaNormal (long id);
     public SalaNormal buscarSalaNormalPelaAbreviacao (String abreviacao) throws EntidadeInexistenteException;
     public Laboratorio buscarLaboratorio (long id);

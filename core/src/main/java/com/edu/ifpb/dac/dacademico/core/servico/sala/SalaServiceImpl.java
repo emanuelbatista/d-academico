@@ -10,6 +10,7 @@ import com.edu.ifpb.dac.dacademico.core.dao.GenericoDaoJPA;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -70,7 +71,7 @@ public class SalaServiceImpl implements SalaService {
             throw new EntidadeInexistenteException();
         }
     }
-
+        
     public Laboratorio buscarLaboratorio(long id) {
         return repositorioLaboratorio.buscar(Laboratorio.class, id);
     }
@@ -82,7 +83,14 @@ public class SalaServiceImpl implements SalaService {
             throw new EntidadeInexistenteException();
         }
     }
-
+    
+    public List<Laboratorio> listarTodosLaboratorios(){
+        return repositorioLaboratorio.listarTodos(Laboratorio.class);
+    }
+    public List<SalaNormal> listarTodosSalasNormais(){
+        return repositorioSalaNormal.listarTodos(SalaNormal.class);
+    }
+    
     @Override
     public void atualizar(Sala sala) {
         repositorio.atualizar(sala);
