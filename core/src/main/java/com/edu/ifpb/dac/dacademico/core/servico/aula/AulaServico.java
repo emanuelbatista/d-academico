@@ -17,5 +17,6 @@ public interface AulaServico {
     void atualizar (Aula turma);
     void urlParaBanco(String host) throws MalformedURLException, IOException;
     List<Aula> recuperarAulaNameQuery(Class clazz,Object id);
+    List<Aula> recuperarAulaNameQuery(Class clazz,Object id, int periodo);
     
 }

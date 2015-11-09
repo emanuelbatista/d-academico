@@ -2,8 +2,6 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,7 +20,9 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "aula.Laboratorio",query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod"),
-    @NamedQuery(name = "aula.SalaNormal",query = "SELECT a FROM Aula a WHERE a.salaNormal.cod=:cod")
+    @NamedQuery(name = "aula.SalaNormal",query = "SELECT a FROM Aula a WHERE a.salaNormal.cod=:cod"),
+    @NamedQuery(name = "aula.Professor",query = "SELECT a FROM Aula a WHERE a.turma.professor.cod=:cod"),
+    @NamedQuery(name = "aula.Curso",query = "SELECT a FROM Aula a WHERE a.turma.disciplina.periodo=:periodo AND a.turma.disciplina.curso.cod=:cod")
 })
 public class Aula implements Serializable {
 

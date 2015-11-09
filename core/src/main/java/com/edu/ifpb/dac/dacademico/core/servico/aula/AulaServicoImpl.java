@@ -131,4 +131,12 @@ public class AulaServicoImpl implements AulaServico, Serializable {
         param.put("cod", id);
         return aulaRepositorio.buscarPorNamedQueryList(Aula.class,"aula."+clazz.getSimpleName() , param);
     }
+    
+    @Override
+    public List<Aula> recuperarAulaNameQuery(Class clazz, Object id, int periodo) {
+        Map<String,Object> param=new HashMap<>();
+        param.put("cod", id);
+        param.put("periodo", periodo);
+        return aulaRepositorio.buscarPorNamedQueryList(Aula.class,"aula."+clazz.getSimpleName() , param);
+    }
 }

@@ -2,10 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <title>D-ACadêmico - Cursos</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
@@ -40,7 +38,7 @@
                             <h:column class="text-capitalize">
                                 #{curso.descricao} <br /> Períodos:
                                 <ui:repeat value="#{cursoManager.getListPeriodo(curso.periodo)}" var="p" varStatus="a">
-                                    <h:outputLink >#{a.index +1} </h:outputLink>
+                                    <a jsf:outcome="/faces/horario.xhtml?cod=#{curso.cod}&amp;class=#{curso.getClass().name}&amp;periodo=#{a.index +1}">#{a.index +1} </a>
                                 </ui:repeat>                               
                             </h:column>
                             <h:column class="text-capitalize">#{curso.abreviacao}</h:column>

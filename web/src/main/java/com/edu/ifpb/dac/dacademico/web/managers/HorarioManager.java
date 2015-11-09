@@ -6,15 +6,10 @@
 package com.edu.ifpb.dac.dacademico.web.managers;
 
 import com.edu.ifpb.dac.dacademico.core.servico.aula.AulaServico;
-import com.edu.ifpb.dac.dacademico.core.servico.horario.HorarioService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Aula;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Horarios;
-import java.time.DayOfWeek;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -44,6 +39,18 @@ public class HorarioManager {
         this.aulas = aulaServico.recuperarAulaNameQuery(clazz, id);
         System.out.println(aulas);
     }
+    
+    public void listarHorario(Long id, String nameClass, int periodo) {
+        Class clazz = null;
+        System.out.println("no novo método");
+        try {
+            clazz = Class.forName(nameClass);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HorarioManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.aulas = aulaServico.recuperarAulaNameQuery(clazz, id, periodo);
+        System.out.println(aulas);
+    }
 
     public String getAula(int dia, int hora) {
 
@@ -53,15 +60,11 @@ public class HorarioManager {
             if (dia == aula.getDia().getValue()) {
                 contemDia = true;
             }
-            System.out.println("contém dia "+contemDia);
             contemHora = contemAula(aula, hora);
-            System.out.println("contém hora "+contemHora);
             if (contemDia && contemHora) {
                 return aula.getTurma().getDisciplina().getAbreviacao();
             }
         }
-        System.out.println(aulas.size());
-        System.out.println("Imprimiu nada não moral");
         return "";
     }
 
