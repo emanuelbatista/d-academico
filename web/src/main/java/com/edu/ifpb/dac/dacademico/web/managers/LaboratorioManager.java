@@ -11,7 +11,7 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Laboratorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -20,7 +20,7 @@ import javax.inject.Named;
  */
 
 @Named(value = "laboratorioManager")
-@SessionScoped
+@RequestScoped
 public class LaboratorioManager implements Serializable{
     @EJB
     private SalaService labService;

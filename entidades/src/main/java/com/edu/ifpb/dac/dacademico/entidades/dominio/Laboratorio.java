@@ -12,13 +12,5 @@ import javax.persistence.Id;
 @Entity
 public class Laboratorio extends Sala implements Serializable{
 
-    @Id
-    public long getCod(){
-        return super.getCod();
-    }
-    
-    public void setCod(Long cod){
-        super.setCod(cod);
-    }
     
 }
