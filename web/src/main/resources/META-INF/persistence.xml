@@ -15,7 +15,7 @@
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.SalaNormal</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.dominio.Turma</class>
     <class>com.edu.ifpb.dac.dacademico.entidades.converter.ConverterDate</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>

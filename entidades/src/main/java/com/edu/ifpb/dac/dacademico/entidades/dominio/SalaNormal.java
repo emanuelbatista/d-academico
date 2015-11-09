@@ -15,7 +15,7 @@ public class SalaNormal extends Sala implements Serializable{
     public SalaNormal() {
     }
 
-    @Id
+    //@Id
     @Override
     public long getCod(){
         return super.getCod();

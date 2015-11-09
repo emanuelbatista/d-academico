@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,15 +26,15 @@ public class Turma implements Serializable {
     private String identificacao;
     @ManyToOne
     private Professor professor;
-    @ManyToMany(mappedBy = "turmas", cascade = CascadeType.MERGE)
+    @ManyToMany(mappedBy = "turmas", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Aluno> alunos;
     @ManyToOne
     private Curso curso;
     @ManyToOne
     private Disciplina disciplina;
-    @OneToMany(mappedBy = "turma")
+    @OneToMany(mappedBy = "turma", fetch = FetchType.EAGER)
     private List<Aula> aulas;
-    @OneToMany(mappedBy = "turma")
+    @OneToMany(mappedBy = "turma", fetch = FetchType.EAGER)
     private List<ReposicaoAula> reposicaoAulas;
 
     public List<ReposicaoAula> getReposicaoAulas() {

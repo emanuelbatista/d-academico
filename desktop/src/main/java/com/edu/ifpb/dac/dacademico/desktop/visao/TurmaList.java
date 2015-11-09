@@ -35,21 +35,22 @@ public class TurmaList extends javax.swing.JFrame {
         tableModel.addColumn("Disciplina");
         tableModel.addColumn("Alunos");
         List<Turma> turmas = controller.listarTodos();
-        for (Turma turma : turmas) {
+        turmas.stream().forEach((turma) -> {
             try{
                 tableModel.addRow(
                         new Object[]{
                             turma.getCod()
-                            , turma.getIdentificacao()
-                            , turma.getCurso().getAbreviacao()
-                            , turma.getProfessor() != null ? turma.getProfessor().getNomeCompleto() : ""
-                            , turma.getDisciplina().getDescricao()
-                            , turma.getAlunos() != null ? turma.getAlunos().size() : 0
+                                , turma.getIdentificacao()
+                                , turma.getCurso().getAbreviacao()
+                                , turma.getProfessor() != null ? turma.getProfessor().getNomeCompleto() : ""
+                                , turma.getDisciplina().getDescricao()
+                                , turma.getAlunos() != null ? turma.getAlunos().size() : 0
                         });
             }catch (Exception e){
+                e.printStackTrace();
                 System.out.println(turma);
             }
-        }
+        });
         jTable.setModel(tableModel);
     }
 
