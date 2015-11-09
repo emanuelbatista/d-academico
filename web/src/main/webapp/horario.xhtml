@@ -25,7 +25,7 @@
                     <tr>
                     <td><h:outputText value="#{horarioManager.horarioAbr(k.index+1)}" /></td>
                     <ui:repeat value="#{horarioManager.listaParaIterar(5)}" var="var2" varStatus="j">
-                        <td>#{horarioManager.getAula(j.index, k.index)}</td>                        
+                        <td>#{horarioManager.getAula(j.index+1, k.index+1)}</td>                        
                     </ui:repeat>
                     </tr>
                 </ui:repeat>
