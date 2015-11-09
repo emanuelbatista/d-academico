@@ -9,33 +9,59 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     </h:head>
     <h:body>
-        <c:if test="#{param.periodo != null}">
-            #{horarioManager.listarHorario(param.cod, param.class, param.periodo)}
-        </c:if>
-        <c:if test="#{param.periodo == null}">
-            #{horarioManager.listarHorario(param.cod, param.class)}            
-        </c:if>
-        <table border="1">
-            <tr>
-                <th>Horário</th>
-                <th>Segunda</th>
-                <th>Terça</th>
-                <th>Quarta</th>
-                <th>Quinta</th>
-                <th>Sexta</th>
-            </tr>
-            <tr>                
-                <ui:repeat value="#{horarioManager.listaParaIterar(14)}" var="var1" varStatus="k">                    
-                    <tr>
-                    <td><h:outputText value="#{horarioManager.horarioAbr(k.index+1)}" /></td>
-                    <ui:repeat value="#{horarioManager.listaParaIterar(5)}" var="var2" varStatus="j">
-                        <td>#{horarioManager.getAula(j.index+1, k.index+1)}</td>                        
-                    </ui:repeat>
-                    </tr>
-                </ui:repeat>
-            </tr>
-        </table>
-
+        <div class="container">
+            <div class="page-header">   
+                <img src="imagens/logo.png"></img>
+                <br/>
+                <small>
+                    <a href="index.xhtml" class="btn btn-link">Inicio</a>
+                </small>
+                <small>
+                    <a href="salas.xhtml" class="btn btn-link">Salas</a>
+                </small>
+                <small>
+                    <a href="laboratorios.xhtml" class="btn btn-link">Laboratórios</a>
+                </small>
+                <small>
+                    <a href="professores.xhtml" class="btn btn-link">Professores</a>
+                </small>
+                <small>
+                    <a href="cursos.xhtml" class="btn btn-link">Cursos</a>
+                </small>
+            </div>
+            <div class="panel panel-body">
+                <div class="row">                    
+                    <div class="col-md-12 col-lg-12">
+                        <c:if test="#{param.periodo != null}">
+                            #{horarioManager.listarHorario(param.cod, param.class, param.periodo)}
+                        </c:if>
+                        <c:if test="#{param.periodo == null}">
+                            #{horarioManager.listarHorario(param.cod, param.class)}            
+                        </c:if>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Horário</th>
+                                <th>Segunda</th>
+                                <th>Terça</th>
+                                <th>Quarta</th>
+                                <th>Quinta</th>
+                                <th>Sexta</th>
+                            </tr>
+                            <tr>                
+                                <ui:repeat value="#{horarioManager.listaParaIterar(14)}" var="var1" varStatus="k">                    
+                                    <tr>
+                                    <td><h:outputText value="#{horarioManager.horarioAbr(k.index+1)}" /></td>
+                                    <ui:repeat value="#{horarioManager.listaParaIterar(5)}" var="var2" varStatus="j">
+                                        <td>#{horarioManager.getAula(j.index+1, k.index+1)}</td>                        
+                                    </ui:repeat>
+                                    </tr>
+                                </ui:repeat>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>    
+        </div>    
     </h:body>
 </html>
 
