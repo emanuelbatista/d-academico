@@ -10,9 +10,10 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     </h:head>
     <h:body>
-        #{horarioManager.listarHorario(param.id, param.class)}
+        #{horarioManager.listarHorario(param.cod, param.class)}
         <table border="1">
             <tr>
+                <th>Horário</th>
                 <th>Segunda</th>
                 <th>Terça</th>
                 <th>Quarta</th>

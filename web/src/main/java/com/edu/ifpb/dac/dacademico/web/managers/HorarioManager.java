@@ -57,7 +57,7 @@ public class HorarioManager {
             contemHora = contemAula(aula, hora);
             System.out.println("contém hora "+contemHora);
             if (contemDia && contemHora) {
-                return "X";
+                return aula.getTurma().getDisciplina().getAbreviacao();
             }
         }
         System.out.println(aulas.size());
