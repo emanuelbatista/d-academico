@@ -24,10 +24,32 @@ import javax.inject.Named;
 public class CursoManager implements Serializable{
     @EJB
     private CursoServiceRemote cursoService;
+    private List<Curso> cursos;       
+    private int id = 10;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }    
     
     public List<Curso> listAll(){
-        return cursoService.listarTodos();
+        cursos = cursoService.listarTodos();
+        return cursos;
     }
-    
+
+    public CursoServiceRemote getCursoService() {
+        return cursoService;
+    }
+
+    public void setCursoService(CursoServiceRemote cursoService) {
+        this.cursoService = cursoService;
+    }
+
+    public Object[] getListPeriodo (int i){
+        return new Object[i];
+    }
     
 }
