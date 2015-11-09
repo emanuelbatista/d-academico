@@ -21,7 +21,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "aula.Laboratorio",query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod")
+    @NamedQuery(name = "aula.Laboratorio",query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod"),
+    @NamedQuery(name = "aula.SalaNormal",query = "SELECT a FROM Aula a WHERE a.salaNormal.cod=:cod")
 })
 public class Aula implements Serializable {
 
