@@ -18,6 +18,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -120,5 +123,12 @@ public class AulaServicoImpl implements AulaServico, Serializable {
             }
         }
 
+    }
+
+    @Override
+    public List<Aula> recuperarAulaNameQuery(Class clazz, Object id) {
+        Map<String,Object> param=new HashMap<>();
+        param.put("cod", id);
+        return aulaRepositorio.buscarPorNamedQueryList(Aula.class,"aula."+clazz.getSimpleName() , param);
     }
 }

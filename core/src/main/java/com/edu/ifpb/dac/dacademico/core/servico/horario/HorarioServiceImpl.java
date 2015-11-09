@@ -3,6 +3,9 @@ package com.edu.ifpb.dac.dacademico.core.servico.horario;
 import com.edu.ifpb.dac.dacademico.core.exceptions.EntidadeInexistenteException;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Horario;
 import com.edu.ifpb.dac.dacademico.core.dao.Dao;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -37,5 +40,13 @@ public class HorarioServiceImpl implements HorarioService{
             throw new EntidadeInexistenteException();
         }
     }
+
+    @Override
+    public List<Horario> recuperarHorario(Object id, Class clazz) {
+        Map<String,Object> param=new HashMap<>();
+        param.put("cod", id);
+        return repositorio.buscarPorNamedQueryList(Horario.class,"horario."+clazz.getSimpleName(), param);
+    }
+
     
 }

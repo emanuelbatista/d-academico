@@ -1,16 +1,14 @@
 package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,6 +17,10 @@ import javax.persistence.OneToMany;
  * @version 0.1
  */
 @Entity
+@NamedQueries(
+        {@NamedQuery(name = "horario.SalaNormal",query = "SELECT h FROM Horario h JOIN h.aulas a WHERE a.salaNormal.cod=:cod"),
+        @NamedQuery(name = "horario.Laboratorio",query = "SELECT h FROM Horario h JOIN h.aulas a WHERE a.laboratorio.cod=:cod")}
+)
 public class Horario implements Serializable {
 
     @Id

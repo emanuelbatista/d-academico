@@ -10,9 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -20,6 +20,9 @@ import javax.persistence.ManyToOne;
  * @version 0.1
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "aula.Laboratorio",query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod")
+})
 public class Aula implements Serializable {
 
     @Id

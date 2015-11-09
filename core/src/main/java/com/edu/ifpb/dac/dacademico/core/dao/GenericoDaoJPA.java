@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -29,7 +30,7 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K> {
     }
 
     @Override
-    public void remover(T entidade) {        
+    public void remover(T entidade) {
         entityManager.remove(entityManager.merge(entidade));
     }
 
@@ -69,6 +70,17 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K> {
     @Override
     public List<T> listarTodos(Class<T> classe) {
         return entityManager.createQuery("Select t from " + classe.getSimpleName() + " t").getResultList();
+    }
+
+    @Override
+    public List<T> buscarPorNamedQueryList(Class<T> clazz, String nameQuery,Map<String,Object> param) {
+        TypedQuery<T> typedQuery = entityManager.createNamedQuery(nameQuery, clazz);
+       if(param!=null){
+           param.entrySet().stream().forEach((entrySet) -> {
+               typedQuery.setParameter(entrySet.getKey(), entrySet.getValue());
+            });
+       }
+        return typedQuery.getResultList();
     }
 
 }
