@@ -16,7 +16,7 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class ProfessorSessionManager1 implements Serializable{
+public class ProfessorSessionManager implements Serializable{
 
     //@RequestScoped
     private String password;
