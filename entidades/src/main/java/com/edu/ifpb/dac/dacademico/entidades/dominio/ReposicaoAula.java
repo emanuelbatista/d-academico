@@ -17,6 +17,7 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,13 +37,13 @@ public class ReposicaoAula implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Turma turma;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Horario horario;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Laboratorio laboratorio;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private SalaNormal salaNormal;
     @Enumerated(EnumType.STRING)
     private DayOfWeek dia;

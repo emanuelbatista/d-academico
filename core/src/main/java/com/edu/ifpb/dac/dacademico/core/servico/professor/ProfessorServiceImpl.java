@@ -34,7 +34,12 @@ public class ProfessorServiceImpl implements ProfessorService {
     @Override
     public Professor login (String login, String senha) 
             throws LoginInexistenteException, SenhaErradaException{
-        Professor professor = repositorio.buscarPorAtributo(Professor.class, "email", login).get(0);
+        Professor professor;
+        try{
+            professor = repositorio.buscarPorAtributo(Professor.class, "email", login).get(0);
+        }catch(ArrayIndexOutOfBoundsException e){
+            throw new LoginInexistenteException();
+        }
         if (professor == null)
             throw new LoginInexistenteException();
         if (!professor.getSenha().equals(senha))

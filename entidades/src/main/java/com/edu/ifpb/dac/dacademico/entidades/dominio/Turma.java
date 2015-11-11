@@ -24,13 +24,13 @@ public class Turma implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
     private String identificacao;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Professor professor;
     @ManyToMany(mappedBy = "turmas", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Aluno> alunos;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Curso curso;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Disciplina disciplina;
     @OneToMany(mappedBy = "turma", fetch = FetchType.EAGER)
     private List<Aula> aulas;

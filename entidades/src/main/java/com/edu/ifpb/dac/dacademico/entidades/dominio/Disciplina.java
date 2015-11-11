@@ -2,6 +2,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Disciplina implements Serializable {
     private int aulasPorSemana, periodo, cargaHoraria;
     @NotBlank
     private String descricao, abreviacao;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Curso curso;
 
     public long getCod() {
