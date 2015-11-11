@@ -6,6 +6,44 @@
     <h:head>
         <title>D-ACadêmico</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" />
+        <script type="text/javascript" src="https://trello.com/1/client.js?key=f9e147388c9b6b46bf4e32009f8cf567" />
+        <script>
+                    var authenticationSuccess = function() { console.log("Successful authentication"); };
+                     var authenticationFailure = function() { console.log("Failed authentication"); };
+                    var creationSuccess = function (data) {
+                    console.log("Card created successfully. Data returned:" + JSON.stringify(data));
+                    }
+                    var idList;
+            function trelloInit() {
+            Trello.authorize({
+            type: "popup",
+                    name: "Getting Started Application",
+                    scope: {
+                    read: true,
+                            write: true },
+                    expiration: "never",
+                    authenticationSuccess,
+                    authenticationFailure
+                    });                    
+                    var JSON = $.getJSON("http://trello.com/b/3AaBysYW/teste.json", function (data){
+                   // idList = data;
+                            //alert(idList);
+                            alert(data);
+                    });
+                    var newCard = {name: "New Test Card", desc: "This is the description of ournew card.", pos: "top", idList};
+                    Trello.post("/cards", newCard, creationSuccess);
+            }
+
+            /*var creationSuccess = function(data) {
+             console.log("Card created successfully. Data returned:" + JSON.stringify(data));
+             };
+             var newCard = {name: "New Test Card", desc: "This is the description of ournew card.", pos: "top", // Place this card at the top of our list idList: myList,
+             };
+             Trello.post("/cards", newCard, creationSuccess);*/
+
+
+        </script>
     </h:head>
     <h:body>
         <div class="container">
@@ -22,21 +60,21 @@
                     </h:form>
                 </div>    
             </div>
-        <div class="panel panel-body">
+            <div class="panel panel-body">
                 <div class="row">                    
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <a href="professor_material.xhtml"><img src="imagens/material.png"></img> Material de Aula</a>
                         </div>
                         <div class="col-md-4">
-                            <a href="professor_atividade.xhtml"><img src="imagens/certificado.png"></img> Atividades</a>
+                            <a href="#" onclick="trelloInit()"><img src="imagens/certificado.png"></img> Atividades</a>
                         </div>
                         <div class="col-md-4">
                             <a href="forum.xhtml"><img src="imagens/forum-icon.png"></img> Fórum</a>
                         </div>
                     </div>
                 </div>    
-        </div>
+            </div>
         </div>
     </h:body>
 </html>
