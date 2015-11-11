@@ -19,8 +19,10 @@ import javax.inject.Named;
 @SessionScoped
 public class AlunoManager implements Serializable{
 
-    @RequestScoped
-    private String login, password;
+    //@RequestScoped
+    private String password;
+    //@RequestScoped
+    private String nomeUsuario;
     private Aluno aluno;
     private String errMessage;
     @EJB
@@ -28,7 +30,7 @@ public class AlunoManager implements Serializable{
     
     public String login (){
         try{
-            aluno = service.login(login, password);
+            aluno = service.login(nomeUsuario, password);
         }catch (LoginInexistenteException e){
             errMessage = "Login inexistente";
             return "index.xhtml";
@@ -39,12 +41,12 @@ public class AlunoManager implements Serializable{
         return "aluno_home.xhtml";
     }
 
-    public String getLogin() {
-        return login;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
     public String getPassword() {
