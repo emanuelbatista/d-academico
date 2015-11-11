@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       >
     <h:head>
         <title>D-ACadêmico - Horários</title>
@@ -15,22 +16,26 @@
                 </div>
                 <div class="col-md-6">
                     <h2>Horários</h2>
-                </div>    
+                </div>  
+                <div style="float:right">
+                    <button class="btn-default btn">Logar como aluno</button>
+                    <button class="btn-success btn">Logar como professor</button>
+                </div>
             </div>
         <div class="panel panel-body">
                 <div class="row">                    
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <a href="salas.xhtml"><img src="imagens/salas.png"></img>Salas</a>
+                            <a jsf:outcome="salas.xhtml"><img src="imagens/salas.png"></img>Salas</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="laboratorios.xhtml"><img src="imagens/laboratorios.png"></img>Laboratórios</a>
+                            <a jsf:outcome="laboratorios.xhtml"><img src="imagens/laboratorios.png"></img>Laboratórios</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="professores.xhtml"><img src="imagens/professores.png"></img>Professores</a>
+                            <a jsf:outcome="professores.xhtml"><img src="imagens/professores.png"></img>Professores</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="cursos.xhtml"><img src="imagens/cursos.png"></img>Cursos</a>
+                            <a jsf:outcome="cursos.xhtml"><img src="imagens/cursos.png"></img>Cursos</a>
                         </div>
                     </div>
                 </div>    

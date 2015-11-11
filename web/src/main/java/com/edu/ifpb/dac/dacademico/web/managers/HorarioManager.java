@@ -57,7 +57,7 @@ public class HorarioManager {
         for (Aula aula : aulas) {
             boolean contemDia = false, contemHora;
 
-            if (dia == aula.getDia().getValue()) {
+            if (aula.getDia() != null && dia == aula.getDia().getValue()) {
                 contemDia = true;
             }
             contemHora = contemAula(aula, hora);
@@ -138,33 +138,33 @@ public class HorarioManager {
     public String horarioAbr(int i) {
         switch (i) {
             case 1:
-                return "M1";
+                return "M1 (7:00 às 7:50)";
             case 2:
-                return "M2";
+                return "M2 (7:50 às 8:40)";
             case 3:
-                return "M3";
+                return "M3 (8:40 às 9:30)";
             case 4:
-                return "M4";
+                return "M4 (9:45 às 10:35)";
             case 5:
-                return "M5";
+                return "M5 (10:35 às 11:25)";
             case 6:
-                return "T1";
+                return "T1 (13:00 às 13:50)";
             case 7:
-                return "T2";
+                return "T2 (13:50 às 14:40)";
             case 8:
-                return "T3";
+                return "T3 (14:40 às 15:30)";
             case 9:
-                return "T4";
+                return "T4 (15:45 às 16:35)";
             case 10:
-                return "T5";
+                return "T5 (16:35 às 17:25)";
             case 11:
-                return "N1";
+                return "N1 (18:50 às 19:40)";
             case 12:
-                return "N2";
+                return "N2 (19:40 às 20:30)";
             case 13:
-                return "N3";
+                return "N3 (20:40 às 21:30)";
             case 14:
-                return "N4";
+                return "N4 (21:30 às 22:20)";
         }
         return "";
     }
