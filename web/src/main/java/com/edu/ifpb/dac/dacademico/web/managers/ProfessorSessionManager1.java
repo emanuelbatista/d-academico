@@ -2,11 +2,10 @@ package com.edu.ifpb.dac.dacademico.web.managers;
 
 import com.edu.ifpb.dac.dacademico.core.exceptions.LoginInexistenteException;
 import com.edu.ifpb.dac.dacademico.core.exceptions.SenhaErradaException;
-import com.edu.ifpb.dac.dacademico.core.servico.aluno.AlunoService;
-import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
+import com.edu.ifpb.dac.dacademico.core.servico.professor.ProfessorService;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -17,20 +16,20 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class AlunoManager implements Serializable{
+public class ProfessorSessionManager1 implements Serializable{
 
     //@RequestScoped
     private String password;
     //@RequestScoped
     private String nomeUsuario;
-    private Aluno aluno;
+    private Professor professor;
     private String errMessage;
     @EJB
-    private AlunoService service;
+    private ProfessorService service;
     
     public String login (){
         try{
-            aluno = service.login(nomeUsuario, password);
+            professor = service.login(nomeUsuario, password);
         }catch (LoginInexistenteException e){
             errMessage = "Login inexistente";
             return "index.xhtml";
@@ -57,12 +56,12 @@ public class AlunoManager implements Serializable{
         this.password = password;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAluno(Professor professor) {
+        this.professor = professor;
     }
 
     public String getErrMessage() {
