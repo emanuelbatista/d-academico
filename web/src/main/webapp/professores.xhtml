@@ -6,8 +6,66 @@
     <h:head>
         <title>D-ACadêmico - Professores</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" />
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" />
     </h:head>
     <h:body>
+        <div class="modal fade" id="loginProfessor">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Login de professor</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Login</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" jsf:value="#{professorSessionManager.nomeUsuario}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" jsf:value="#{professorSessionManager.password}"/>
+                            </div>                                                        
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-success" jsf:action="#{professorSessionManager.login()}">Logar</button>
+                        </div>
+                    </h:form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="loginAluno">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Login de aluno</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Login</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" jsf:value="#{alunoSessionManager.nomeUsuario}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" jsf:value="#{alunoSessionManager.password}"/>
+                            </div>                                                        
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-success" jsf:action="#{alunoSessionManager.login()}">Logar</button>
+                        </div>
+                    </h:form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
         <div class="container">
             <div class="page-header">   
                 <img src="imagens/logo.png"></img>
@@ -28,8 +86,8 @@
                     <a href="cursos.xhtml" class="btn btn-link">Cursos</a>
                 </small>
                 <div style="float:right">
-                    <button class="btn-default btn">Logar como aluno</button>
-                    <button class="btn-success btn">Logar como professor</button>
+                    <button class="btn-default btn" data-toggle="modal" data-target="#loginAluno">Logar como aluno</button>
+                    <button class="btn-success btn" data-toggle="modal" data-target="#loginProfessor">Logar como professor</button>
                 </div>
             </div>
             <div class="panel panel-body">
