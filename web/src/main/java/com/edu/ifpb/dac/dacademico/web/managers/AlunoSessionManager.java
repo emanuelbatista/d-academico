@@ -7,7 +7,10 @@ import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -38,6 +41,14 @@ public class AlunoSessionManager implements Serializable{
             return "index.xhtml";
         }
         return "aluno_home.xhtml";
+    }
+    
+    public String logout(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+        request.getSession().invalidate();
+        return "index.xhtml";
     }
 
     public String getNomeUsuario() {
