@@ -40,7 +40,7 @@ public class AlunoSessionManager implements Serializable{
             errMessage = "Senha equivocada";
             return "index.xhtml";
         }
-        return "aluno_home.xhtml";
+        return "aluno_home.xhtml?faces-redirect=true";
     }
     
     public String logout(){

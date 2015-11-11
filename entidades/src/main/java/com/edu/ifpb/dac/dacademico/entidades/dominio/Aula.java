@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,23 +20,25 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "aula.Laboratorio",query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod"),
-    @NamedQuery(name = "aula.SalaNormal",query = "SELECT a FROM Aula a WHERE a.salaNormal.cod=:cod"),
-    @NamedQuery(name = "aula.Professor",query = "SELECT a FROM Aula a WHERE a.turma.professor.cod=:cod"),
-    @NamedQuery(name = "aula.Curso",query = "SELECT a FROM Aula a WHERE a.turma.disciplina.periodo=:periodo AND a.turma.disciplina.curso.cod=:cod")
+    @NamedQuery(name = "aula.Laboratorio", query = "SELECT a FROM Aula a WHERE a.laboratorio.cod=:cod"),
+    @NamedQuery(name = "aula.SalaNormal", query = "SELECT a FROM Aula a WHERE a.salaNormal.cod=:cod"),
+    @NamedQuery(name = "aula.Professor", query = "SELECT a FROM Aula a WHERE a.turma.professor.cod=:cod"),
+    @NamedQuery(name = "aula.Curso", query = "SELECT a FROM Aula a WHERE a.turma.disciplina.periodo=:periodo AND a.turma.disciplina.curso.cod=:cod"),
+    @NamedQuery(name = "aula.Aluno",
+            query = "SELECT a FROM Aula a WHERE a.turma IN (SELECT t FROM Turma t JOIN t.alunos al WHERE al.cod=:cod)")
 })
 public class Aula implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cod;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Turma turma;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Horario horario;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Laboratorio laboratorio;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private SalaNormal salaNormal;
     @Enumerated(EnumType.STRING)
     private DayOfWeek dia;
@@ -59,7 +62,7 @@ public class Aula implements Serializable {
     public void setDia(DayOfWeek dia) {
         this.dia = dia;
     }
-    
+
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
@@ -92,5 +95,5 @@ public class Aula implements Serializable {
     public String toString() {
         return turma.getDisciplina().getAbreviacao();
     }
-    
+
 }

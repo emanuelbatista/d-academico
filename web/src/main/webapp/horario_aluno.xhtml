@@ -12,7 +12,7 @@
         <div class="container">
             <div class="page-header col-md-12">
                 <div class="col-md-6">
-                   <img src="imagens/logo.png" class="btn btn-link"></img>
+                    <img src="imagens/logo.png" class="btn btn-link"></img>
                 </div>
                 <div class="col-md-3">
                     <h2>Horário</h2>
@@ -24,15 +24,10 @@
                     <button class="btn-info btn">Sair</button>
                 </div>
             </div>
-        <div class="panel panel-body">
-            <div class="row">                    
-                <div class="col-md-12">
-                    <c:if test="#{param.periodo != null}">
-                            #{horarioManager.listarHorario(param.cod, param.class, param.periodo)}
-                        </c:if>
-                        <c:if test="#{param.periodo == null}">
-                            #{horarioManager.listarHorario(param.cod, param.class)}            
-                        </c:if>
+            <div class="panel panel-body">
+                <div class="row">                    
+                    <div class="col-md-12">
+                        #{horarioManager.listarHorario(param.cod, param.class)}            
                         <table class="table table-bordered">
                             <tr>
                                 <th>Horário</th>
@@ -45,17 +40,17 @@
                             <tr>                
                                 <ui:repeat value="#{horarioManager.listaParaIterar(14)}" var="var1" varStatus="k">                    
                                     <tr>
-                                    <td><h:outputText value="#{horarioManager.horarioAbr(k.index+1)}" /></td>
-                                    <ui:repeat value="#{horarioManager.listaParaIterar(5)}" var="var2" varStatus="j">
-                                        <td>#{horarioManager.getAula(j.index+1, k.index+1)}</td>                        
-                                    </ui:repeat>
+                                        <td><h:outputText value="#{horarioManager.horarioAbr(k.index+1)}" /></td>
+                                        <ui:repeat value="#{horarioManager.listaParaIterar(5)}" var="var2" varStatus="j">
+                                            <td>#{horarioManager.getAula(j.index+1, k.index+1)}</td>                        
+                                        </ui:repeat>
                                     </tr>
                                 </ui:repeat>
                             </tr>
                         </table>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>    
     </h:body>
 </html>

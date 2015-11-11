@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -17,9 +18,9 @@ public class Aluno extends Pessoa implements Serializable{
 
     @Column(unique = true)
     private String rg, cpf, matricula;
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.EAGER)
     private List<Turma> turmas;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Curso curso;
 
     public List<Turma> getTurmas() {
