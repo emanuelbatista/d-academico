@@ -7,7 +7,9 @@
 package com.edu.ifpb.dac.dacademico.web.managers;
 
 import com.edu.ifpb.dac.dacademico.core.servico.comentario.ComentarioService;
+import com.edu.ifpb.dac.dacademico.core.servico.duvida.DuvidaService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Comentario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Duvida;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -24,8 +26,11 @@ public class ComentarioManager implements Serializable{
     
     @EJB
     private ComentarioService comentarioService;
+    @EJB
+    private DuvidaService duvidaService;
     private String conteudo;
-    
+    private Duvida duvida;
+     
     public String Save(){
         Comentario c = new Comentario();
         c.setConteudo(conteudo);
@@ -43,6 +48,16 @@ public class ComentarioManager implements Serializable{
     public void setConteudo(String conteudo) {
         this.conteudo = conteudo;
     }
+
+    public Duvida getDuvida() {
+        return duvida;
+    }
+
+    public void setDuvida(Duvida duvida) {
+        this.duvida = duvida;
+    }
     
-    
+    public void obterDuvida(Long cod){
+        duvida = duvidaService.buscar(cod);
+    }
 }

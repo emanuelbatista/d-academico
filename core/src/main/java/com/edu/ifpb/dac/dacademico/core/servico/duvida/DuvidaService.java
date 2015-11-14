@@ -15,5 +15,6 @@ import java.util.List;
  */
 public interface DuvidaService {
     void salvar(Duvida duvida);
-    List<Duvida> listarTodos();
+    public List<Duvida> listarTodos();
+    public Duvida buscar(Long cod);
 }

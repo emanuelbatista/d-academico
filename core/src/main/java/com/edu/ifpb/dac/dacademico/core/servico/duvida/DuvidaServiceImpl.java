@@ -33,5 +33,10 @@ public class DuvidaServiceImpl implements DuvidaService{
     public List<Duvida> listarTodos() {
         return repositorio.listarTodos(Duvida.class);
     }
+
+    @Override
+    public Duvida buscar(Long cod) {
+        return repositorio.buscar(Duvida.class, cod);
+    }
     
 }

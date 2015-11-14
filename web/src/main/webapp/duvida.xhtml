@@ -56,7 +56,15 @@
                             <button class="btn-default btn" data-toggle="modal" data-target="#addcomentario">Comentar</button>
                         </div>
                         <div class="col-md-9">
-                            <h3>Dúvidas</h3>
+                            <div>
+                                #{comentarioManager.duvida.autor}
+                                #{comentarioManager.duvida.data}
+                            </div>
+                            <div>
+                                #{comentarioManager.duvida.titulo}
+                                #{comentarioManager.duvida.descricao}    
+                            </div>
+                            <br/>
                             <h:dataTable value="#{comentarioManager.listAll(param.cod)}" var="coment" class="table table-striped">
                                 <h:column class="text-capitalize">
                                     <div>
