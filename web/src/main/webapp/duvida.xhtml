@@ -22,13 +22,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="coment">Comentário</label>
-                            <textarea class="form-control" name="coment" rows="5" style="resize: none" jsf:value="#{duvidaManager.descricao}"></textarea>
+                            <textarea class="form-control" name="coment" rows="5" style="resize: none" jsf:value="#{comentarioManager.conteudo}"></textarea>
                         </div>                                                        
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success" jsf:action="#{duvidaManager.save()}">Publicar</button>
+                        <button type="submit" class="btn btn-success" jsf:action="#{comentarioManager.save()}">Publicar</button>
                     </div>
                 </h:form>
             </div><!-- /.modal-content -->
@@ -44,12 +44,7 @@
                 </div>
                 <div style="float:right">
                     <small>
-                        <c:if test="#{alunoSessionManager.aluno.getClass().equals(aluno.getClass())}">
-                            <a href="aluno_home.xhtml" class="btn btn-link">Inicio</a>
-                        </c:if>
-                        <c:if test="#{professorSessionManager.professor.getClass().equals(professor.getClass())}">
-                            <a href="professor_home.xhtml" class="btn btn-link">Inicio</a>
-                        </c:if>
+                        <a href="forum.xhtml" class="btn btn-link">Voltar</a>
                     </small>
                     <button class="btn-info btn">Sair</button>
                 </div>
@@ -58,12 +53,20 @@
                 <div class="row">                    
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <button class="btn-default btn" data-toggle="modal" data-target="#adduvida">Adicionar Dúvida</button>
+                            <button class="btn-default btn" data-toggle="modal" data-target="#addcomentario">Comentar</button>
                         </div>
                         <div class="col-md-9">
                             <h3>Dúvidas</h3>
-                            <h:dataTable value="#{duvidaManager.listAll()}" var="duvida" class="table table-striped">
-                                <h:column class="text-capitalize"><a jsf:outcome="/faces/duvida.xhtml?cod=#{duvida.cod}">#{duvida.titulo}</a></h:column>
+                            <h:dataTable value="#{comentarioManager.listAll(param.cod)}" var="coment" class="table table-striped">
+                                <h:column class="text-capitalize">
+                                    <div>
+                                        #{coment.autor}
+                                        #{coment.data}
+                                    </div>
+                                    <div>
+                                        #{coment.conteudo}    
+                                    </div>
+                                </h:column>
                             </h:dataTable>
                         </div>
                     </div>
