@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.time.LocalDate;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -33,6 +35,8 @@ public class Comentario implements Serializable{
     @Basic
     @Convert(converter = ConverterDate.class)
     private LocalDate data;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Duvida duvida;
 
     public long getCod() {
         return cod;
@@ -65,6 +69,15 @@ public class Comentario implements Serializable{
     public void setData(LocalDate data) {
         this.data = data;
     }
+
+    public Duvida getDuvida() {
+        return duvida;
+    }
+
+    public void setDuvida(Duvida duvida) {
+        this.duvida = duvida;
+    }
+    
     
     
 }

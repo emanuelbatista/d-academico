@@ -26,11 +26,12 @@ public class DuvidaManager implements Serializable{
     private String titulo;
     private String descrição;
     
-    public void Save(){
+    public String Save(){
         Duvida d = new Duvida();
         d.setTitulo(titulo);
         d.setDescricao(descrição);
         duvidaService.salvar(d);
+        return null;
     }
     
     public List<Duvida> listAll(){
