@@ -62,8 +62,15 @@
             <div class="panel panel-body">
                 <div class="row">                    
                     <div class="col-md-12">
-                        
-                        <button class="btn-default btn" data-toggle="modal" data-target="#adduvida">Adicionar Dúvida</button>
+                        <div class="col-md-3">
+                            <button class="btn-default btn" data-toggle="modal" data-target="#adduvida">Adicionar Dúvida</button>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>Dúvidas</h3>
+                            <h:dataTable value="#{professorManager.listAll()}" var="professor" class="table table-striped">
+                                <h:column class="text-capitalize"><a jsf:outcome="/faces/horario.xhtml?cod=#{professor.cod}&amp;class=#{professor.getClass().name}">#{professor.nomeCompleto}</a></h:column>
+                            </h:dataTable>
+                        </div>
                     </div>
                 </div>
             </div>
