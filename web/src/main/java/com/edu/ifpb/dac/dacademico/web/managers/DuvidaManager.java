@@ -26,7 +26,7 @@ public class DuvidaManager implements Serializable{
     private String titulo;
     private String descricao;
     
-    public String Save(){
+    public String save(){
         Duvida d = new Duvida();
         d.setTitulo(titulo);
         d.setDescricao(descricao);
