@@ -10,30 +10,35 @@
         <script type="text/javascript" src="https://trello.com/1/client.js?key=f9e147388c9b6b46bf4e32009f8cf567" />
         <script>
                     var authenticationSuccess = function() { console.log("Successful authentication"); };
-                     var authenticationFailure = function() { console.log("Failed authentication"); };
+                    var authenticationFailure = function() { console.log("Failed authentication"); };
                     var creationSuccess = function (data) {
                     console.log("Card created successfully. Data returned:" + JSON.stringify(data));
                     }
-                    var idList;
-            function trelloInit() {
-            Trello.authorize({
-            type: "popup",
-                    name: "Getting Started Application",
-                    scope: {
-                    read: true,
-                            write: true },
-                    expiration: "never",
-                    authenticationSuccess,
-                    authenticationFailure
-                    });                    
-                    var JSON = $.getJSON("http://trello.com/b/3AaBysYW/teste.json", function (data){
-                   // idList = data;
-                            //alert(idList);
-                            alert(data);
+            var idList="549764711bb0fff77bf14985";
+                    function trelloInit() {
+                    Trello.authorize({
+                    type: "popup",
+                            name: "Getting Started Application",
+                            scope: {
+                            read: true,
+                                    write: true },
+                            expiration: "never",
+                            authenticationSuccess,
+                            authenticationFailure
                     });
+
+                   
+                    Trello.get("member/me", function (dados){
+                       console.log(dados);
+                    },function (){
+                        alert("Não")
+                    });
+                    
+                    
+                    
                     var newCard = {name: "New Test Card", desc: "This is the description of ournew card.", pos: "top", idList};
-                    Trello.post("/cards", newCard, creationSuccess);
-            }
+                            Trello.post("/cards", newCard, creationSuccess);
+                    }
 
             /*var creationSuccess = function(data) {
              console.log("Card created successfully. Data returned:" + JSON.stringify(data));

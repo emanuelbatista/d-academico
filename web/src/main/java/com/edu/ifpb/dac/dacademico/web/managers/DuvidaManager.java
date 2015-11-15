@@ -24,12 +24,12 @@ public class DuvidaManager implements Serializable{
     @EJB
     private DuvidaService duvidaService;
     private String titulo;
-    private String descrição;
+    private String descricao;
     
     public String Save(){
         Duvida d = new Duvida();
         d.setTitulo(titulo);
-        d.setDescricao(descrição);
+        d.setDescricao(descricao);
         duvidaService.salvar(d);
         return null;
     }
@@ -46,12 +46,12 @@ public class DuvidaManager implements Serializable{
         this.titulo = titulo;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
     
