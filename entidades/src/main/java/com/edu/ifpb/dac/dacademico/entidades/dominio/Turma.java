@@ -36,7 +36,7 @@ public class Turma implements Serializable {
     private List<Aula> aulas;
     @OneToMany(mappedBy = "turma", fetch = FetchType.EAGER)
     private List<ReposicaoAula> reposicaoAulas;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<MaterialAula> materiaisAula;
 
     public List<MaterialAula> getMateriaisAula() {
@@ -45,6 +45,14 @@ public class Turma implements Serializable {
 
     public void setMateriaisAula(List<MaterialAula> materiaisAula) {
         this.materiaisAula = materiaisAula;
+    }
+    
+    public void addMaterialAula (MaterialAula material){
+        this.materiaisAula.add(material);
+    }
+    
+    public void removeMaterialAula (MaterialAula material){
+        this.materiaisAula.remove(material);
     }
     
     public List<ReposicaoAula> getReposicaoAulas() {
