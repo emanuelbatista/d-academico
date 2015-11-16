@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>D-ACadêmico - Fórum</title>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" />
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" />
+        <script type="text/javascript" src="https://trello.com/1/client.js?key=f9e147388c9b6b46bf4e32009f8cf567" />
+        <script type="text/javascript" src="js/atividades.js"/>
+    </h:head>
+    <h:body>
+        <div class="modal fade" id="adduvida">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">*</span></button>
+                    <h4 class="modal-title">Descreva sua dúvida</h4>
+                </div>
+                <h:form prependId="false">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="title">Título</label>
+                            <input type="text" class="form-control" id="title" jsf:value="#{atividadeManager.atividade.titulo}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição</label>
+                            <textarea class="form-control" id="descricao" name="description" rows="5" style="resize: none" jsf:value="#{atividadeManager.atividade.descricao}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="turma">Turma</label>
+                            <select jsf:value="#{atividadeManager.atividade.turma}" size="1" id="turmaId" jsf:converter="turmaConverter" class="form-control">
+                                <f:selectItems value="#{professorSessionManager.professor.turmas}" 
+                                               var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.identificacao}"/>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" jsf:action="#{atividadeManager.addAtividade()}" >Publicar</button>
+                    </div>
+                </h:form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+        <div class="container">
+            <div class="page-header col-md-12">
+                <div class="col-md-6">
+                    <img src="imagens/logo.png" class="btn btn-link"></img>
+                </div>
+                <div class="col-md-3">
+                    <h2>Atividades</h2>
+                </div>
+                <div style="float:right">
+                    <small>
+                        <c:if test="#{professorSessionManager.professor.getClass().equals(professor.getClass())}">
+                            <a href="professor_home.xhtml" class="btn btn-link">Inicio</a>
+                        </c:if>
+                    </small>
+                    <button class="btn-info btn">Sair</button>
+                </div>
+            </div>
+            <div class="panel panel-body">
+                <div class="row">                    
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <button class="btn-default btn" data-toggle="modal"  data-target="#adduvida">Adicionar Dúvida</button>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>Atividade</h3>
+                            <h:dataTable  var="duvida" class="table table-striped">
+                                <h:column class="text-capitalize"><a ></a></h:column>
+                            </h:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </h:body>
+</html>
+
+

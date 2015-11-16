@@ -29,7 +29,7 @@ public class ProfessorSessionManager implements Serializable{
     private String errMessage;
     @EJB
     private ProfessorService service;
-    
+
     public String login (){
         try{
             professor = service.login(nomeUsuario, password);
@@ -40,7 +40,7 @@ public class ProfessorSessionManager implements Serializable{
             errMessage = "Senha equivocada";
             return "index.xhtml";
         }
-        return "professor_home.xhtml";
+        return "professor_home.xhtml?faces-redirect=true";
     }
     
     public String logout(){
