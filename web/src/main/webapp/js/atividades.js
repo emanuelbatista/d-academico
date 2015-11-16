@@ -26,16 +26,19 @@ function listarList() {
 
 
 function listarCardList(idList) {
+    $('#list>tbody').children().remove();
     Trello.get("/lists/" + idList + "/cards", function (dado) {
         for (i = 0; i < dado.length; i++) {
             var tr = $(document.createElement("tr"));
             tr.appendTo("#list>tbody");
             addTd(tr, dado[i].name);
             addTd(tr, dado[i].desc);
+            addTd(tr,new Date(dado[i].due).toLocaleDateString());
             addTurma(tr, dado[i].idList);
             var td = $(document.createElement("td"));
             var button = $(document.createElement("button"));
             button.html("Remover");
+            button.addClass("btn btn-danger");
             button.attr({"onclick": "removerCard(this,'" + dado[i].id + "')"});
             button.appendTo(td);
             td.appendTo(tr);
@@ -84,10 +87,11 @@ function criarCard() {
             criarCard();
             
         } else {
-            Trello.post("/cards", {name: $('#title').val(), due: new Date($('#data').val()), idList: idList}, function () {
+            Trello.post("/cards", {name: $('#title').val(), due: new Date($('#data').val()).toJSON(), idList: idList}, function () {
                 console.log("Funfou");
             });
         }
+        listarList();
         $('#adduvida').modal('hide');
 
 

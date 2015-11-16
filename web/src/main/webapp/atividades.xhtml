@@ -23,9 +23,9 @@
                     </div>
                     <form jsf:id="form1" jsf:prependId="false" action="#">
                         <div class="modal-body">
-                            <h:messages ></h:messages>
+                            <h:messages id="mens"></h:messages>
                             <div class="form-group">
-                                <label for="title">Título</label>
+                                <label for="title">Título<span class="alert-danger">*</span></label>
                                 <input type="text" jsf:required="true" jsf:requiredMessage="O titulo não pode estar vazio" class="form-control" id="title"  />
                             </div>
                             <div class="form-group">
@@ -33,8 +33,8 @@
                                 <textarea class="form-control" id="descricao" name="description" rows="5" style="resize: none" ></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="data">Data de Entrega</label>
-                                <input type="date" id="data" class="form-control"></input>
+                                <label for="data">Data de Entrega<span class="alert-danger">*</span></label>
+                                <input type="date" requerid="true" jsf:required="true" id="data" class="form-control"></input>
                             </div>
                             <div class="form-group">
                                 <label for="turma">Turma</label>
@@ -49,7 +49,7 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success" jsf:onclick="criarCard()">
                                 Publicar
-                                <f:ajax/>
+                                <f:ajax render="mens" />
                             </button>
                         </div>
                     </form>
@@ -86,6 +86,7 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Descricao</th>
+                                        <th>Data de Entrega</th>
                                         <th>Remover</th>
                                         <th>Turma</th>
                                     </tr>
