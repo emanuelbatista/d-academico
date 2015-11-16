@@ -22,13 +22,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="coment">Comentário</label>
-                            <textarea class="form-control" name="coment" rows="5" style="resize: none" jsf:value="#{comentarioManager.conteudo}"></textarea>
+                            <input type="text" class="form-control" name="coment" style="resize: none" jsf:value="#{comentarioManager.conteudo}"></input>
                         </div>                                                        
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success" jsf:action="#{comentarioManager.save()}">Publicar</button>
+                        <button type="submit" class="btn btn-success" jsf:action="#{comentarioManager.save(professorSessionManager.professor, alunoSessionManager.aluno)}">Publicar</button>
                     </div>
                 </h:form>
             </div><!-- /.modal-content -->
@@ -61,11 +61,11 @@
                                 #{comentarioManager.duvida.data}
                             </div>
                             <div>
-                                #{comentarioManager.duvida.titulo}
+                                <b>#{comentarioManager.duvida.titulo}</b> - 
                                 #{comentarioManager.duvida.descricao}    
                             </div>
                             <br/>
-                            <h:dataTable value="#{comentarioManager.listAll(param.cod)}" var="coment" class="table table-striped">
+                            <h:dataTable value="#{comentarioManager.duvida.comentarios}" var="coment" class="table table-striped">
                                 <h:column class="text-capitalize">
                                     <div>
                                         #{coment.autor}

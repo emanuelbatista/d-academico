@@ -8,6 +8,7 @@ package com.edu.ifpb.dac.dacademico.core.servico.comentario;
 
 import com.edu.ifpb.dac.dacademico.core.dao.Dao;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Comentario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Duvida;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -22,16 +23,19 @@ import javax.ejb.Stateless;
 public class ComentarioServiceImpl implements ComentarioService{
     
     @EJB
-    private Dao<Comentario, Long> repositorio;
+    private Dao<Comentario, Long> comentarioRepositorio;
+    @EJB
+    private Dao<Duvida, Long> duvidaRepositorio;
     
     @Override
-    public void salvar(Comentario comentario) {
-        repositorio.salvar(comentario);
+    public void salvar(Comentario comentario, Duvida duvida) {
+        comentarioRepositorio.salvar(comentario);
+        duvidaRepositorio.atualizar(duvida);
     }
 
     @Override
     public List<Comentario> listarTodos(Long cod) {
-        return repositorio.buscarPorAtributo(Comentario.class, "cod", cod);
+        return comentarioRepositorio.buscarPorAtributo(Comentario.class, "duvida_cod", cod);
     }
     
 }

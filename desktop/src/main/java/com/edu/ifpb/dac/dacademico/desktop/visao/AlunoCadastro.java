@@ -206,51 +206,55 @@ public class AlunoCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarJButtonActionPerformed
 
     private void entrarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarJButtonActionPerformed
-        if (temInformacoesObrigatoriasVazias()) {
-            JOptionPane.showMessageDialog(null, "Preencha todas as informações", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        String nomeCompleto = nomeCompletoJTextField.getText();
-        String email = emailJTextField.getText();
-        String login = loginJTextField.getText();
-        String senha = new String(senhaJPasswordField.getPassword());
-        String cpf = cpfJTextField.getText();
-        String matricula = matriculaJTextField.getText();
-        String rg = rgJTextField.getText();
-        String mensagemSucesso;
-        boolean jaExiste;
-        if (aluno == null) {
-            aluno = new Aluno();
-            mensagemSucesso = "Aluno cadastrado com sucesso";
-            jaExiste = false;
-        } else {
-            mensagemSucesso = "Aluno atualizado com sucesso";
-            jaExiste = true;
-        }
-        aluno.setEmail(email);
-        aluno.setLogin(login);
-        aluno.setNomeCompleto(nomeCompleto);
-        aluno.setSenha(senha);
-        aluno.setCpf(cpf);
-        aluno.setRg(rg);
-        aluno.setMatricula(matricula);
-        if (jaExiste) {
-            try {
-                controller.atualizar(aluno);
-            } catch (ValidacaoException e) {
-                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+        try {
+            if (temInformacoesObrigatoriasVazias()) {
+                JOptionPane.showMessageDialog(null, "Preencha todas as informações", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        } else{
-            try {
-                controller.cadastrar(aluno);
-            } catch (ValidacaoException e) {
-                e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
-                return;
+            String nomeCompleto = nomeCompletoJTextField.getText();
+            String email = emailJTextField.getText();
+            String login = loginJTextField.getText();
+            String senha = new String(senhaJPasswordField.getPassword());
+            String cpf = cpfJTextField.getText();
+            String matricula = matriculaJTextField.getText();
+            String rg = rgJTextField.getText();
+            String mensagemSucesso;
+            boolean jaExiste;
+            if (aluno == null) {
+                aluno = new Aluno();
+                mensagemSucesso = "Aluno cadastrado com sucesso";
+                jaExiste = false;
+            } else {
+                mensagemSucesso = "Aluno atualizado com sucesso";
+                jaExiste = true;
             }
+            aluno.setEmail(email);
+            aluno.setLogin(login);
+            aluno.setNomeCompleto(nomeCompleto);
+            aluno.setSenha(senha);
+            aluno.setCpf(cpf);
+            aluno.setRg(rg);
+            aluno.setMatricula(matricula);
+            if (jaExiste) {
+                try {
+                    controller.atualizar(aluno);
+                } catch (ValidacaoException e) {
+                    e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+                    return;
+                }
+            } else {
+                try {
+                    controller.cadastrar(aluno);
+                } catch (ValidacaoException e) {
+                    e.getErrors().forEach(x -> JOptionPane.showMessageDialog(null, x.toString(), "Erro", JOptionPane.ERROR_MESSAGE));
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } catch (Exception e)  {
+            JOptionPane.showMessageDialog(null, "Alguns atributos únicos já foram cadastrados", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, mensagemSucesso, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        this.dispose();
     }//GEN-LAST:event_entrarJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

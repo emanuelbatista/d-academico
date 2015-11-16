@@ -7,6 +7,7 @@
 package com.edu.ifpb.dac.dacademico.core.servico.comentario;
 
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Comentario;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Duvida;
 import java.util.List;
 
 /**
@@ -14,6 +15,6 @@ import java.util.List;
  * @author Rafael
  */
 public interface ComentarioService {
-    void salvar(Comentario comentario);
+    void salvar(Comentario comentario, Duvida duvida);
     List<Comentario> listarTodos(Long cod);
 }
