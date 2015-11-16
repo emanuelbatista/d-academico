@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.json.Json;
@@ -29,7 +30,8 @@ import javax.json.JsonReader;
  */
 @Stateless
 @Remote(TurmaService.class)
-public class TurmaServiceImpl implements TurmaService{
+@Local(TurmaServiceLocal.class)
+public class TurmaServiceImpl implements TurmaService, TurmaServiceLocal{
 
     @EJB
     private Dao<Turma, Long> turmaRepositorio;

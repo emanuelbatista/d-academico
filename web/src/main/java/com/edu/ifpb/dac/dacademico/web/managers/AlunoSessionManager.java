@@ -11,6 +11,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,10 +30,12 @@ public class AlunoSessionManager implements Serializable{
     private String errMessage;
     @EJB
     private AlunoService service;
+    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     
     public String login (){
         try{
             aluno = service.login(nomeUsuario, password);
+            session.setAttribute("aluno", aluno);
         }catch (LoginInexistenteException e){
             errMessage = "Login inexistente";
             return "index.xhtml";
@@ -68,7 +71,7 @@ public class AlunoSessionManager implements Serializable{
     }
 
     public Aluno getAluno() {
-        return aluno;
+        return (Aluno) session.getAttribute("aluno");
     }
 
     public void setAluno(Aluno aluno) {
