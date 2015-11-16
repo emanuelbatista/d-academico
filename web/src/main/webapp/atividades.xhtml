@@ -15,40 +15,47 @@
     </h:head>
     <h:body>
         <div class="modal fade" id="adduvida">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">*</span></button>
-                    <h4 class="modal-title">Descreva sua dúvida</h4>
-                </div>
-                <h:form prependId="false">
-                    <div class="modal-body">
-
-                        <div class="form-group">
-                            <label for="title">Título</label>
-                            <input type="text" class="form-control" id="title" jsf:value="#{atividadeManager.atividade.titulo}" />
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Descrição</label>
-                            <textarea class="form-control" id="descricao" name="description" rows="5" style="resize: none" jsf:value="#{atividadeManager.atividade.descricao}"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="turma">Turma</label>
-                            <select jsf:value="#{atividadeManager.turma}" size="1" id="turmaId" jsf:converter="turmaConverter" class="form-control">
-                                <f:selectItems value="#{professorSessionManager.professor.turmas}" 
-                                               var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.disciplina.abreviacao}"/>
-                            </select>
-                        </div>
-
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">*</span></button>
+                        <h4 class="modal-title">Descreva sua dúvida</h4>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success" jsf:action="#{atividadeManager.addAtividade()}" >Publicar</button>
-                    </div>
-                </h:form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                    <form jsf:id="form1" jsf:prependId="false" action="#">
+                        <div class="modal-body">
+                            <h:messages ></h:messages>
+                            <div class="form-group">
+                                <label for="title">Título</label>
+                                <input type="text" jsf:required="true" jsf:requiredMessage="O titulo não pode estar vazio" class="form-control" id="title"  />
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Descrição</label>
+                                <textarea class="form-control" id="descricao" name="description" rows="5" style="resize: none" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="data">Data de Entrega</label>
+                                <input type="date" id="data" class="form-control"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="turma">Turma</label>
+                                <select  jsf:id="turmas" size="1" id="turmaId" class="form-control">
+                                    <f:selectItems value="#{professorSessionManager.professor.turmas}" 
+                                                   var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.identificacao}"/>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success" jsf:onclick="criarCard()">
+                                Publicar
+                                <f:ajax/>
+                            </button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
         <div class="container">
             <div class="page-header col-md-12">
                 <div class="col-md-6">
@@ -74,9 +81,19 @@
                         </div>
                         <div class="col-md-9">
                             <h3>Atividade</h3>
-                            <h:dataTable  var="duvida" class="table table-striped">
-                                <h:column class="text-capitalize"><a ></a></h:column>
-                            </h:dataTable>
+                            <table var="duvida" id="list" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Descricao</th>
+                                        <th>Remover</th>
+                                        <th>Turma</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
