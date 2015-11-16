@@ -8,9 +8,11 @@ import com.edu.ifpb.dac.dacademico.core.exceptions.ValidacaoException;
 import com.edu.ifpb.dac.dacademico.core.servico.turma.TurmaServiceLocal;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.MaterialAula;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.ejb.EJB;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 /**
@@ -19,7 +21,8 @@ import javax.ejb.Stateless;
  * @version 0.1
  */
 @Stateless
-public class MaterialAulaServiceImpl {
+@Remote(MaterialAulaService.class)
+public class MaterialAulaServiceImpl implements MaterialAulaService{
 
     private static final String ACCESS_TOKEN = 
             "ZBXrmDZtSlsAAAAAAAAASjRNFTLDcFTZeqjx-SCzpgJLeSWEtDI_0Lh6TPdMppHA";
@@ -34,16 +37,19 @@ public class MaterialAulaServiceImpl {
      * da turma, com o nome do material. Após o upload do arquivo, é gerado uma
      * url compartilhável e adicionada à entidade material.
      */
-    public void salvar (Turma turma, MaterialAula material, InputStream is) 
+    @Override
+    public void salvar (Turma turma, MaterialAula material, byte[] part) 
             throws DbxException, IOException, ValidacaoException{
+        InputStream is = new ByteArrayInputStream(part);
+        String diretorioParaSalvar = "/"+turma.getCod()+"/"+material.getNome();
         client.uploadFile(
-                turma.getCod()+"/"+material.getNome()
+                diretorioParaSalvar
                 , DbxWriteMode.add()
                 , is.available()
                 , is
         );
         material.setLink(client.createShareableUrl(
-                turma.getCod()+"/"+material.getNome())
+                diretorioParaSalvar)
         );
         turma.addMaterialAula(material);
         turmaService.atualizar(turma);

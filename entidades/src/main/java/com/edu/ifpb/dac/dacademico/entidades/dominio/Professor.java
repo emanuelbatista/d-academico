@@ -3,6 +3,7 @@ package com.edu.ifpb.dac.dacademico.entidades.dominio;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -19,7 +20,7 @@ public class Professor extends Pessoa implements Serializable{
     private String vinculo;
     @NotBlank(message = "O campo regime está vazio")
     private String regime;
-    @OneToMany(mappedBy = "professor")
+    @OneToMany(mappedBy = "professor", fetch = FetchType.EAGER)
     private List<Turma> turmas;
 
     public List<Turma> getTurmas() {
