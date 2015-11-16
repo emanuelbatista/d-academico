@@ -34,9 +34,9 @@
                         </div>
                         <div class="form-group">
                             <label for="turma">Turma</label>
-                            <select jsf:value="#{atividadeManager.atividade.turma}" size="1" id="turmaId" jsf:converter="turmaConverter" class="form-control">
+                            <select jsf:value="#{atividadeManager.turma}" size="1" id="turmaId" jsf:converter="turmaConverter" class="form-control">
                                 <f:selectItems value="#{professorSessionManager.professor.turmas}" 
-                                               var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.identificacao}"/>
+                                               var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.disciplina.abreviacao}"/>
                             </select>
                         </div>
 

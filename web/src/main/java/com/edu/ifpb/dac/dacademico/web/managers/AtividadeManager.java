@@ -7,6 +7,7 @@ package com.edu.ifpb.dac.dacademico.web.managers;
 
 import com.edu.ifpb.dac.dacademico.core.servico.atividade.AtividadeService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Atividade;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Turma;
 import com.edu.ifpb.dac.dacademico.web.aux.TrelloRest;
 import java.io.Serializable;
 import java.net.URL;
@@ -35,6 +36,7 @@ public class AtividadeManager implements Serializable {
     private Trello trello;
     private TrelloRest trelloRest;
     private Atividade atividade;
+    private Long turma;
     @Inject
     private Conversation conversation;
 
@@ -45,6 +47,7 @@ public class AtividadeManager implements Serializable {
     }
 
     public void addAtividade() {
+        System.out.println(turma);
         if (!contemList()) {
             addList(atividade.getTurma().getIdentificacao());
         }
@@ -107,6 +110,14 @@ public class AtividadeManager implements Serializable {
 
     public void setConversation(Conversation conversation) {
         this.conversation = conversation;
+    }
+
+    public Long getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Long turma) {
+        this.turma = turma;
     }
 
 }
