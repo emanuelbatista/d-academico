@@ -9,6 +9,7 @@ package com.edu.ifpb.dac.dacademico.web.managers;
 import com.edu.ifpb.dac.dacademico.core.servico.duvida.DuvidaService;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Duvida;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -26,10 +27,12 @@ public class DuvidaManager implements Serializable{
     private String titulo;
     private String descricao;
     
-    public String save(){
+    public String save(String nomeAluno){
         Duvida d = new Duvida();
         d.setTitulo(titulo);
         d.setDescricao(descricao);
+        d.setAutor(nomeAluno);
+        d.setData(LocalDate.now());
         duvidaService.salvar(d);
         return null;
     }

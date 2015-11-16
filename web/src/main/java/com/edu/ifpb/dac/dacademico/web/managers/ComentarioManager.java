@@ -8,9 +8,12 @@ package com.edu.ifpb.dac.dacademico.web.managers;
 
 import com.edu.ifpb.dac.dacademico.core.servico.comentario.ComentarioService;
 import com.edu.ifpb.dac.dacademico.core.servico.duvida.DuvidaService;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Aluno;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Comentario;
 import com.edu.ifpb.dac.dacademico.entidades.dominio.Duvida;
+import com.edu.ifpb.dac.dacademico.entidades.dominio.Professor;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -31,14 +34,24 @@ public class ComentarioManager implements Serializable{
     private String conteudo;
     private Duvida duvida;
      
-    public String Save(){
+    public String save(Professor professor, Aluno aluno){
         Comentario c = new Comentario();
         c.setConteudo(conteudo);
+        c.setDuvida(duvida);        
+        c.setData(LocalDate.now());
+        c.setAutor(professor == null ? aluno.getNomeCompleto() : professor.getNomeCompleto());
+        duvida.getComentarios().add(c);
+        comentarioService.salvar(c, duvida);        
         return null;
     }
     
-    public List<Comentario> listAll(Long cod){
-        return comentarioService.listarTodos(cod);
+    public String carregarPaginaDuvida (Duvida duvida){
+        this.duvida = duvida;
+        return "duvida.xhtml";
+    }
+    
+    public List<Comentario> listAll(){
+        return comentarioService.listarTodos(duvida.getCod());
     }
 
     public String getConteudo() {
@@ -57,7 +70,4 @@ public class ComentarioManager implements Serializable{
         this.duvida = duvida;
     }
     
-    public void obterDuvida(Long cod){
-        duvida = duvidaService.buscar(cod);
-    }
 }

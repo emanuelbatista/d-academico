@@ -53,9 +53,12 @@ public class GenericoDaoJPA<T, K> implements Dao<T, K> {
         boolean primeiraIteracao = true;
         for (String chave : propriedades.keySet()) {
             if (!primeiraIteracao) {
-                sb.append("and ");
+                sb.append("and");
             }
-            sb.append("a." + chave + " = \"" + propriedades.get(chave) + "\"");
+            if (propriedades.get(chave) instanceof String)
+                sb.append(" a." + chave + " = \"" + propriedades.get(chave) + "\"");
+            else
+                sb.append(" a." + chave + " = " + propriedades.get(chave));
             primeiraIteracao = false;
         }
         List<T> resultado = entityManager.createQuery(sb.toString()).getResultList();
