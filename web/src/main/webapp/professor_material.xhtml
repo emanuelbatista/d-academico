@@ -26,10 +26,13 @@
                 </div>
             </div>
             <div class="panel panel-body">
+                <div class="col-md-12">
+                    <h2>Professor Material</h2>
+                    <hr />
+                </div>
                 <div class="row">                    
-                    <div class="col-md-12">
-                        Professor Material
-                    </div>
+
+                    <h4>Cadastrar novo</h4>
                     <h:form id="form" enctype="multipart/form-data">
                         <h:inputFile id="file" value="#{materialAulaManager.file}"/>                        
                         <h:selectManyCheckbox value="#{materialAulaManager.turmas}">
@@ -38,8 +41,18 @@
                             </c:forEach>
                         </h:selectManyCheckbox>
                         <h:commandButton value="Upload"
-                                         action="#{materialAulaManager.upload}"/>
+                                         action="#{materialAulaManager.upload()}"/>
                     </h:form>
+                </div>
+                <hr />
+                <div class="row">
+                    <h4>Materiais cadastrados</h4>
+                    <c:forEach items="#{professorSessionManager.professor.turmas}" var="turma" varStatus="a">
+                            <h5>#{turma.disciplina.abreviacao}</h5>
+                        <c:forEach items="#{turma.materiaisAula}" var="material" varStatus="a">
+                            <a href="#{material.link}" target="_blank"><pre>    #{material.nome}</pre></a>
+                        </c:forEach>
+                    </c:forEach>
                 </div>
             </div>
         </div>    
