@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <title>D-ACadêmico - Horário</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
@@ -21,7 +22,7 @@
                     <small>
                         <a href="aluno_home.xhtml" class="btn btn-link">Inicio</a>
                     </small>
-                    <button class="btn-info btn">Sair</button>
+                    <button class="btn-info btn" jsf:action="#{alunoSessionManager.logout()}">Sair</button>
                 </div>
             </div>
             <div class="panel panel-body">

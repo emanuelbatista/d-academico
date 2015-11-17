@@ -6,7 +6,7 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>D-ACadêmico - Fórum</title>
+        <title>D-ACadêmico - Atividades</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" />
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" />
@@ -19,7 +19,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">*</span></button>
-                        <h4 class="modal-title">Descreva sua dúvida</h4>
+                        <h4 class="modal-title">Descreva sua atividade</h4>
                     </div>
                     <form jsf:id="form1" jsf:prependId="false" action="#">
                         <div class="modal-body">
@@ -70,14 +70,14 @@
                             <a href="professor_home.xhtml" class="btn btn-link">Inicio</a>
                         </c:if>
                     </small>
-                    <button class="btn-info btn">Sair</button>
+                    <button class="btn-info btn" jsf:action="#{professorSessionManager.logout()}">Sair</button>
                 </div>
             </div>
             <div class="panel panel-body">
                 <div class="row">                    
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <button class="btn-default btn" data-toggle="modal"  data-target="#adduvida">Adicionar Dúvida</button>
+                            <button class="btn-default btn" data-toggle="modal"  data-target="#adduvida">Adicionar Atividade</button>
                         </div>
                         <div class="col-md-9">
                             <h3>Atividade</h3>
