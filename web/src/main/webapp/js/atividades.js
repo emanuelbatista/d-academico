@@ -88,8 +88,9 @@ function criarCard() {
             criarCard();
             
         } else {
-            console.log($('#data').val());
-            Trello.post("/cards", {name: $('#title').val(), due: $('#data').val(),desc: $("#descricao").val() ,idList: idList}, function () {
+   
+           console.log(date($('#data').val()));
+            Trello.post("/cards", {name: $('#title').val(), due: date($('#data').val()),desc: $("#descricao").val() ,idList: idList}, function () {
                 console.log("Funfou");
             });
         }
@@ -99,6 +100,21 @@ function criarCard() {
 
     });
 
+}
+
+function date(value){
+    var data=new Date(value);
+    var dia=data.getDate()+2;
+    var mes=data.getMonth()+1;
+    var ano=data.getFullYear();
+    
+    if(dia<10){
+        dia="0"+dia;
+    }
+    if(ano<2000){
+        ano="19"+ano;
+    }
+    return ano+"-"+mes+"-"+dia;
 }
 
 function sleep(milliseconds) {
