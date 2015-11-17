@@ -40,7 +40,7 @@
                                 <label for="turma">Turma</label>
                                 <select  jsf:id="turmas" size="1" id="turmaId" class="form-control">
                                     <f:selectItems value="#{professorSessionManager.professor.turmas}" 
-                                                   var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.identificacao}"/>
+                                                   var="turmas" itemValue="#{turmas.cod}" itemLabel="#{turmas.disciplina.abreviacao}"/>
                                 </select>
                             </div>
 

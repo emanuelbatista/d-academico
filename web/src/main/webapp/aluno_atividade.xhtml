@@ -41,7 +41,7 @@
                         <select jsf:id="select" id="turmaId" style="display: none" >
                             <f:selectItems  value="#{alunoSessionManager.aluno.turmas}"
                                            var="turmas"
-                                           itemLabel="#{turmas.identificacao}"
+                                           itemLabel="#{turmas.disciplina.abreviacao}"
                                            itemValue="#{turmas.cod}"/>
                         </select>
                     </form>

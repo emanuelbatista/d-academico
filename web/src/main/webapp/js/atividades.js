@@ -1,4 +1,5 @@
-var idBoard = "56489937e84b54c1a6fb320d";
+var idBoard = "564afec5c742faeb34c046c9";
+var token="a90c3c4fd2062571b2a3db5b39c10a81402702aedb563ead9aefe13fa3b74ec8";
 function AuthenticateTrello() {
     Trello.authorize({
         name: "D-Academico",
@@ -26,7 +27,6 @@ function listarList() {
 
 
 function listarCardList(idList) {
-    $('#list>tbody').children().remove();
     Trello.get("/lists/" + idList + "/cards", function (dado) {
         for (i = 0; i < dado.length; i++) {
             var tr = $(document.createElement("tr"));
@@ -44,6 +44,7 @@ function listarCardList(idList) {
             td.appendTo(tr);
         }
     });
+   
 }
 
 
@@ -87,13 +88,14 @@ function criarCard() {
             criarCard();
             
         } else {
-            Trello.post("/cards", {name: $('#title').val(), due: new Date($('#data').val()).toJSON(), idList: idList}, function () {
+            console.log($('#data').val());
+            Trello.post("/cards", {name: $('#title').val(), due: $('#data').val(),desc: $("#descricao").val() ,idList: idList}, function () {
                 console.log("Funfou");
             });
         }
         listarList();
         $('#adduvida').modal('hide');
-
+         location.reload();
 
     });
 
@@ -128,4 +130,5 @@ function removerCard(element, idCard) {
 
 
 AuthenticateTrello();
+Trello.setToken(token);
 listarList();

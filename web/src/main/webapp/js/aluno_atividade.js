@@ -1,4 +1,5 @@
-var idBoard = "56489937e84b54c1a6fb320d";
+var idBoard = "564afec5c742faeb34c046c9";
+var token="a90c3c4fd2062571b2a3db5b39c10a81402702aedb563ead9aefe13fa3b74ec8";
 function AuthenticateTrello() {
     Trello.authorize({
         name: "D-Academico",
@@ -66,4 +67,5 @@ function addTurma(tr, idList) {
 
 
 AuthenticateTrello();
+Trello.setToken(token);
 listarList();
