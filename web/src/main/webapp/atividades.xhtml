@@ -64,6 +64,7 @@
                 <div class="col-md-3">
                     <h2>Atividades</h2>
                 </div>
+                <form jsf:id="form2">
                 <div style="float:right">
                     <small>
                         <c:if test="#{professorSessionManager.professor.getClass().equals(professor.getClass())}">
@@ -72,6 +73,7 @@
                     </small>
                     <button class="btn-info btn" jsf:action="#{professorSessionManager.logout()}">Sair</button>
                 </div>
+                </form>
             </div>
             <div class="panel panel-body">
                 <div class="row">                    
